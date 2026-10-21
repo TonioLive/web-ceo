@@ -26,8 +26,8 @@ body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:14px
 .seg button:focus-visible,.open:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .open{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 4px;color:var(--fg);text-decoration:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;flex:none}
 .open:hover{text-decoration:underline;text-underline-offset:4px}
-.stage{position:fixed;left:0;right:0;bottom:0;top:calc(56px + env(safe-area-inset-top,0px));display:grid;place-items:center;overflow:hidden}
-.device{position:relative;box-sizing:content-box;transform-origin:50% 50%;background:var(--device)}
+.stage{position:fixed;left:0;right:0;bottom:0;top:calc(56px + env(safe-area-inset-top,0px));overflow:hidden}
+.device{position:absolute;left:50%;top:50%;box-sizing:content-box;transform-origin:50% 50%;transform:translate(-50%,-50%);background:var(--device)}
 .device iframe{display:block;width:100%;height:100%;border:0;background:#F1EBE4}
 .stage[data-mode="tablet"] .device{padding:18px;border-radius:40px;box-shadow:0 0 0 1px var(--line),0 40px 90px rgba(0,0,0,.55)}
 .stage[data-mode="tablet"] iframe{border-radius:22px}
@@ -69,7 +69,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:14px
       device.style.width = w + 'px';
       device.style.height = (sh / s) + 'px';
       device.style.padding = '0';
-      device.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
+      device.style.transform = 'translate(-50%,-50%)' + (s < 1 ? ' scale(' + s.toFixed(4) + ')' : '');
       dims.textContent = s < 1 ? w + ' px de ancho · vista reducida' : '';
       return;
     }
@@ -77,8 +77,8 @@ body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:14px
     device.style.width = sz[0] + 'px';
     device.style.height = sz[1] + 'px';
     device.style.padding = '';
-    var s2 = Math.min((sw - 32) / (sz[0] + pad * 2), (sh - 40) / (sz[1] + pad * 2), 1);
-    device.style.transform = 'scale(' + s2.toFixed(4) + ')';
+    var s2 = Math.min((sw - 32) / (sz[0] + pad * 2), (sh - 48) / (sz[1] + pad * 2), 1);
+    device.style.transform = 'translate(-50%,-50%) scale(' + s2.toFixed(4) + ')';
     dims.textContent = sz[0] + ' × ' + sz[1];
   }
   function setMode(m) {
