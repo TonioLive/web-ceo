@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CURATED Shopping · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E0F10">
+<style>
+/* Planta en obras: el mismo ascensor cerrado del Index, con la planta y el aviso. */
+@font-face{font-family:'Google Sans';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/GoogleSans-Regular.woff2) format('woff2')}
+@font-face{font-family:'Google Sans';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/GoogleSans-Medium.woff2) format('woff2')}
+@font-face{font-family:'Google Sans';font-style:italic;font-weight:500;font-display:swap;src:url(assets/fonts/GoogleSans-MediumItalic.woff2) format('woff2')}
+:root{--vh:1vh;--sans:'Google Sans','Product Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color-scheme:dark}
+@supports (height:1svh){:root{--vh:1svh}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{min-height:100vh;min-height:calc(var(--vh)*100);display:flex;flex-direction:column;justify-content:space-between;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(16px,4vw,56px) calc(24px + env(safe-area-inset-bottom,0px));color:#fff;font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  background:linear-gradient(90deg,rgba(14,15,16,.15),rgba(14,15,16,.35)),url(assets/img/elevator.jpg) center top/auto 100% no-repeat,url(assets/img/wall-l.png) left top/50% 100% no-repeat,url(assets/img/wall-r.png) right top/50% 100% no-repeat,#2b2d30}
+a{color:inherit}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:500}
+.top a{text-decoration:none;padding:10px 0}
+.top a:hover{text-decoration:underline;text-underline-offset:5px}
+.floor{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.floor b{display:grid;place-items:center;width:34px;height:34px;border:1px solid currentColor;border-radius:50%;font-size:15px;letter-spacing:0;font-weight:500}
+main{align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:14px;text-align:right;max-width:min(92vw,640px);margin-right:max(0px,calc(50vw - var(--vh)*22.39 - clamp(16px,4vw,56px)))}
+h1{margin:0;font-weight:500;font-size:min(calc(var(--vh)*7.4),11vw);line-height:1.02;letter-spacing:-.015em;text-shadow:0 .04em .45em rgba(0,0,0,.2)}
+.cur{font-style:italic}
+p{margin:0;font-size:clamp(16px,2.2vh,20px);line-height:1.45}
+.soon{font-weight:500}
+.back{display:inline-flex;align-items:center;gap:10px;min-height:48px;margin-top:8px;padding:0 22px;border:1px solid rgba(255,255,255,.7);border-radius:999px;text-decoration:none;font-weight:500;transition:background-color .3s,color .3s}
+.back:hover,.back:focus-visible{background:#fff;color:#0e0f10}
+:focus-visible{outline:2px solid #fff;outline-offset:4px}
+footer{text-align:center;font-weight:500;font-size:15px}
+</style>
+</head>
+<body>
+<header class="top"><a href="./">Lucía Morales</a><span class="floor"><b>2</b> Planta 2</span></header>
+<main>
+  <h1><i class="cur">CURATED</i>Shopping</h1>
+  <p>Lo que uso y recomiendo, elegido a mano.</p>
+  <p class="soon">Muy pronto.</p>
+  <a class="back" href="./">← Volver al Index</a>
+</main>
+<footer>luciamorales.es</footer>
+</body>
+</html>
