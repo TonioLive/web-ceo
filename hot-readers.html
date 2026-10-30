@@ -23,7 +23,7 @@ if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-m
 var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
 h.classList.add('lx-in');if(home)h.classList.add('lx-home');
 st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
-st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'""');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
 window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
 </script>
 <style>

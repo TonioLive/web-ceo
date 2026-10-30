@@ -13,7 +13,7 @@
   var hereMain = mainFloor(location.pathname);
   var here = hereMain !== null ? hereMain : (SUB[file(location.pathname)] || 0);
   function zoom() { return (Math.max(innerWidth / (innerHeight * 0.43166), 1.166) * 1.08).toFixed(3); }
-  function arrow(f, t) { return t > f ? '"▲"' : t < f ? '"▼"' : '""'; }
+  function arrow(f, t) { return t > f ? '"▲"' : t < f ? '"▼"' : 'none'; }
   function clean() { h.classList.remove('lx-in', 'lx-out', 'lx-home', 'lx-ding'); ['--lxd', '--lxz', '--lxn', '--lxa'].forEach(function (k) { st.removeProperty(k); }); }
 
   /* llegada: el indicador cuenta hasta la planta y suena el «ding» */
@@ -25,7 +25,7 @@
     for (var i = 1; i <= n; i++) (function (k) {
       at(0.1 + k * 0.2, function () { st.setProperty('--lxn', '"' + (L.f + dir * k) + '"'); });
     })(i);
-    at(L.count - 0.05, function () { h.classList.add('lx-ding'); st.setProperty('--lxa', '""'); });
+    at(L.count - 0.05, function () { h.classList.add('lx-ding'); st.setProperty('--lxa', 'none'); });
     at(L.count + (L.home ? 0.7 : 1.5), clean);
   }
 

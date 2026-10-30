@@ -42,7 +42,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 Index (planta 0), Gallery (1), CURATEDShopping (2) y +More (3) son plantas de un edificio. Al ir de una a otra:
 
 1. **Salida:** el marco del ascensor entra desde fuera de la pantalla y las puertas se cierran. Desde la portada del Index las puertas ya están cerradas y solo se enciende el indicador.
-2. **Llegada:** el indicador sobre la puerta cuenta las plantas (▲/▼), suena el «ding», las puertas se abren con la página nueva detrás y la cámara cruza la puerta. Al volver a la portada del Index, el ascensor ya está ahí y solo se funde.
+2. **Llegada:** el indicador rojo sobre la puerta cuenta las plantas (▲/▼), se ilumina al llegar, las puertas se abren con la página nueva detrás y la cámara cruza la puerta. Al volver a la portada del Index, el ascensor ya está ahí y solo se funde.
 
 Funciona con cualquier enlace a esas cuatro páginas, también desde Hot Readers, Design Freaks y Melara Glow. El viaje se guarda en `sessionStorage` y un script en el `<head>` deja las puertas cerradas antes del primer pintado. Con `prefers-reduced-motion` se navega sin transición.
 

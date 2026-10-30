@@ -95,6 +95,8 @@ i.cur{font-style:italic}
 .lift__cue{position:absolute;z-index:3;left:48.4%;top:93.4%;width:1px;height:calc(var(--vh)*3.6);background:rgba(255,255,255,.28);overflow:hidden}
 .lift__cue::after{content:"";position:absolute;inset:0;background:#fff;animation:cue 2.2s var(--ease) infinite}
 @keyframes cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+/* indicador de planta sobre la puerta: el mismo de la transición entre páginas, fijo en la 0 */
+.lift__floor{position:absolute;z-index:1;left:49.43%;top:4.1%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;min-width:2.6em;padding:.36em .7em;border-radius:.28em;background:#0b0b0c;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 1px 0 rgba(255,255,255,.14);font:500 max(13px,calc(var(--vh)*2.1))/1 var(--sans);color:#ff3b2f;text-shadow:0 0 .5em rgba(255,40,25,.7);letter-spacing:.04em;font-variant-numeric:tabular-nums;pointer-events:none}
 /* al entrar: las puertas se entreabren, sale luz por la rendija y aparece «Baja para abrir» */
 .lift__crack{position:absolute;top:0;bottom:0;left:48.306%;width:22%;transform:translateX(-50%);pointer-events:none;opacity:0;mix-blend-mode:screen;
   background:linear-gradient(90deg,rgba(255,226,180,0),rgba(255,232,196,.42) 40%,rgba(255,246,232,.75) 50%,rgba(255,232,196,.42) 60%,rgba(255,226,180,0))}
@@ -258,7 +260,7 @@ if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-m
 var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
 h.classList.add('lx-in');if(home)h.classList.add('lx-home');
 st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
-st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'""');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
 window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
 </script>
 </head>
@@ -311,6 +313,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
         <div class="lift__wall lift__wall--r" aria-hidden="true"></div>
         <div class="lift__stage">
           <img class="lift__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573" aria-hidden="true">
+          <span class="lift__floor" aria-hidden="true">0</span>
           <div class="lift__cab">
             <img class="lift__lucia" src="assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en una cafetería, con gorra roja y camisa azul" width="1300" height="1918">
             <span class="lift__shade" aria-hidden="true"></span>
