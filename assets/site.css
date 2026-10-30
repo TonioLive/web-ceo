@@ -51,13 +51,14 @@ i.cur{font-style:italic}
 @media (max-width:759px){.bar__nav{display:none}.bar__menu{display:inline-block}}
 
 /* ---------- menú a pantalla completa: las puertas del ascensor ---------- */
-.sheet{position:fixed;inset:0;z-index:70;visibility:hidden;color:#fff}
-.sheet.is-open{visibility:visible}
-.sheet__door{position:absolute;top:0;bottom:0;width:50.5%;background-repeat:no-repeat;transition:transform .9s var(--ease)}
+/* abrir: las puertas se cierran y luego aparece el menú; cerrar: el menú se apaga y las puertas se abren (sigue visible hasta que acaban) */
+.sheet{position:fixed;inset:0;z-index:70;visibility:hidden;pointer-events:none;color:#fff;transition:visibility 0s linear 1.05s}
+.sheet.is-open{visibility:visible;pointer-events:auto;transition:visibility 0s}
+.sheet__door{position:absolute;top:0;bottom:0;width:50.5%;background-repeat:no-repeat;transition:transform .85s var(--ease) .18s}
 .sheet__door--l{left:0;transform:translateX(-101%);background-image:url(img/elevator.jpg),url(img/wall-l.png);background-size:auto 100%,100% 100%;background-position:calc(50vw - var(--vh)*27.08) 0,0 0}
 .sheet__door--r{right:0;transform:translateX(101%);background-image:url(img/elevator.jpg),url(img/wall-r.png);background-size:auto 100%,100% 100%;background-position:calc(.5vw - var(--vh)*27.08) 0,0 0}
-.sheet.is-open .sheet__door{transform:none}
-.sheet__body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:calc(18px + env(safe-area-inset-top,0px)) var(--gutter) calc(28px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .4s}
+.sheet.is-open .sheet__door{transform:none;transition:transform .9s var(--ease)}
+.sheet__body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:calc(18px + env(safe-area-inset-top,0px)) var(--gutter) calc(28px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
 .sheet.is-open .sheet__body{opacity:1;transition:opacity .5s .55s}
 .sheet__close{align-self:flex-end;min-height:44px;padding:0 4px;font-weight:500;font-size:16px}
 .sheet__links{display:flex;flex-direction:column;align-items:flex-end;font-size:min(calc(var(--vh)*6.6),11vw);line-height:1.1;font-weight:500;letter-spacing:-.012em}
