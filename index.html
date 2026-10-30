@@ -121,8 +121,8 @@ i.cur{font-style:italic}
 .about__frame{position:relative;overflow:hidden;aspect-ratio:1300/1918;background:#7d8fb9}
 .about__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 40%}
 .about__next{font:inherit;margin-top:clamp(8px,1vw,16px)}
-.about__quote{margin:0}
-.about__sign{margin-top:1.6em}
+.about__quote{margin:0;font-style:italic}
+.about__sign{margin-top:1.6em;font-style:italic}
 .wd{transition:opacity .2s linear}
 
 /* ---------- 04 · in the making (diseño 03, medidas sobre 3200×4347) ---------- */
@@ -615,7 +615,11 @@ i.cur{font-style:italic}
   /* ---------- 06 · lista de espera ---------- */
   G.from('.join__form > *', { y: 28, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.join', start: 'top 72%', once: true } });
 
-  window.addEventListener('load', function () { ST.refresh(); });
+  window.addEventListener('load', function () {
+    ST.refresh();
+    /* si se llega desde otra página a #lista (por ejemplo, desde Melara Glow), se baja al formulario cuando ya están puestos los anclajes */
+    if (location.hash === '#lista') setTimeout(function () { window.scrollTo(0, $('#lista').getBoundingClientRect().top + window.pageYOffset); }, 120);
+  });
 })();
 </script>
 </body>

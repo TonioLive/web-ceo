@@ -29,7 +29,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 | `gallery.html` | Gallery: cita de L.M y seis casillas (01 Hot Readers, 03 Design Freaks; el resto, próximamente) |
 | `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda |
 | `design-freaks.html` | Diseñadores y arquitectos, con enlaces a cada artículo |
-| `melara-glow.html` | Web de Melara Glow en construcción (cintas amarillas). Enlazada desde «Con tu mirada» y desde Design Freaks |
+| `melara-glow.html` | Web de Melara Glow en construcción. Al arrancar (arrastrar o pulsar) las dos cintas amarillas aparece un código promocional de ejemplo (`MELARA10`). Enlazada desde «Con tu mirada» y desde Design Freaks |
 | `curated-shopping.html`, `more.html` | Plantas 2 y 3, de momento con aviso de «Muy pronto» |
 | `assets/site.css`, `assets/site.js` | Barra, menú de puertas, pie y animaciones comunes de las páginas interiores |
 | `assets/img/`, `assets/fonts/` | Imágenes recortadas de los diseños y Google Sans en woff2 (licencia SIL Open Font License) |
@@ -45,6 +45,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 ## Pendiente
 
 - [ ] Conectar el formulario de la lista de espera a la herramienta de email (Shopify, Klaviyo, Brevo…). Ahora solo muestra «Gracias» y no guarda el email.
+- [ ] Código de Melara Glow: `MELARA10` (10 % en el primer pedido) es de ejemplo. Crear el descuento real en Shopify antes del lanzamiento y cambiar `PROMO_CODE` / `PROMO_TEXT` en `melara-glow.html`.
 - [ ] Confirmar el año de «La vegetariana»: el diseño pone 2024 y el correo 2007 (se ha puesto 2007, el de la edición original).
 - [ ] Contenido de las casillas 02, 04, 05 y 06 de Gallery, de *CURATED*Shopping y de +More.
 - [ ] Aviso legal, privacidad y cookies.

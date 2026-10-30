@@ -15,16 +15,56 @@ if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fin
 </script>
 <link rel="stylesheet" href="assets/site.css">
 <style>
-/* Melara Glow en obras: titular negro y las cintas amarillas cruzadas al pie. */
+/* Melara Glow en obras: titular negro y las cintas amarillas cruzadas.
+   Arrancando las dos cintas aparece, debajo, una tarjeta negra con un código. */
 .mg{position:relative;min-height:100vh;min-height:calc(var(--vh)*100);overflow:hidden;background:var(--white);display:flex;flex-direction:column}
-.mg__txt{position:relative;z-index:2;padding:calc(120px + env(safe-area-inset-top,0px)) var(--gutter) 0}
-.mg__title{font-weight:600;font-size:min(9vw,150px);line-height:.86;letter-spacing:-.01em}
+.mg__txt{position:relative;z-index:4;padding:calc(112px + env(safe-area-inset-top,0px)) var(--gutter) 0;pointer-events:none}
+.mg__title{font-weight:600;font-size:min(6vw,calc(var(--vh)*11.5),120px);line-height:.86;letter-spacing:-.01em}
 .mg__title span{display:block;overflow:hidden;padding-bottom:.04em}
 .mg__title span i{display:block;font-style:normal}
-.mg__tape{position:relative;z-index:1;margin-top:max(-16vw,-150px);width:100%;pointer-events:none}
-.mg__tape img{width:100%;height:auto;mix-blend-mode:multiply}
-.mg__back{position:absolute;z-index:3;right:var(--gutter);top:calc(84px + env(safe-area-inset-top,0px))}
-@media (max-width:699px){.mg__tape{width:150%;margin-left:-8%}.mg__back{position:static;margin:20px var(--gutter) 0}}
+.mg__back{position:absolute;z-index:6;right:var(--gutter);top:calc(84px + env(safe-area-inset-top,0px))}
+.mg__stage{position:relative;z-index:3;width:100%;aspect-ratio:2400/1221;margin-top:calc(-1 * min(9vw,150px))}
+/* cintas: cada una es un botón recortado con la forma de la cinta, para que solo se agarre la cinta */
+.tape{position:absolute;inset:0;padding:0;border:0;background:none;cursor:grab;touch-action:pan-y;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.tape.is-drag{cursor:grabbing}
+.tape img{display:block;width:100%;height:100%;pointer-events:none;-webkit-user-drag:none}
+.tape--a{z-index:2;clip-path:polygon(0.00% 87.96%, 4.17% 84.10%, 8.33% 80.24%, 12.50% 76.36%, 16.67% 72.49%, 20.83% 68.60%, 25.00% 64.71%, 29.17% 60.81%, 33.33% 56.91%, 37.50% 53.00%, 41.67% 49.08%, 45.83% 45.16%, 50.00% 41.23%, 54.17% 37.29%, 58.33% 33.35%, 62.50% 29.40%, 66.67% 25.45%, 70.83% 21.48%, 75.00% 17.52%, 79.17% 13.54%, 83.33% 9.56%, 87.50% 5.57%, 91.67% 1.58%, 95.83% -2.42%, 100.00% -6.43%, 100.00% 18.28%, 95.83% 22.28%, 91.67% 26.28%, 87.50% 30.27%, 83.33% 34.26%, 79.17% 38.24%, 75.00% 42.22%, 70.83% 46.18%, 66.67% 50.15%, 62.50% 54.10%, 58.33% 58.05%, 54.17% 61.99%, 50.00% 65.93%, 45.83% 69.86%, 41.67% 73.78%, 37.50% 77.70%, 33.33% 81.61%, 29.17% 85.51%, 25.00% 89.41%, 20.83% 93.30%, 16.67% 97.19%, 12.50% 101.07%, 8.33% 104.94%, 4.17% 108.80%, 0.00% 112.66%)}
+.tape--d{z-index:3;clip-path:polygon(0.00% 21.85%, 4.17% 24.10%, 8.33% 26.33%, 12.50% 28.52%, 16.67% 30.70%, 20.83% 32.84%, 25.00% 34.96%, 29.17% 37.06%, 33.33% 39.13%, 37.50% 41.18%, 41.67% 43.20%, 45.83% 45.19%, 50.00% 47.16%, 54.17% 49.10%, 58.33% 51.02%, 62.50% 52.91%, 66.67% 54.78%, 70.83% 56.62%, 75.00% 58.43%, 79.17% 60.22%, 83.33% 61.99%, 87.50% 63.73%, 91.67% 65.44%, 95.83% 67.13%, 100.00% 68.79%, 100.00% 91.79%, 95.83% 90.12%, 91.67% 88.44%, 87.50% 86.72%, 83.33% 84.98%, 79.17% 83.22%, 75.00% 81.43%, 70.83% 79.61%, 66.67% 77.77%, 62.50% 75.91%, 58.33% 74.02%, 54.17% 72.10%, 50.00% 70.16%, 45.83% 68.19%, 41.67% 66.19%, 37.50% 64.17%, 33.33% 62.13%, 29.17% 60.06%, 25.00% 57.96%, 20.83% 55.84%, 16.67% 53.69%, 12.50% 51.52%, 8.33% 49.32%, 4.17% 47.10%, 0.00% 44.85%)}
+.tape:focus-visible{outline:none}
+.tape:focus-visible img{filter:brightness(1.07) saturate(1.15)}
+.tape.is-gone{visibility:hidden;pointer-events:none}
+/* el premio */
+.prize{position:absolute;z-index:1;left:46.4%;top:53%;width:min(440px,34%);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:clamp(18px,2vw,30px) clamp(16px,1.8vw,28px);background:var(--black);color:var(--white);text-align:center;overflow:hidden;--yel:#F6DC62}
+.prize__k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--yel)}
+.prize__code{font-weight:600;font-size:clamp(28px,3vw,46px);line-height:1;letter-spacing:.08em;filter:blur(10px);transition:filter .9s var(--ease-out)}
+.prize__desc{max-width:30ch;font-size:clamp(14px,1.1vw,16px);line-height:1.4;color:#D6D6D6}
+.prize__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:4px}
+.prize__btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border:1px solid currentColor;border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background-color .3s,color .3s,border-color .3s}
+.prize__btn:hover,.prize__btn:focus-visible{background:var(--white);color:var(--black);border-color:var(--white)}
+.prize__btn--yel{background:var(--yel);border-color:var(--yel);color:var(--black)}
+.prize__btn--yel:hover,.prize__btn--yel:focus-visible{background:var(--white);border-color:var(--white)}
+.prize__again{min-height:36px;font-size:12px;color:#A9A9A9;text-decoration:underline;text-underline-offset:4px}
+.prize__again:hover{color:var(--white)}
+.prize .prize__desc,.prize .prize__actions,.prize .prize__again{visibility:hidden;opacity:0;transition:opacity .6s .35s}
+.prize.is-open .prize__code{filter:none}
+.prize.is-open .prize__desc,.prize.is-open .prize__actions,.prize.is-open .prize__again{visibility:visible;opacity:1}
+.prize::after{content:"";position:absolute;inset:-40% -60%;background:linear-gradient(105deg,transparent 42%,rgba(246,220,98,.32) 50%,transparent 58%);transform:translateX(-70%);pointer-events:none}
+.prize.is-open::after{animation:sheen 2.2s .25s var(--ease) 1 both}
+@keyframes sheen{to{transform:translateX(70%)}}
+/* pista */
+.mg__hint{position:absolute;z-index:5;right:13%;top:11%;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--black);color:var(--white);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;pointer-events:none;transition:opacity .5s,transform .6s var(--ease-out)}
+.mg__hint svg{animation:tug 1.6s var(--ease) infinite}
+@keyframes tug{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-4px)}}
+.mg__hint.is-off{opacity:0;transform:translateY(10px)}
+@media (max-width:699px){
+  .mg__title{font-size:min(10.4vw,64px)}
+  .mg__back{position:static;margin:20px var(--gutter) 0}
+  .mg__stage{width:160%;margin-left:-23.6%;margin-top:8px}
+  .prize{width:min(360px,52%);gap:10px}
+  .prize__btn{padding:0 14px}
+  .mg__hint{right:auto;left:50%;top:auto;bottom:4%;transform:translateX(-50%)}
+  .mg__hint.is-off{transform:translate(-50%,10px)}
+}
 </style>
 </head>
 <body class="pg-mg">
@@ -51,7 +91,23 @@ if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fin
     <h1 class="mg__title" aria-label="Melara Glow: website under construction"><span><i>MELARA GLOW</i></span><span><i>WEBSITE</i></span><span><i>UNDER</i></span><span><i>CONSTRUCTION</i></span></h1>
   </div>
   <a class="back mg__back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
-  <div class="mg__tape" aria-hidden="true"><img src="assets/img/melara-tape.jpg" alt="" width="2400" height="1221"></div>
+  <div class="mg__stage">
+    <p class="sr-only" id="mg-help">Debajo de las cintas hay una sorpresa. Arranca las dos cintas para descubrirla: arrástralas o pulsa sobre ellas.</p>
+    <div class="prize" id="prize" data-code="MELARA10" aria-hidden="true">
+      <p class="prize__k">Código secreto</p>
+      <p class="prize__code" id="prize-code">XXXXXXXX</p>
+      <p class="prize__desc">10&nbsp;% en tu primer pedido el día del lanzamiento.</p>
+      <div class="prize__actions">
+        <button class="prize__btn prize__copy" type="button" tabindex="-1">Copiar código</button>
+        <a class="prize__btn prize__btn--yel" href="index.html#lista" tabindex="-1">Guárdalo en la lista →</a>
+      </div>
+      <button class="prize__again" type="button" tabindex="-1">Volver a pegar las cintas</button>
+    </div>
+    <button class="tape tape--a" type="button" aria-describedby="mg-help" aria-label="Arrancar la cinta que sube"><img src="assets/img/melara-tape-a.webp" alt="" width="2400" height="1221"></button>
+    <button class="tape tape--d" type="button" aria-describedby="mg-help" aria-label="Arrancar la cinta que baja"><img src="assets/img/melara-tape-d.webp" alt="" width="2400" height="1221"></button>
+    <p class="mg__hint" aria-hidden="true">Tira de las cintas <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+    <p class="sr-only" id="prize-live" aria-live="polite"></p>
+  </div>
 </main>
 
 <footer class="foot">
@@ -76,16 +132,91 @@ if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fin
 <script src="assets/site.js"></script>
 <script>
 (function () {
-  var LM = window.LM; if (!LM || !LM.motion) return;
-  var G = LM.G;
+  var LM = window.LM; if (!LM) return;
+  var d = document, G = LM.G, motion = LM.motion;
+  var stage = LM.$('.mg__stage'), tapes = LM.$$('.tape'), prize = LM.$('#prize'), codeEl = LM.$('#prize-code');
+  var hint = LM.$('.mg__hint'), live = LM.$('#prize-live'), CODE = prize.getAttribute('data-code');
+  var inner = LM.$$('.prize button, .prize a');
+  function hideHint() { hint.classList.add('is-off'); }
+  function remaining() { return tapes.filter(function (t) { return !t.classList.contains('is-gone'); }); }
+
+  function unlock() {
+    codeEl.textContent = CODE; LM.$('.prize__k').textContent = 'Has desbloqueado';
+    prize.removeAttribute('aria-hidden'); prize.classList.add('is-open');
+    inner.forEach(function (el) { el.removeAttribute('tabindex'); });
+    live.textContent = 'Código desbloqueado: ' + CODE + '. ' + LM.$('.prize__desc').textContent;
+    if (motion) G.fromTo(prize, { scale: 0.9 }, { scale: 1, duration: 1, ease: 'back.out(1.8)', xPercent: -50, yPercent: -50, clearProps: 'scale' });
+    setTimeout(function () { LM.$('.prize__copy').focus({ preventScroll: true }); }, 450);
+  }
+  function lock() {
+    prize.classList.remove('is-open'); prize.setAttribute('aria-hidden', 'true'); codeEl.textContent = 'XXXXXXXX'; LM.$('.prize__k').textContent = 'Código secreto';
+    inner.forEach(function (el) { el.setAttribute('tabindex', '-1'); });
+    live.textContent = '';
+  }
+  function finish(t) {
+    t.classList.add('is-gone'); t.setAttribute('aria-hidden', 'true'); t.tabIndex = -1;
+    var left = remaining();
+    if (!left.length) unlock(); else if (d.activeElement === t || d.activeElement === d.body) left[0].focus({ preventScroll: true });
+  }
+  function rip(t, vx, vy) {
+    if (t.classList.contains('is-gone') || t.dataset.flying) return;
+    hideHint();
+    if (!motion) return finish(t);
+    t.dataset.flying = '1';
+    var a = Math.atan2(vy, vx), far = Math.max(window.innerWidth, window.innerHeight) * 1.2;
+    G.to(t, { x: '+=' + Math.cos(a) * far, y: '+=' + (Math.sin(a) * far - 80), rotation: '+=' + (vx >= 0 ? 28 : -28), autoAlpha: 0, duration: 0.85, ease: 'power2.in',
+      onComplete: function () { delete t.dataset.flying; finish(t); } });
+  }
+
+  tapes.forEach(function (t, i) {
+    var sx = 0, sy = 0, dx = 0, dy = 0, down = false, pid = null, swallow = false;
+    var defDir = i === 0 ? [1, -0.55] : [1, 0.35];
+    t.addEventListener('pointerdown', function (e) {
+      if (e.button > 0 || t.dataset.flying) return;
+      down = true; pid = e.pointerId; sx = e.clientX; sy = e.clientY; dx = dy = 0;
+      t.setPointerCapture(pid); t.classList.add('is-drag'); hideHint();
+      if (motion) G.killTweensOf(t);
+    });
+    t.addEventListener('pointermove', function (e) {
+      if (!down || e.pointerId !== pid) return;
+      dx = e.clientX - sx; dy = e.clientY - sy;
+      if (motion) G.set(t, { x: dx * 0.9, y: dy * 0.9, rotation: dx * 0.018, scale: 1 + Math.min(Math.hypot(dx, dy) / 3000, 0.04) });
+    });
+    function end(e, cancelled) {
+      if (!down) return;
+      down = false; t.classList.remove('is-drag');
+      var dist = Math.hypot(dx, dy), need = Math.min(170, stage.clientWidth * 0.12);
+      if (!cancelled && dist > need) { swallow = true; rip(t, dx, dy); return; }
+      if (dist > 6) swallow = true;
+      if (motion) G.to(t, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: 'elastic.out(1, 0.45)' });
+    }
+    t.addEventListener('pointerup', function (e) { end(e, false); });
+    t.addEventListener('pointercancel', function (e) { end(e, true); });
+    t.addEventListener('click', function () {
+      if (swallow) { swallow = false; return; }
+      rip(t, defDir[0], defDir[1]);
+    });
+  });
+
+  LM.$('.prize__copy').addEventListener('click', function () {
+    var ok = function () { LM.toast('Código copiado: ' + CODE); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(CODE).then(ok, function () { LM.toast('Tu código es ' + CODE); });
+    else LM.toast('Tu código es ' + CODE);
+  });
+  LM.$('.prize__again').addEventListener('click', function () {
+    lock();
+    tapes.forEach(function (t) { t.classList.remove('is-gone'); t.removeAttribute('aria-hidden'); t.removeAttribute('tabindex'); });
+    if (motion) G.fromTo(tapes, { x: 0, y: -60, rotation: 0, scale: 1, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out', stagger: 0.18 });
+    else G && G.set(tapes, { clearProps: 'all' });
+    tapes[tapes.length - 1].focus({ preventScroll: true });
+  });
+
+  if (!motion) return;
   G.timeline({ delay: 0.15 })
     .from('.mg__title i', { yPercent: 110, duration: 1.1, ease: 'power4.out', stagger: 0.09 }, 0)
-    .fromTo('.mg__tape', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.5, ease: 'power3.inOut' }, 0.35)
-    .from('.mg__tape img', { y: 40, rotation: -2, transformOrigin: '0% 100%', duration: 1.6, ease: 'power3.out' }, 0.35);
-  if (LM.fine) {
-    var ty = G.quickTo('.mg__tape img', 'y', { duration: 1.2, ease: 'power3.out' }), tr = G.quickTo('.mg__tape img', 'rotation', { duration: 1.2, ease: 'power3.out' });
-    LM.$('.mg').addEventListener('mousemove', function (e) { var nx = e.clientX / window.innerWidth - 0.5, ny = e.clientY / window.innerHeight - 0.5; ty(ny * 14); tr(nx * 1.2); });
-  }
+    .fromTo('.tape img', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.3, ease: 'power3.inOut', stagger: 0.25 }, 0.35)
+    .from('.prize', { autoAlpha: 0, duration: 0.6 }, 0.9)
+    .from(hint, { autoAlpha: 0, y: 12, duration: 0.6, ease: 'power3.out', clearProps: 'opacity,visibility,transform' }, 1.8);
 })();
 </script>
 </body>
