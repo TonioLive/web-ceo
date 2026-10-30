@@ -95,6 +95,10 @@ i.cur{font-style:italic}
 .lift__cue{position:absolute;z-index:3;left:48.4%;top:93.4%;width:1px;height:calc(var(--vh)*3.6);background:rgba(255,255,255,.28);overflow:hidden}
 .lift__cue::after{content:"";position:absolute;inset:0;background:#fff;animation:cue 2.2s var(--ease) infinite}
 @keyframes cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+/* al entrar: las puertas se entreabren, sale luz por la rendija y aparece «Baja para abrir» */
+.lift__crack{position:absolute;top:0;bottom:0;left:48.306%;width:22%;transform:translateX(-50%);pointer-events:none;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(90deg,rgba(255,226,180,0),rgba(255,232,196,.42) 40%,rgba(255,246,232,.75) 50%,rgba(255,232,196,.42) 60%,rgba(255,226,180,0))}
+.lift__hint{position:absolute;z-index:3;left:48.4%;top:95.2%;margin-left:14px;transform:translateY(-50%);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:#fff;white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none}
 @media (max-aspect-ratio:885/1573){.lift__call{display:none}}
 
 /* ---------- 02 · bienvenida (composición del diseño 01) ---------- */
@@ -311,12 +315,14 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
             <img class="lift__lucia" src="assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en una cafetería, con gorra roja y camisa azul" width="1300" height="1918">
             <span class="lift__shade" aria-hidden="true"></span>
             <span class="lift__glow" aria-hidden="true"></span>
+            <span class="lift__crack" aria-hidden="true"></span>
             <div class="lift__door lift__door--l" aria-hidden="true"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div>
             <div class="lift__door lift__door--r" aria-hidden="true"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div>
           </div>
           <button class="lift__call" type="button" aria-label="Abrir las puertas del ascensor"></button>
           <p class="lift__domain">luciamorales.es</p>
           <span class="lift__cue" aria-hidden="true"></span>
+          <span class="lift__hint" aria-hidden="true">Baja para abrir</span>
         </div>
       </div>
       <h1 class="sr-only">Lucía Morales</h1>
@@ -564,6 +570,39 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   $('.lift__call').addEventListener('click', function () {
     var st = lift.scrollTrigger; scrollToY(st.start + (st.end - st.start) * 0.58);
   });
+
+  /* ---------- 01b · al entrar, las puertas se entreabren para invitar a bajar ----------
+     Se anima «x» (px) y no «xPercent», que es lo que mueve el scroll: así no se pisan.
+     Se repite una vez si sigues arriba; al bajar se corta y las puertas vuelven a su sitio. */
+  var doors = ['.lift__door--l', '.lift__door--r'], tease = null, teased = 0;
+  function crack() { return cab.clientWidth * 0.065; }
+  function teaseDoors(delay) {
+    if (window.pageYOffset > 4 || teased >= 2) return;
+    teased++;
+    tease = G.timeline({ delay: delay, onComplete: function () {
+      tease = null;
+      if (teased < 2) G.delayedCall(7, function () { teaseDoors(0); });
+    } })
+      .to('.lift__crack', { opacity: 1, duration: 0.6, ease: 'power1.out' }, 0.1)
+      .to(doors[0], { x: function () { return -crack(); }, duration: 1, ease: 'power3.inOut' }, 0)
+      .to(doors[1], { x: function () { return crack(); }, duration: 1, ease: 'power3.inOut' }, 0)
+      .to('.lift__hint', { autoAlpha: 1, x: 0, duration: 0.6, ease: 'power2.out' }, 0.5)
+      .to(doors, { x: 0, duration: 0.9, ease: 'power2.inOut' }, 2.1)
+      .to('.lift__crack', { opacity: 0, duration: 0.6 }, 2.3)
+      .to('.lift__hint', { autoAlpha: 0, duration: 0.5 }, 3.4);
+  }
+  function stopTease() {
+    if (window.pageYOffset <= 4) return;
+    teased = 2;
+    if (tease) { tease.kill(); tease = null; }
+    G.to(doors, { x: 0, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+    G.to(['.lift__crack', '.lift__hint'], { autoAlpha: 0, duration: 0.3, overwrite: 'auto' });
+    window.removeEventListener('scroll', stopTease);
+  }
+  window.addEventListener('scroll', stopTease, { passive: true });
+  G.set('.lift__hint', { x: -8 });
+  var LL = window.LM_LIFT;
+  teaseDoors(LL && LL.home ? LL.reveal + 0.5 : 0.9);
 
   /* ---------- 02 · la letra se escribe, la foto se pega ---------- */
   var hw = ['.wl-welcome', '.wl-site', '.wl-signature'];
