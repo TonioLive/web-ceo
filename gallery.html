@@ -5,43 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gallery · Lucía Morales</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0E0F10">
+<meta name="description" content="Gallery de Lucía Morales: observar la belleza, apreciar el arte, habitar los espacios, sentir la literatura.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
 <style>
-/* Planta en obras: el mismo ascensor cerrado del Index, con la planta y el aviso. */
-@font-face{font-family:'Google Sans';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/GoogleSans-Regular.woff2) format('woff2')}
-@font-face{font-family:'Google Sans';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/GoogleSans-Medium.woff2) format('woff2')}
-@font-face{font-family:'Google Sans';font-style:italic;font-weight:500;font-display:swap;src:url(assets/fonts/GoogleSans-MediumItalic.woff2) format('woff2')}
-:root{--vh:1vh;--sans:'Google Sans','Product Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color-scheme:dark}
-@supports (height:1svh){:root{--vh:1svh}}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%}
-body{min-height:100vh;min-height:calc(var(--vh)*100);display:flex;flex-direction:column;justify-content:space-between;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(16px,4vw,56px) calc(24px + env(safe-area-inset-bottom,0px));color:#fff;font-family:var(--sans);-webkit-font-smoothing:antialiased;
-  background:linear-gradient(90deg,rgba(14,15,16,.15),rgba(14,15,16,.35)),url(assets/img/elevator.jpg) center top/auto 100% no-repeat,url(assets/img/wall-l.png) left top/50% 100% no-repeat,url(assets/img/wall-r.png) right top/50% 100% no-repeat,#2b2d30}
-a{color:inherit}
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:500}
-.top a{text-decoration:none;padding:10px 0}
-.top a:hover{text-decoration:underline;text-underline-offset:5px}
-.floor{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
-.floor b{display:grid;place-items:center;width:34px;height:34px;border:1px solid currentColor;border-radius:50%;font-size:15px;letter-spacing:0;font-weight:500}
-main{align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:14px;text-align:right;max-width:min(92vw,640px);margin-right:max(0px,calc(50vw - var(--vh)*22.39 - clamp(16px,4vw,56px)))}
-h1{margin:0;font-weight:500;font-size:min(calc(var(--vh)*7.4),11vw);line-height:1.02;letter-spacing:-.015em;text-shadow:0 .04em .45em rgba(0,0,0,.2)}
-.cur{font-style:italic}
-p{margin:0;font-size:clamp(16px,2.2vh,20px);line-height:1.45}
-.soon{font-weight:500}
-.back{display:inline-flex;align-items:center;gap:10px;min-height:48px;margin-top:8px;padding:0 22px;border:1px solid rgba(255,255,255,.7);border-radius:999px;text-decoration:none;font-weight:500;transition:background-color .3s,color .3s}
-.back:hover,.back:focus-visible{background:#fff;color:#0e0f10}
-:focus-visible{outline:2px solid #fff;outline-offset:4px}
-footer{text-align:center;font-weight:500;font-size:15px}
+/* Gallery: hoja blanca de catálogo, casillas con borde negro como en el diseño. */
+.gal{padding:calc(120px + env(safe-area-inset-top,0px)) var(--gutter) clamp(96px,10vw,160px)}
+.gal__in{max-width:1180px;margin-inline:auto}
+.gal__title{text-align:center;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:.005em}
+.gal__quote{margin:clamp(36px,4.4vw,64px) auto 0;max-width:880px;font-style:italic;font-size:clamp(17px,1.9vw,28px);line-height:1.32;color:var(--grey);text-transform:uppercase}
+.gal__quote p{text-align:justify;text-justify:inter-word}
+.gal__quote footer{margin-top:.1em}
+.gal__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,72px) clamp(28px,8vw,110px);margin:clamp(56px,6vw,96px) auto 0;max-width:880px;counter-reset:n}
+@media (min-width:1024px){.gal__grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1180px;column-gap:clamp(40px,4.6vw,72px)}}
+.gal__item{display:flex;flex-direction:column;gap:10px;min-width:0}
+.gal__num{font-size:clamp(14px,1.3vw,18px);line-height:1}
+.card{position:relative;display:block;aspect-ratio:258/297;border:2px solid var(--line);overflow:hidden;container-type:inline-size;background:var(--white);text-decoration:none;color:var(--black);transition:box-shadow .6s var(--ease-out)}
+a.card:hover,a.card:focus-visible{box-shadow:0 26px 50px -24px rgba(0,0,0,.45)}
+.card img{transition:transform 1.2s var(--ease-out)}
+a.card:hover img,a.card:focus-visible img{transform:scale(1.05)}
+.card__go{position:absolute;right:4cqi;bottom:3.6cqi;display:grid;place-items:center;width:13cqi;height:13cqi;border-radius:50%;background:var(--black);color:var(--white);font-size:6cqi;opacity:0;transform:scale(.6) rotate(-45deg);transition:opacity .35s,transform .6s var(--ease-out)}
+a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
+/* 01 · Hot Readers */
+.card--hot{background:#C2C2C0}
+.card--hot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 88%}
+.card--hot .card__title{position:absolute;left:4cqi;top:7.2cqi;font-size:12.6cqi;line-height:1;font-weight:400;letter-spacing:-.005em;white-space:nowrap}
+.card--hot .card__sub{position:absolute;left:4.4cqi;top:25cqi;font-size:3.2cqi;line-height:1.18;text-transform:uppercase}
+/* 03 · Design Freaks */
+.card--df{display:flex;flex-direction:column;align-items:center;padding-top:6.4%;text-align:center}
+.card--df .card__title{font-size:11.8cqi;line-height:1;font-weight:400;white-space:nowrap;letter-spacing:-.005em}
+.card--df .card__sub{margin-top:5.6cqi;font-size:4.6cqi;line-height:1.12;text-transform:uppercase}
+.card--df figure{width:58.6%;margin-top:6cqi;overflow:hidden}
+.card--df figure img{width:100%;aspect-ratio:1334/889;object-fit:cover}
+.card--df figcaption{margin-top:1.6cqi;font-size:2.4cqi;text-align:left}
+/* vacías */
+.card--empty{display:grid;place-items:end start;padding:5%}
+.card__soon{font-size:4.4cqi;letter-spacing:.12em;text-transform:uppercase;color:#8A8A8A;opacity:0;transform:translateY(6px);transition:opacity .45s,transform .6s var(--ease-out)}
+.gal__item:hover .card__soon{opacity:1;transform:none}
+@media (max-width:559px){.gal__grid{gap:36px 18px}}
 </style>
 </head>
-<body>
-<header class="top"><a href="./">Lucía Morales</a><span class="floor"><b>1</b> Planta 1</span></header>
-<main>
-  <h1>Gallery</h1>
-  <p>Estilo de vida, viajes, arte y libros.</p>
-  <p class="soon">Muy pronto.</p>
-  <a class="back" href="./">← Volver al Index</a>
+<body class="pg-gallery">
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main" class="gal" data-theme="light">
+  <div class="gal__in">
+    <h1 class="gal__title" data-reveal>GALLERY</h1>
+    <blockquote class="gal__quote" data-reveal>
+      <p>“Observar la belleza, apreciar el arte, habitar los espacios, sentir la literatura, cultivar tu mejor versión, en definitiva, saber vivir.”</p>
+      <footer>L.M</footer>
+    </blockquote>
+    <ol class="gal__grid" data-reveal-group>
+      <li class="gal__item">
+        <span class="gal__num" aria-hidden="true">01.</span>
+        <a class="card card--hot" href="hot-readers.html" aria-label="01. Hot Readers: book list from September to February 2026">
+          <img src="assets/img/hot-readers.jpg" alt="" width="2000" height="2193" loading="lazy">
+          <span class="card__title" aria-hidden="true">HOT READERS</span>
+          <span class="card__sub" aria-hidden="true">BOOK LIST<br>FROM SEPTEMBER<br>TO FEBRUARY 2026</span>
+          <span class="card__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="gal__item">
+        <span class="gal__num" aria-hidden="true">02.</span>
+        <div class="card card--empty"><span class="sr-only">02. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div>
+      </li>
+      <li class="gal__item">
+        <span class="gal__num" aria-hidden="true">03.</span>
+        <a class="card card--df" href="design-freaks.html" aria-label="03. Design Freaks: diseñadores y arquitectos que transforman los espacios">
+          <span class="card__title" aria-hidden="true">DESIGN FREAKS</span>
+          <span class="card__sub" aria-hidden="true">Diseñadores y arquitectos que<br>transforman los espacios,<br>mejoran nuestras vidas y hacen<br>de lo cotidiano algo<br>extraordinario</span>
+          <figure aria-hidden="true"><img src="assets/img/chair-kwangholee.jpg" alt="" width="1600" height="1066" loading="lazy"><figcaption>KWANGHOLEE</figcaption></figure>
+          <span class="card__go" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li class="gal__item">
+        <span class="gal__num" aria-hidden="true">04.</span>
+        <div class="card card--empty"><span class="sr-only">04. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div>
+      </li>
+      <li class="gal__item">
+        <span class="gal__num" aria-hidden="true">05.</span>
+        <div class="card card--empty"><span class="sr-only">05. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div>
+      </li>
+      <li class="gal__item">
+        <span class="gal__num" aria-hidden="true">06.</span>
+        <div class="card card--empty"><span class="sr-only">06. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div>
+      </li>
+    </ol>
+  </div>
 </main>
-<footer>luciamorales.es</footer>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var LM = window.LM; if (!LM || !LM.motion) return;
+  var G = LM.G;
+  G.from('.gal__title', { yPercent: 60, autoAlpha: 0, duration: 1.2, ease: 'power4.out', delay: 0.1 });
+  if (LM.fine) {
+    LM.$$('a.card').forEach(function (c) {
+      var rx = G.quickTo(c, 'rotationX', { duration: 0.8, ease: 'power3.out' }), ry = G.quickTo(c, 'rotationY', { duration: 0.8, ease: 'power3.out' }), ty = G.quickTo(c, 'y', { duration: 0.8, ease: 'power3.out' });
+      G.set(c, { transformPerspective: 900 });
+      c.addEventListener('mouseenter', function () { ty(-6); });
+      c.addEventListener('mousemove', function (e) { var r = c.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - 0.5) * 8); rx(-((e.clientY - r.top) / r.height - 0.5) * 8); });
+      c.addEventListener('mouseleave', function () { rx(0); ry(0); ty(0); });
+    });
+  }
+})();
+</script>
 </body>
 </html>

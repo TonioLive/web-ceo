@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hot Readers · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Hot Readers: la lista de libros de Lucía Morales de septiembre a febrero de 2026.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hot-readers.jpg" as="image">
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Hot Readers: portada con la foto de la estantería y lista de libros en fondo grafito. */
+.hr-hero{position:relative;height:100vh;height:calc(var(--vh)*100);min-height:560px;overflow:hidden;background:#C2C2C0;color:var(--black)}
+.hr-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 48%;transform-origin:50% 70%}
+.hr-hero__txt{position:absolute;left:var(--gutter);right:var(--gutter);top:calc(96px + env(safe-area-inset-top,0px));color:#fff;mix-blend-mode:difference}
+.hr-hero__title{font-weight:400;font-size:min(12.6vw,calc(var(--vh)*22));line-height:.92;letter-spacing:-.012em;white-space:nowrap}
+.hr-hero__sub{margin-top:min(3.2vw,calc(var(--vh)*5));font-size:clamp(15px,2vw,30px);line-height:1.18;text-transform:uppercase}
+.hr-hero__cue{position:absolute;color:#fff;mix-blend-mode:difference;left:var(--gutter);bottom:calc(28px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;text-decoration:none}
+.hr-hero__cue span{display:inline-block;animation:bob 2.2s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.hr-list{background:var(--night);color:var(--night-text);padding:clamp(96px,9vw,150px) var(--gutter) clamp(96px,10vw,160px)}
+.hr-list__in{max-width:1180px;margin-inline:auto}
+.hr-list__head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px clamp(40px,8vw,120px)}
+.hr-list__title{font-weight:400;font-size:clamp(44px,6.6vw,104px);line-height:.95;letter-spacing:-.01em}
+.hr-list__sub{padding-top:.6em;font-size:clamp(14px,1.6vw,22px);line-height:1.2;text-transform:uppercase}
+.books{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(48px,6vw,90px) clamp(24px,6vw,96px);margin-top:clamp(56px,6vw,96px)}
+.book a{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:end;gap:clamp(16px,3vw,44px);text-decoration:none}
+.book__cover{position:relative;display:block;perspective:900px}
+.book__cover img{width:100%;height:auto;box-shadow:0 18px 40px -18px rgba(0,0,0,.7);transform-origin:0 50%;transition:transform .8s var(--ease-out),box-shadow .8s var(--ease-out)}
+.book a:hover .book__cover img,.book a:focus-visible .book__cover img{transform:rotateY(-14deg) translateX(4px);box-shadow:24px 26px 50px -18px rgba(0,0,0,.8)}
+.book__meta{display:flex;flex-direction:column;font-size:clamp(13px,1.45vw,20px);line-height:1.2;text-transform:uppercase}
+.book__meta i{font-style:italic}
+.book__go{margin-top:1em;font-size:.72em;letter-spacing:.14em;font-weight:500;opacity:.0;transform:translateY(6px);transition:opacity .4s,transform .6s var(--ease-out)}
+.book a:hover .book__go,.book a:focus-visible .book__go{opacity:1;transform:none}
+@media (hover:none){.book__go{opacity:.7;transform:none}}
+.hr-back{margin-top:clamp(64px,7vw,110px)}
+@media (max-width:699px){
+  .books{grid-template-columns:minmax(0,1fr)}
+  .book a{grid-template-columns:42% minmax(0,1fr)}
+  .hr-hero__img{object-position:38% 80%}
+}
+</style>
+</head>
+<body class="pg-hot">
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hr-hero" data-theme="photo" aria-labelledby="hr-t">
+    <img class="hr-hero__img" src="assets/img/hot-readers.jpg" alt="Seis libros apilados junto a una lámpara negra de seta sobre una cómoda blanca" width="2000" height="2193">
+    <div class="hr-hero__txt">
+      <h1 class="hr-hero__title" id="hr-t">HOT READERS</h1>
+      <p class="hr-hero__sub">Book list<br>from September<br>to February 2026</p>
+    </div>
+    <a class="hr-hero__cue" href="#lista"><span aria-hidden="true">↓</span> Ver la lista</a>
+  </section>
+  <section class="hr-list" id="lista" data-theme="dark" aria-labelledby="hl-t">
+    <div class="hr-list__in">
+      <header class="hr-list__head">
+        <h2 class="hr-list__title" id="hl-t" data-reveal>HOT READERS</h2>
+        <p class="hr-list__sub" data-reveal>Book list from September<br>to February 2026</p>
+      </header>
+      <ul class="books" data-reveal-group>
+      <li class="book"><a href="https://www.casadellibro.com/libro-a-contraluz/9788416213825/3472900" target="_blank" rel="noopener" aria-label="A contraluz, de Rachel Cusk, 2014 (se abre en otra pestaña)">
+        <span class="book__cover"><img src="assets/img/book-contraluz.jpg" alt="" width="720" height="1105" loading="lazy"></span>
+        <span class="book__meta" aria-hidden="true"><i>A CONTRALUZ</i><span>RACHEL CUSK</span><span>2014</span><span class="book__go">Ver el libro ↗</span></span>
+      </a></li>
+      <li class="book"><a href="https://www.amazon.es/Ay-William-Best-Seller-Ficci%C3%B3n/dp/8466364137" target="_blank" rel="noopener" aria-label="Ay, William, de Elizabeth Strout, 2022 (se abre en otra pestaña)">
+        <span class="book__cover"><img src="assets/img/book-william.jpg" alt="" width="720" height="1126" loading="lazy"></span>
+        <span class="book__meta" aria-hidden="true"><i>AY, WILLIAM</i><span>ELIZABETH STROUT</span><span>2022</span><span class="book__go">Ver el libro ↗</span></span>
+      </a></li>
+      <li class="book"><a href="https://www.amazon.es/vegetariana-Random-House-Han-Kang/dp/8439743890" target="_blank" rel="noopener" aria-label="La vegetariana, de Han Kang, 2007 (se abre en otra pestaña)">
+        <span class="book__cover"><img src="assets/img/book-vegetariana.jpg" alt="" width="720" height="1081" loading="lazy"></span>
+        <span class="book__meta" aria-hidden="true"><i>LA VEGETARIANA</i><span>HAN KANG</span><span>2007</span><span class="book__go">Ver el libro ↗</span></span>
+      </a></li>
+      <li class="book"><a href="https://www.fnac.es/a12027205/Sally-Rooney-Intermezzo" target="_blank" rel="noopener" aria-label="Intermezzo, de Sally Rooney, 2024 (se abre en otra pestaña)">
+        <span class="book__cover"><img src="assets/img/book-intermezzo.jpg" alt="" width="720" height="1107" loading="lazy"></span>
+        <span class="book__meta" aria-hidden="true"><i>INTERMEZZO</i><span>SALLY ROONEY</span><span>2024</span><span class="book__go">Ver el libro ↗</span></span>
+      </a></li>
+      <li class="book"><a href="https://www.casadellibro.com/libro-la-joven-de-teheran/9788410080010/15983112" target="_blank" rel="noopener" aria-label="La joven de Teherán, de Marjan Kamali, 2019 (se abre en otra pestaña)">
+        <span class="book__cover"><img src="assets/img/book-teheran.jpg" alt="" width="720" height="1095" loading="lazy"></span>
+        <span class="book__meta" aria-hidden="true"><i>LA JOVEN DE TEHERÁN</i><span>MARJAN KAMALI</span><span>2019</span><span class="book__go">Ver el libro ↗</span></span>
+      </a></li>
+      <li class="book"><a href="melara-glow.html" aria-label="Ensayo. Con tu mirada, de Almudena Navarro Cuartero, 2025">
+        <span class="book__cover"><img src="assets/img/book-mirada.jpg" alt="" width="720" height="1092" loading="lazy"></span>
+        <span class="book__meta" aria-hidden="true"><i>ENSAYO. CON TU MIRADA</i><span>ALMUDENA NAVARRO CUARTERO</span><span>2025</span><span class="book__go">Ver Melara →</span></span>
+      </a></li>
+      </ul>
+      <a class="back hr-back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var LM = window.LM; if (!LM || !LM.motion) return;
+  var G = LM.G;
+  G.timeline({ delay: 0.1 })
+    .from('.hr-hero__img', { scale: 1.12, duration: 1.8, ease: 'power3.out' }, 0)
+    .from('.hr-hero__title', { yPercent: 40, autoAlpha: 0, duration: 1.3, ease: 'power4.out' }, 0.2)
+    .from('.hr-hero__sub', { y: 20, autoAlpha: 0, duration: 1, ease: 'power3.out' }, 0.55)
+    .from('.hr-hero__cue', { autoAlpha: 0, duration: 0.8 }, 0.9);
+  G.to('.hr-hero__img', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hr-hero', start: 'top top', end: 'bottom top', scrub: true } });
+  G.to('.hr-hero__txt', { yPercent: -40, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: '.hr-hero', start: 'top top', end: 'bottom top', scrub: true } });
+})();
+</script>
+</body>
+</html>

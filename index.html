@@ -15,14 +15,15 @@ try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('r
 if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
 </script>
 <style>
-/* Concepto: un edificio en tres plantas. Acero del ascensor (01) → pared blanca con letra a mano (02) → azul y rojo de la bio (03). */
+/* Concepto: un edificio por plantas. Acero del ascensor → pared blanca con letra a mano → azul de la bio y de lo que se está construyendo → crema del nuevo capítulo y la lista de espera. */
 @font-face{font-family:'Google Sans';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/GoogleSans-Regular.woff2) format('woff2')}
 @font-face{font-family:'Google Sans';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/GoogleSans-Medium.woff2) format('woff2')}
 @font-face{font-family:'Google Sans';font-style:italic;font-weight:500;font-display:swap;src:url(assets/fonts/GoogleSans-MediumItalic.woff2) format('woff2')}
+@font-face{font-family:'Google Sans';font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/GoogleSans-Italic.woff2) format('woff2')}
 :root{
   --steel-900:#0E0F10; --steel-800:#1A1B1D; --steel-500:#6C7075; --steel-200:#C9CCD0;
   --white:#FFFFFF; --wall:#EFEEEC; --ink:#382F63; --text:#17171A; --muted:#4F4E57;
-  --blue:#A2BBF3; --red:#C71010;
+  --blue:#99BCF4; --red:#C61111; --cream:#F7F5E8; --ink-black:#0E0E0E;
   --sans:'Google Sans','Product Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --gutter:clamp(16px,4vw,56px);
   --ease:cubic-bezier(.7,0,.2,1); --ease-out:cubic-bezier(.2,.8,.2,1);
@@ -50,7 +51,9 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:calc(64px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) var(--gutter) 0;color:var(--bar-fg,#fff);background:var(--bar-bg,rgba(14,15,16,.55));-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);transform:translateY(-105%);transition:transform .7s var(--ease),background-color .5s,color .5s}
 .bar.is-on{transform:none}
 .bar[data-theme="wall"]{--bar-fg:var(--text);--bar-bg:rgba(239,238,236,.78)}
-.bar[data-theme="blue"]{--bar-fg:var(--red);--bar-bg:rgba(162,187,243,.82)}
+.bar[data-theme="blue"]{--bar-fg:var(--red);--bar-bg:rgba(153,188,244,.82)}
+.bar[data-theme="making"]{--bar-fg:var(--ink-black);--bar-bg:rgba(153,188,244,.82)}
+.bar[data-theme="cream"]{--bar-fg:var(--ink-black);--bar-bg:rgba(247,245,232,.86)}
 .bar__name{font-weight:500;font-size:17px;text-decoration:none;padding:10px 0;white-space:nowrap}
 .bar__nav{display:flex;gap:28px;font-size:15px;font-weight:500}
 .bar__nav a{position:relative;text-decoration:none;padding:12px 0}
@@ -94,23 +97,20 @@ i.cur{font-style:italic}
 @keyframes cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
 @media (max-aspect-ratio:885/1573){.lift__call{display:none}}
 
-/* ---------- 02 · bienvenida ---------- */
-.welcome{position:relative;display:grid;place-items:center;min-height:100vh;min-height:calc(var(--vh)*100);overflow:hidden;background:var(--wall) url(assets/img/wall.jpg) center/cover no-repeat;color:var(--text)}
-.welcome__board{position:relative;width:min(100vw,calc(var(--vh)*160));aspect-ratio:16/10}
+/* ---------- 02 · bienvenida (composición del diseño 01) ---------- */
+.welcome{position:relative;display:grid;place-items:center;min-height:100vh;min-height:calc(var(--vh)*100);overflow:hidden;background:var(--wall) url(assets/img/welcome-wall.jpg) center/cover no-repeat;color:var(--text)}
+.welcome__board{position:relative;width:min(100vw,calc(var(--vh)*149.37));aspect-ratio:4000/2678}
 .wl{position:absolute;left:var(--l);top:var(--t);width:var(--w);height:auto;max-width:none}
-.wl-welcome{--l:6%;--t:13%;--w:44%}
-.wl-site{--l:16.78%;--t:27.9%;--w:8.41%}
-.wl-note{--l:55%;--t:11%;--w:31%}
-.wl-such{--l:68.6%;--t:66%;--w:13.89%}
-.wl-pleasure{--l:66%;--t:72.2%;--w:20.27%}
-.wl-here{--l:70.68%;--t:76.51%;--w:11.30%}
-.wl-signature{--l:6%;--t:80%;--w:19.38%}
-.wl-label{--l:6%;--t:46%;--w:26%}
+.wl-welcome{--l:30.60%;--t:13.03%;--w:40.35%}
+.wl-site{--l:40.50%;--t:25.80%;--w:7.60%}
+.wl-note{--l:27.28%;--t:36.48%;--w:39.60%}
+.wl-greet{--l:60.30%;--t:78.45%;--w:18.50%}
+.wl-g1{clip-path:inset(0% 0% 66.7% 0%)}
+.wl-g2{clip-path:inset(33.3% 0% 30.8% 0%)}
+.wl-g3{clip-path:inset(69.2% 0% 0% 0%)}
+.wl-signature{--l:18.68%;--t:81.96%;--w:17.73%}
 .wl-note img{width:100%;height:auto;transition:transform .8s var(--ease-out),filter .8s}
 .fine .wl-note:hover img{transform:rotate(-1.2deg) scale(1.025);filter:drop-shadow(0 18px 24px rgba(0,0,0,.14))}
-.wl-label{display:flex;flex-direction:column;gap:.35em;padding-top:.9em;border-top:1px solid rgba(23,23,26,.28);font-size:clamp(13px,1.05vw,16px);line-height:1.45;color:var(--muted)}
-.wl-label .n{font-size:1.3em;font-weight:500;color:var(--text);line-height:1.2}
-.wl-label .r{font-size:.78em;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--ink)}
 
 /* ---------- 03 · sobre mí ---------- */
 .about{position:relative;background:var(--blue);color:var(--red);padding-block:clamp(96px,10vw,170px) clamp(80px,9vw,150px)}
@@ -118,12 +118,65 @@ i.cur{font-style:italic}
 .about__me,.about__quote p{text-align:justify;text-justify:inter-word;hyphens:manual}
 .about__me .k{font-weight:500}
 .about__photo{width:min(36%,520px);margin:clamp(28px,3.4vw,56px) auto}
-.about__frame{position:relative;overflow:hidden;aspect-ratio:1175/1731;background:#7d8fb9}
+.about__frame{position:relative;overflow:hidden;aspect-ratio:1300/1918;background:#7d8fb9}
 .about__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 40%}
 .about__next{font:inherit;margin-top:clamp(8px,1vw,16px)}
 .about__quote{margin:0}
 .about__sign{margin-top:1.6em}
 .wd{transition:opacity .2s linear}
+
+/* ---------- 04 · in the making (diseño 03, medidas sobre 3200×4347) ---------- */
+.making{position:relative;background:var(--blue);color:var(--ink-black);padding:clamp(24px,4vw,64px) var(--gutter) clamp(80px,8vw,140px)}
+.mk-board{position:relative;max-width:1320px;margin-inline:auto;aspect-ratio:3200/4347;container-type:inline-size}
+.mk{position:absolute;left:var(--l);top:var(--t);width:var(--w,auto)}
+.trim{text-box:trim-both cap alphabetic}
+.mk-title{--l:2.66%;--t:1.98%;font-weight:400;font-size:13.53cqw;line-height:1;letter-spacing:-.028em;white-space:nowrap}
+.mk-title span{display:block}
+.mk-obra{--l:23.53%;--t:11.32%;--w:52.94%;overflow:hidden}
+.mk-obra img{display:block;width:100%;height:auto}
+.mk-collage img{display:block;height:auto}
+.mk-cap{font-size:max(11px,1.79cqw);line-height:1;text-transform:uppercase;white-space:nowrap}
+.mk-cap-obra{--l:23.66%;--t:54.54%}
+.mk-quote{--l:60.1%;--t:57.83%;--w:39%;margin:0;font-style:italic;font-size:3.62cqw;line-height:1.157;text-transform:uppercase}
+.mk-quote footer{font-style:italic}
+.mk-collage{--l:0%;--t:63.58%;--w:100%;height:36.42%}
+.mk-days{position:absolute;left:2.66%;top:0;width:29.06%}
+.mk-design{position:absolute;left:27.56%;top:17.37%;width:31.28%;box-shadow:0 1.4cqw 3cqw -1.6cqw rgba(0,0,0,.35)}
+.mk-cap-days{position:absolute;left:2.78%;top:46.12%}
+.mk-cap-design{position:absolute;left:27.69%;top:87.75%}
+
+/* ---------- 05 · new chapter (diseño 04, medidas sobre 3200×3700) ---------- */
+.chapter{position:relative;background:var(--cream);color:var(--ink-black);display:grid;place-items:center;min-height:100vh;min-height:calc(var(--vh)*100);padding:calc(72px + env(safe-area-inset-top,0px)) var(--gutter) 40px}
+.ch-board{position:relative;width:min(100%,calc((var(--vh)*100 - 128px) * .8649),1040px);aspect-ratio:3200/3700;container-type:inline-size}
+.ch-photo{position:absolute;left:2.75%;top:2.351%;width:57.78%}
+.ch-photo img{display:block;width:100%;height:auto}
+.ch-row{position:absolute;left:var(--l);top:var(--t);width:95.44%;height:auto;max-width:none}
+.ch-r1{--l:2.72%;--t:10.00%}
+.ch-r2{--l:2.72%;--t:33.32%}
+.ch-r3{--l:2.34%;--t:53.57%}
+.ch-r4{--l:2.34%;--t:73.84%}
+.ch-join{position:absolute;left:8.31%;top:96.35%;display:inline-flex;align-items:center;gap:.6em;font-size:max(14px,3.1cqw);line-height:1;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.ch-join::after{content:"";position:absolute;left:0;right:1.6em;bottom:-.35em;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
+.ch-join:hover::after,.ch-join:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.ch-join svg{width:1em;height:1em;transition:transform .5s var(--ease-out)}
+.ch-join:hover svg{transform:translateX(.25em)}
+
+/* ---------- 06 · lista de espera (diseños 05 y 06) ---------- */
+.join{position:relative;background:var(--cream);color:var(--ink-black);min-height:min(62vw,calc(var(--vh)*100));min-height:max(min(62vw,calc(var(--vh)*100)),520px);display:grid;align-items:center;padding:clamp(72px,8vw,120px) var(--gutter)}
+.join__form{margin-left:calc(31.9vw - var(--gutter));width:min(64.8vw,calc(68.1vw - var(--gutter)));display:flex;flex-direction:column}
+.join__quote{margin:0 0 0 1.2vw;font-style:italic;font-size:clamp(20px,3.3vw,46px);line-height:1.22;text-transform:uppercase}
+.join__label{margin-top:clamp(28px,4.2vw,60px);font-size:clamp(18px,2.9vw,40px);line-height:1;text-transform:uppercase}
+.join__box{position:relative;display:flex;align-items:stretch;margin-top:clamp(10px,1.1vw,16px);height:clamp(64px,7.5vw,104px);border:2px solid var(--ink-black);transition:box-shadow .4s var(--ease-out)}
+.join__box:focus-within{box-shadow:0 0 0 4px rgba(14,14,14,.12)}
+.join__box input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:0 clamp(16px,1.8vw,28px);font-size:clamp(18px,2.1vw,30px);color:var(--ink-black);border-radius:0}
+.join__box input::placeholder{color:#9A988C}
+.join__box button{flex:none;display:inline-flex;align-items:center;gap:.5em;padding:0 clamp(16px,1.8vw,28px);font-size:clamp(13px,1.1vw,16px);letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-left:2px solid var(--ink-black);transition:background-color .35s,color .35s}
+.join__box button:hover,.join__box button:focus-visible{background:var(--ink-black);color:var(--cream)}
+.join__msg{min-height:1.5em;margin-top:12px;font-size:15px;color:#4A4840}
+.join__form.is-error .join__msg{color:#A1120F;font-weight:500}
+.join__form.is-error .join__box{border-color:#A1120F}
+.join__done{text-align:center;font-size:clamp(18px,2.9vw,40px);line-height:1.22;text-transform:uppercase}
+.join__done:focus{outline:0}
 
 /* ---------- pie ---------- */
 .foot{position:relative;color:#fff;background:linear-gradient(180deg,rgba(14,15,16,.72),rgba(14,15,16,.92)),url(assets/img/wall-l.png) 0 0/100% 100% no-repeat,var(--steel-900);padding:clamp(72px,8vw,120px) var(--gutter) calc(28px + env(safe-area-inset-bottom,0px))}
@@ -159,12 +212,9 @@ i.cur{font-style:italic}
   .welcome__board{width:min(100vw,calc(var(--vh)*74.9));aspect-ratio:1417/1892}
   .wl-welcome{--l:18.42%;--t:19.24%;--w:65.70%}
   .wl-site{--l:34.51%;--t:29.65%;--w:12.56%}
-  .wl-note{--l:24.70%;--t:40.17%;--w:46.58%}
-  .wl-such{--l:70.50%;--t:72.46%;--w:20.75%}
-  .wl-pleasure{--l:66.62%;--t:76.80%;--w:30.28%}
-  .wl-here{--l:73.61%;--t:79.81%;--w:16.87%}
+  .wl-note{--l:13.34%;--t:38.45%;--w:64.02%}
+  .wl-greet{--l:66.62%;--t:72.46%;--w:30.28%}
   .wl-signature{--l:6.14%;--t:89.27%;--w:28.93%}
-  .wl-label{--l:6.5%;--t:74.2%;--w:36%;font-size:14px}
 }
 /* ---------- móvil ---------- */
 @media (max-width:759px){
@@ -172,18 +222,25 @@ i.cur{font-style:italic}
   .bar__menu{display:inline-block}
 }
 @media (max-width:699px){
-  .welcome__board{width:100vw;aspect-ratio:390/900}
-  .wl-welcome{--l:8%;--t:6.5%;--w:84%}
-  .wl-site{--l:28.57%;--t:14.2%;--w:16.06%}
-  .wl-note{--l:6%;--t:20.5%;--w:88%}
-  .wl-label{--l:8%;--t:59.5%;--w:84%;font-size:13.5px}
-  .wl-such{--l:54.96%;--t:77%;--w:26.53%}
-  .wl-pleasure{--l:50%;--t:80.21%;--w:38.71%}
-  .wl-here{--l:58.93%;--t:82.43%;--w:21.56%}
-  .wl-signature{--l:7%;--t:89%;--w:36.99%}
+  .welcome__board{width:100vw;aspect-ratio:390/760}
+  .wl-welcome{--l:8%;--t:6.97%;--w:84%}
+  .wl-site{--l:28.5%;--t:16.1%;--w:15.8%}
+  .wl-note{--l:6%;--t:26.3%;--w:88%}
+  .wl-greet{--l:50%;--t:66.4%;--w:38.5%}
+  .wl-signature{--l:8%;--t:84.2%;--w:36.9%}
   .about__inner{font-size:24px;line-height:1.24}
   .about__me,.about__quote p{text-align:left}
   .about__photo{width:78%}
+  .mk-board{aspect-ratio:auto}
+  .mk{position:static}
+  .mk-obra{width:86%;margin:28px 0 0 7%}
+  .mk-cap-obra{display:block;margin:10px 0 0 7%}
+  .mk-quote{width:84%;margin:44px 0 0 auto;font-size:clamp(18px,6cqw,26px)}
+  .mk-collage{position:relative;width:100%;height:auto;aspect-ratio:3200/1583;margin-top:44px}
+  .join__form{margin-left:0;width:100%}
+  .join__quote{margin-left:0;font-size:clamp(20px,6vw,28px)}
+  .join__label{font-size:clamp(18px,5vw,24px)}
+  .join__box button span{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -229,7 +286,7 @@ i.cur{font-style:italic}
         <div class="lift__stage">
           <img class="lift__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573" aria-hidden="true">
           <div class="lift__cab">
-            <img class="lift__lucia" src="assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en una cafetería, con gorra roja y camisa azul" width="1175" height="1731">
+            <img class="lift__lucia" src="assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en una cafetería, con gorra roja y camisa azul" width="1300" height="1918">
             <span class="lift__shade" aria-hidden="true"></span>
             <span class="lift__glow" aria-hidden="true"></span>
             <div class="lift__door lift__door--l" aria-hidden="true"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div>
@@ -254,18 +311,13 @@ i.cur{font-style:italic}
   <section class="welcome" id="bienvenida" data-theme="wall" aria-labelledby="welcome-t">
     <h2 class="sr-only" id="welcome-t">Welcome to my site</h2>
     <div class="welcome__board">
-      <img class="wl wl-welcome" src="assets/img/hw-welcome.webp" alt="" width="931" height="192" aria-hidden="true">
-      <img class="wl wl-site" src="assets/img/hw-site.webp" alt="" width="178" height="112" aria-hidden="true">
-      <figure class="wl wl-note"><img src="assets/img/note-photo.webp" alt="Foto de Lucía Morales con camiseta de Nirvana, pegada a la pared con una cinta escrita a mano: C B O, Creator, Business, Owner" width="660" height="625"></figure>
-      <div class="wl wl-label">
-        <p class="n">Lucía Morales</p>
-        <p class="r">Creator · Business · Owner</p>
-        <p>Licenciada en Derecho, máster en Gestión Portuaria y en Arte Contemporáneo por Sotheby’s Institute of Art, y maquilladora profesional. Creadora de LMART, Livingishop y MiBeso Cosmetics.</p>
-      </div>
-      <img class="wl wl-such" src="assets/img/hw-such.webp" alt="" width="294" height="75" aria-hidden="true">
-      <img class="wl wl-pleasure" src="assets/img/hw-pleasure.webp" alt="" width="429" height="86" aria-hidden="true">
-      <img class="wl wl-here" src="assets/img/hw-here.webp" alt="" width="239" height="92" aria-hidden="true">
-      <img class="wl wl-signature" src="assets/img/hw-signature.webp" alt="" width="410" height="104" aria-hidden="true">
+      <img class="wl wl-welcome" src="assets/img/hw-welcome.webp" alt="" width="1291" height="262" aria-hidden="true">
+      <img class="wl wl-site" src="assets/img/hw-site.webp" alt="" width="243" height="152" aria-hidden="true">
+      <figure class="wl wl-note"><img src="assets/img/note-photo.webp" alt="Foto de Lucía Morales con camiseta de Nirvana, pegada a la pared con una cinta escrita a mano: C B O, Creator, Business, Owner" width="1267" height="993"></figure>
+      <img class="wl wl-greet wl-g1" src="assets/img/hw-greet.webp" alt="" width="592" height="317" aria-hidden="true">
+      <img class="wl wl-greet wl-g2" src="assets/img/hw-greet.webp" alt="" width="592" height="317" aria-hidden="true">
+      <img class="wl wl-greet wl-g3" src="assets/img/hw-greet.webp" alt="" width="592" height="317" aria-hidden="true">
+      <img class="wl wl-signature" src="assets/img/hw-signature.webp" alt="" width="567" height="141" aria-hidden="true">
     </div>
     <p class="sr-only">It’s such a pleasure to have you here. Lucía Morales.</p>
   </section>
@@ -276,11 +328,56 @@ i.cur{font-style:italic}
       <h2 class="sr-only" id="about-t">Sobre Lucía Morales</h2>
       <p class="about__me" data-words><span class="k">Me:</span> Colegio Jesuitas Oviedo, licenciada en Derecho por la Universidad S. Pablo CEU Madrid, Erasmus en Università di Giurisprudenza di Pisa Italia, máster en Gestión Portuaria y Transporte Intermodal Valencia Port, OMI Organización Marítima Internacional Londres, Altius Logística Valencia, creadora de Livingishop, creadora de MiBeso Cosmetics, máster en Arte Contemporáneo Sotheby’s Institute of Art Londres, creadora de LMART, máster profesional de maquillaje en Ana Salmerón Valencia, hablo inglés, italiano, español, entiendo catalán-valenciano-balear y chapurreo francés</p>
       <figure class="about__photo">
-        <div class="about__frame"><img src="assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en la barra de una cafetería, con gorra roja, camisa azul y vaqueros" width="1175" height="1731" loading="lazy"></div>
+        <div class="about__frame"><img src="assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en la barra de una cafetería, con gorra roja, camisa azul y vaqueros" width="1300" height="1918" loading="lazy"></div>
       </figure>
       <h3 class="about__next">Lo que va a venir:</h3>
       <blockquote class="about__quote" data-words><p>‘Es una marca que observa antes de hablar, que se descubre despacio, como un buen libro, que encuentra belleza en una textura, en un espacio, en una historia real y bien contada, sin artificios, en un diseño que nace de la observación más profunda. La fuerza de una ilusión mezclada con el esfuerzo silencioso que acompaña a toda pasión’</p></blockquote>
       <p class="about__sign">Lucía M.</p>
+    </div>
+  </section>
+  <!-- 04 · In the making -->
+  <section class="making" id="in-the-making" data-theme="making" aria-labelledby="making-t">
+    <div class="mk-board">
+      <h2 class="mk mk-title trim" id="making-t"><span>IN THE MAKING</span></h2>
+      <figure class="mk mk-obra"><img src="assets/img/making-obra.jpg" alt="Obra de las nuevas oficinas: pared encalada con una ventana abierta a la vegetación y una escalera de madera" width="1400" height="1514" loading="lazy"></figure>
+      <p class="mk mk-cap mk-cap-obra trim">Foto obra, nuevas oficinas</p>
+      <blockquote class="mk mk-quote trim" data-words><p>“Observar, si se sabe, es el mayor de los placeres”</p><footer>L.M</footer></blockquote>
+      <div class="mk mk-collage">
+        <img class="mk-days" src="assets/img/making-days.jpg" alt="Lucía, vista desde arriba, trabajando en el suelo entre bocetos, unos auriculares y un portátil" width="1100" height="803" loading="lazy">
+        <img class="mk-design" src="assets/img/making-design.jpg" alt="Bocetos de envases, una agenda de piel de cocodrilo con las iniciales L.M. y unas gafas de carey" width="1100" height="1171" loading="lazy">
+        <p class="mk-cap mk-cap-days trim">MG days</p>
+        <p class="mk-cap mk-cap-design trim">MG design process</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · New chapter -->
+  <section class="chapter" id="new-chapter" data-theme="cream" aria-labelledby="chapter-t">
+    <h2 class="sr-only" id="chapter-t">New chapter</h2>
+    <div class="ch-board">
+      <figure class="ch-photo"><img src="assets/img/chapter-stairs.jpg" alt="Lucía Morales baja una escalera con gafas de sol, gabardina y bolso negro, en blanco y negro" width="1400" height="2099" loading="lazy"></figure>
+      <img class="ch-row ch-r1" src="assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
+      <img class="ch-row ch-r2" src="assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
+      <img class="ch-row ch-r3" src="assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
+      <img class="ch-row ch-r4" src="assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
+      <a class="ch-join trim" href="#lista" data-join>Join the list <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
+  <!-- 06 · Lista de espera -->
+  <section class="join" id="lista" data-theme="cream" aria-labelledby="join-t">
+    <form class="join__form" id="join-form" novalidate>
+      <blockquote class="join__quote trim"><p>“La expresión artística es la llama que mueve esta idea, ven con nosotros”</p></blockquote>
+      <label class="join__label trim" id="join-t" for="join-email">Introduce tu mail</label>
+      <div class="join__box">
+        <input id="join-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="join-msg" placeholder="nombre@email.com">
+        <button type="submit"><span>Enviar</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <p class="join__msg" id="join-msg" aria-live="polite"></p>
+    </form>
+    <div class="join__done" id="join-done" tabindex="-1" hidden>
+      <p>Gracias</p>
+      <p>Ya estás en la lista, te mantendremos informado</p>
     </div>
   </section>
 </main>
@@ -384,6 +481,31 @@ i.cur{font-style:italic}
     });
   });
 
+  /* ---------- lista de espera: formulario y gracias (funciona también sin animaciones) ---------- */
+  var form = $('#join-form'), input = $('#join-email'), msg = $('#join-msg'), done = $('#join-done');
+  $$('[data-join]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      setTimeout(function () { if (!form.hidden) input.focus({ preventScroll: true }); }, reduce ? 60 : 1400);
+    });
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+      form.classList.add('is-error'); input.setAttribute('aria-invalid', 'true');
+      msg.textContent = v ? 'Revisa el email: falta la @ o el dominio (por ejemplo, nombre@email.com).' : 'Escribe tu email para unirte a la lista.';
+      input.focus();
+      return;
+    }
+    form.classList.remove('is-error'); input.removeAttribute('aria-invalid'); msg.textContent = '';
+    var show = function () {
+      form.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
+      if (motion) G.from(done.children, { y: 24, autoAlpha: 0, duration: 0.9, ease: 'power3.out', stagger: 0.14 });
+    };
+    if (motion) G.to(form, { autoAlpha: 0, y: -16, duration: 0.45, ease: 'power2.in', onComplete: show }); else show();
+  });
+  input.addEventListener('input', function () { if (form.classList.contains('is-error')) { form.classList.remove('is-error'); input.removeAttribute('aria-invalid'); msg.textContent = ''; } });
+
   onScroll();
   if (!motion) return;
 
@@ -422,23 +544,24 @@ i.cur{font-style:italic}
   });
 
   /* ---------- 02 · la letra se escribe, la foto se pega ---------- */
-  var hw = ['.wl-welcome', '.wl-site', '.wl-such', '.wl-pleasure', '.wl-here', '.wl-signature'];
+  var hw = ['.wl-welcome', '.wl-site', '.wl-signature'];
+  var band = { '.wl-g1': ['0%', '66.7%'], '.wl-g2': ['33.3%', '30.8%'], '.wl-g3': ['69.2%', '0%'] };
+  var line = function (sel, r) { return 'inset(' + band[sel][0] + ' ' + r + ' ' + band[sel][1] + ' 0%)'; };
   G.set(hw, { clipPath: 'inset(-10% 100% -10% 0)' });
+  Object.keys(band).forEach(function (k) { G.set(k, { clipPath: line(k, '100%') }); });
   G.set('.wl-note', { autoAlpha: 0, y: -50, rotation: -5, transformOrigin: '50% 0%' });
-  G.set('.wl-label', { autoAlpha: 0, y: 20 });
   var open = { clipPath: 'inset(-10% 0% -10% 0)', ease: 'power1.inOut' };
   G.timeline({ scrollTrigger: { trigger: '.welcome', start: 'top 55%', once: true } })
     .to('.wl-welcome', Object.assign({ duration: 1.5 }, open))
     .to('.wl-site', Object.assign({ duration: 0.45 }, open), '-=0.1')
     .to('.wl-note', { autoAlpha: 1, y: 0, rotation: 0, duration: 1.1, ease: 'back.out(1.4)' }, 0.5)
-    .to('.wl-label', { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 1.2)
-    .to('.wl-such', Object.assign({ duration: 0.55 }, open), 1.5)
-    .to('.wl-pleasure', Object.assign({ duration: 0.75 }, open))
-    .to('.wl-here', Object.assign({ duration: 0.45 }, open))
+    .to('.wl-g1', { clipPath: line('.wl-g1', '0%'), duration: 0.55, ease: 'power1.inOut' }, 1.3)
+    .to('.wl-g2', { clipPath: line('.wl-g2', '0%'), duration: 0.75, ease: 'power1.inOut' })
+    .to('.wl-g3', { clipPath: line('.wl-g3', '0%'), duration: 0.45, ease: 'power1.inOut' })
     .to('.wl-signature', Object.assign({ duration: 1 }, open), '+=0.15');
 
   if (fine) {
-    var depth = [['.wl-welcome', -10], ['.wl-site', -10], ['.wl-note', 16], ['.wl-label', 6], ['.wl-such', 8], ['.wl-pleasure', 8], ['.wl-here', 8], ['.wl-signature', -6]];
+    var depth = [['.wl-welcome', -10], ['.wl-site', -10], ['.wl-note', 16], ['.wl-g1', 8], ['.wl-g2', 8], ['.wl-g3', 8], ['.wl-signature', -6]];
     var setters = depth.map(function (p) { var el = $(p[0]); return [G.quickTo(el, 'x', { duration: 1, ease: 'power3.out' }), G.quickTo(el, 'yPercent', { duration: 1, ease: 'power3.out' }), p[1]]; });
     $('.welcome').addEventListener('mousemove', function (e) {
       var nx = e.clientX / window.innerWidth - 0.5, ny = e.clientY / window.innerHeight - 0.5;
@@ -467,6 +590,30 @@ i.cur{font-style:italic}
   G.fromTo('.about__frame', { clipPath: 'inset(14% 18% 14% 18%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.about__photo', start: 'top 92%', end: 'center 55%', scrub: true } });
   G.fromTo('.about__frame img', { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.about__photo', start: 'top bottom', end: 'bottom top', scrub: true } });
   G.from('.about__sign', { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.about__sign', start: 'top 92%', once: true } });
+
+  /* ---------- 04 · in the making: titular, la obra se abre y el collage sube ---------- */
+  G.from('.mk-title span', { yPercent: 70, autoAlpha: 0, duration: 1.3, ease: 'power4.out', scrollTrigger: { trigger: '.mk-board', start: 'top 82%', once: true } });
+  G.fromTo('.mk-obra', { clipPath: 'inset(16% 12% 16% 12%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.mk-obra', start: 'top 92%', end: 'center 55%', scrub: true } });
+  G.fromTo('.mk-obra img', { scale: 1.22 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.mk-obra', start: 'top bottom', end: 'bottom top', scrub: true } });
+  G.from('.mk-cap-obra', { autoAlpha: 0, y: 12, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.mk-cap-obra', start: 'top 95%', once: true } });
+  G.from('.mk-collage', { y: 90, autoAlpha: 0, duration: 1.3, ease: 'power3.out', scrollTrigger: { trigger: '.mk-collage', start: 'top 88%', once: true } });
+
+  /* ---------- 05 · new chapter: la foto se descubre y «new Chapter» se escribe cuatro veces ---------- */
+  G.set('.ch-row', { clipPath: 'inset(-14% 100% -14% 0%)' });
+  G.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: { trigger: '.chapter', start: 'top top', end: function () { return '+=' + Math.round(window.innerHeight * 1.3); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true }
+  })
+    .fromTo('.ch-photo', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.3, ease: 'power2.out' }, 0)
+    .fromTo('.ch-photo img', { scale: 1.14 }, { scale: 1, duration: 0.3, ease: 'power2.out' }, 0)
+    .to('.ch-r1', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.3)
+    .to('.ch-r2', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.44)
+    .to('.ch-r3', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.58)
+    .to('.ch-r4', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.72)
+    .fromTo('.ch-join', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.1 }, 0.9);
+
+  /* ---------- 06 · lista de espera ---------- */
+  G.from('.join__form > *', { y: 28, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.join', start: 'top 72%', once: true } });
 
   window.addEventListener('load', function () { ST.refresh(); });
 })();

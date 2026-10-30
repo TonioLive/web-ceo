@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Design Freaks · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Design Freaks: diseñadores y arquitectos que transforman los espacios.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* Design Freaks: titular a todo el ancho, la butaca en el centro y los enlaces sueltos alrededor. */
+.df{padding:calc(96px + env(safe-area-inset-top,0px)) var(--gutter) clamp(80px,9vw,140px)}
+.df__board{position:relative;max-width:1440px;margin-inline:auto;container-type:inline-size}
+.df__canvas{position:relative;aspect-ratio:3200/2800}
+.trim{text-box:trim-both cap alphabetic}
+.df__title{position:absolute;left:0;right:0;top:4.32%;font-weight:400;font-size:13.62cqw;line-height:1;letter-spacing:-.019em;white-space:nowrap;text-align:center}
+.df__sub{position:absolute;left:0;right:0;top:22.39%;text-align:center;font-size:3.27cqw;line-height:1.051;text-transform:uppercase}
+.df__stage{position:absolute;inset:0}
+.df__fig{position:absolute;left:29.16%;top:45.89%;width:41.69%}
+.df__fig img{width:100%;aspect-ratio:1334/889;object-fit:cover;transition:transform 1.2s var(--ease-out),filter .6s}
+.df__fig figcaption{margin-top:.9cqw;font-size:1.68cqw;line-height:1}
+.df__links{position:absolute;inset:0}
+.df__link{position:absolute;left:var(--x);top:var(--y);display:block;font-weight:600;font-size:2.18cqw;line-height:1.175;text-decoration:none;text-box:trim-both cap alphabetic;transition:opacity .45s var(--ease-out),color .3s}
+.df__link span{display:block;width:fit-content;background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;transition:background-size .55s var(--ease)}
+.df__link:hover span,.df__link:focus-visible span{background-size:100% 1.5px}
+.df__links.is-dim .df__link:not(:hover):not(:focus-visible){opacity:.22}
+.df__stage.is-dim .df__fig img{filter:grayscale(.6);transform:scale(.97)}
+.df-l-dg{--x:4.31%;--y:42.93%}
+.df-l-lina{--x:4.31%;--y:55.04%}
+.df-l-teo{--x:7.34%;--y:70.82%}
+.df-l-urq{--x:4.13%;--y:90.86%}
+.df-l-melara{--x:43.22%;--y:87.04%}
+.df-l-nie{--x:69.91%;--y:84.21%}
+.df-l-walton{--x:72.56%;--y:52.46%}
+.df-l-ikea{--x:81.19%;--y:40.32%}
+.df__back{margin-top:clamp(40px,6vw,90px)}
+@media (max-width:759px){
+  .df__canvas{aspect-ratio:auto}
+  .df__title{position:static}
+  .df__sub{position:static;margin-top:28px;font-size:clamp(14px,4vw,18px);line-height:1.2}
+  .df__stage{position:static;margin-top:36px}
+  .df__fig{position:static;width:100%}
+  .df__fig figcaption{font-size:12px;margin-top:8px}
+  .df__links{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px;margin-top:40px}
+  .df__link{position:static;font-size:clamp(14px,4.2vw,17px);padding-block:4px}
+}
+</style>
+</head>
+<body class="pg-df">
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main" class="df" data-theme="light">
+  <div class="df__board">
+    <div class="df__canvas">
+    <h1 class="df__title trim">DESIGN FREAKS</h1>
+    <p class="df__sub trim" data-reveal>Diseñadores y arquitectos que<br> transforman los espacios,<br> mejoran nuestras vidas y hacen<br> de lo cotidiano algo<br> extraordinario</p>
+    <div class="df__stage">
+      <figure class="df__fig" data-reveal><img src="assets/img/chair-kwangholee.jpg" alt="Butaca azul de punto grueso tejido, de Kwangho Lee, sobre suelo de cemento" width="1600" height="1066"><figcaption>KWANGHOLEE</figcaption></figure>
+      <nav class="df__links" aria-label="Diseñadores y arquitectos">
+        <a class="df__link df-l-dg" href="https://dgarquitectovalencia.com/proyecto/casa-ave-7/" target="_blank" rel="noopener" aria-label="DG Estudio: Casa Ave 7 (se abre en otra pestaña)"><span>DG ESTUDIO</span></a>
+        <a class="df__link df-l-ikea" href="https://www.expansion.com/fueradeserie/arquitectura/2026/07/03/6a3eb404e5fdea366b8b458b.html" target="_blank" rel="noopener" aria-label="IKEA PS 2026, en Expansión (se abre en otra pestaña)"><span>IKEA PS2026<br>X EXPANSION</span></a>
+        <a class="df__link df-l-lina" href="https://www.artchitectours.es/lina-ghotmeh-british-museum/" target="_blank" rel="noopener" aria-label="Lina Ghotmeh y el British Museum (se abre en otra pestaña)"><span>LINA GHOTMEH</span></a>
+        <a class="df__link df-l-walton" href="https://www.elledecor.com/es/arquitectura/a74046381/casa-sencilla-icono-arquitectura-moderna-anos-60/" target="_blank" rel="noopener" aria-label="Charles Walton, Los Ángeles años 60, en Elle Decor (se abre en otra pestaña)"><span>CHARLES WALTON L.A 60’<br>ELLE DECO</span></a>
+        <a class="df__link df-l-teo" href="https://www.vanitatis.elconfidencial.com/estilo/decoracion/2022-12-04/teo-yang-claves-deco-disenador-interiores-corea_3529135/" target="_blank" rel="noopener" aria-label="Entrevista a Teo Yang en Vanitatis (se abre en otra pestaña)"><span>TEO YANG<br>INTERVIEW<br>X VANITATIS</span></a>
+        <a class="df__link df-l-nie" href="https://fundacionenaire.es/conocimiento/centro-niemeyer-aviles/" target="_blank" rel="noopener" aria-label="Niemeyer y el Centro Niemeyer de Avilés, en Fundación ENAIRE (se abre en otra pestaña)"><span>NIEMEYER<br>INTERVIEW<br>X F.ENAIRE</span></a>
+        <a class="df__link df-l-melara" href="melara-glow.html" aria-label="Melara Glow"><span>MELARA GLOW</span></a>
+        <a class="df__link df-l-urq" href="https://roomdiseno.com/patricia-urquiola-en-la-cima-del-mundo/" target="_blank" rel="noopener" aria-label="Patricia Urquiola en Room Diseño (se abre en otra pestaña)"><span>URQUIOLA X ROOM</span></a>
+      </nav>
+    </div>
+    </div>
+    <a class="back df__back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var LM = window.LM; if (!LM) return;
+  var links = LM.$('.df__links'), stage = LM.$('.df__stage');
+  LM.$$('.df__link').forEach(function (a) {
+    a.addEventListener('mouseenter', function () { links.classList.add('is-dim'); stage.classList.add('is-dim'); });
+    a.addEventListener('mouseleave', function () { links.classList.remove('is-dim'); stage.classList.remove('is-dim'); });
+    a.addEventListener('focus', function () { links.classList.add('is-dim'); stage.classList.add('is-dim'); });
+    a.addEventListener('blur', function () { links.classList.remove('is-dim'); stage.classList.remove('is-dim'); });
+  });
+  if (!LM.motion) return;
+  var G = LM.G, wide = matchMedia('(min-width: 760px)').matches;
+  G.from('.df__title', { yPercent: 50, autoAlpha: 0, duration: 1.3, ease: 'power4.out', delay: 0.1 });
+  G.from('.df__link span', { autoAlpha: 0, yPercent: 60, duration: 0.9, ease: 'power3.out', stagger: 0.07, scrollTrigger: { trigger: '.df__fig', start: 'top 85%', once: true } });
+  if (LM.fine && wide) {
+    var depth = [6, -10, 12, -8, 9, -12, 7, -6];
+    var setters = LM.$$('.df__link').map(function (el, i) { return [G.quickTo(el, 'x', { duration: 1.2, ease: 'power3.out' }), G.quickTo(el, 'y', { duration: 1.2, ease: 'power3.out' }), depth[i % depth.length]]; });
+    var fig = LM.$('.df__fig'), fx = G.quickTo(fig, 'x', { duration: 1.4, ease: 'power3.out' }), fy = G.quickTo(fig, 'y', { duration: 1.4, ease: 'power3.out' });
+    LM.$('.df').addEventListener('mousemove', function (e) {
+      var nx = e.clientX / window.innerWidth - 0.5, ny = e.clientY / window.innerHeight - 0.5;
+      setters.forEach(function (s) { s[0](nx * s[2] * 2); s[1](ny * s[2] * 1.4); });
+      fx(nx * -8); fy(ny * -6);
+    });
+  }
+})();
+</script>
+</body>
+</html>
