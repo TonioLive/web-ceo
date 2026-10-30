@@ -14,7 +14,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 
 | Bloque | Qué es |
 |---|---|
-| 01 · Ascensor | Puertas de acero con el menú. Al entrar se entreabren un momento (luz por la rendija y «Baja para abrir») para invitar a bajar; si sigues arriba se repite una vez. Al bajar se abren, aparece Lucía y la cámara entra en el ascensor. |
+| 01 · Ascensor | Puertas de acero con el menú y el indicador rojo de planta (0) encima. Al entrar se entreabren un momento (luz por la rendija y «Baja para abrir») para invitar a bajar; si sigues arriba se repite una vez. Al bajar se abren, aparece Lucía y la cámara entra en el ascensor. |
 | 02 · Bienvenida | Pared blanca con la letra a mano, la cinta «C B O» y la foto. La letra se escribe sola al llegar. |
 | 03 · Sobre mí | Fondo azul y texto rojo: trayectoria, foto y «Lo que va a venir». El texto se ilumina al leer. |
 | 04 · In the making | Foto de la obra de las nuevas oficinas, cita de L.M y collage «MG days» y «MG design process». |
