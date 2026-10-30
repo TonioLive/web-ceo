@@ -26,15 +26,25 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 | Archivo | Qué es |
 |---|---|
 | `index.html` | El Index completo (HTML, CSS y JS en un solo archivo) |
-| `gallery.html` | Gallery: cita de L.M y seis casillas (01 Hot Readers, 03 Design Freaks; el resto, próximamente) |
-| `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda |
+| `gallery.html` | Gallery: cita de L.M y seis casillas (01 Hot Readers, 03 Design Freaks; el resto, próximamente). Al entrar, el marco de cada casilla se dibuja y la casilla aparece dentro |
+| `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda. Cada portada es un libro 3D: al pasar el ratón se abre, las hojas se abren en abanico y aparece el «Ex libris»; en móvil se entreabre al aparecer |
 | `design-freaks.html` | Diseñadores y arquitectos, con enlaces a cada artículo |
 | `melara-glow.html` | Web de Melara Glow en construcción. Al arrancar (arrastrar o pulsar) las dos cintas amarillas aparece un código promocional de ejemplo (`MELARA10`). Enlazada desde «Con tu mirada» y desde Design Freaks |
-| `curated-shopping.html`, `more.html` | Plantas 2 y 3, de momento con aviso de «Muy pronto» |
+| `curated-shopping.html`, `more.html` | Plantas 2 y 3 en obras: título, «Muy pronto» y las cintas amarillas |
 | `assets/site.css`, `assets/site.js` | Barra, menú de puertas, pie y animaciones comunes de las páginas interiores |
+| `assets/lift.css`, `assets/lift.js` | Transición de ascensor entre plantas (ver abajo) |
 | `assets/img/`, `assets/fonts/` | Imágenes recortadas de los diseños y Google Sans en woff2 (licencia SIL Open Font License) |
 | `preview.html` | Visor para revisar la web en escritorio, tablet y móvil |
 | `v1/` | Primera propuesta, guardada como referencia |
+
+## Transición de ascensor
+
+Index (planta 0), Gallery (1), CURATEDShopping (2) y +More (3) son plantas de un edificio. Al ir de una a otra:
+
+1. **Salida:** el marco del ascensor entra desde fuera de la pantalla y las puertas se cierran. Desde la portada del Index las puertas ya están cerradas y solo se enciende el indicador.
+2. **Llegada:** el indicador sobre la puerta cuenta las plantas (▲/▼), suena el «ding», las puertas se abren con la página nueva detrás y la cámara cruza la puerta. Al volver a la portada del Index, el ascensor ya está ahí y solo se funde.
+
+Funciona con cualquier enlace a esas cuatro páginas, también desde Hot Readers, Design Freaks y Melara Glow. El viaje se guarda en `sessionStorage` y un script en el `<head>` deja las puertas cerradas antes del primer pintado. Con `prefers-reduced-motion` se navega sin transición.
 
 ## Tecnología
 

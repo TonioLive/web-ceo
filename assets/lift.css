@@ -1,0 +1,53 @@
+/* Transición de ascensor entre plantas: Index (0), Gallery (1), CURATEDShopping (2) y +More (3).
+   Al salir: el marco del ascensor entra desde fuera de la pantalla y las puertas se cierran.
+   Al llegar: el indicador cuenta las plantas, las puertas se abren con la página ya detrás y la cámara cruza la puerta.
+   Mismas medidas que el ascensor del Index (elevator.jpg 885×1573 centrado a toda altura). */
+.lx{position:fixed;inset:0;z-index:9000;display:none;overflow:hidden;pointer-events:none;--h:100vh}
+@supports (height:100svh){.lx{--h:100svh}}
+html.lx-in .lx,html.lx-out .lx{display:block}
+html.lx-out .lx{pointer-events:auto}
+.lx__zoom{position:absolute;left:0;right:0;top:0;height:var(--h);transform-origin:calc(50% - var(--h)*.00318) calc(var(--h)*.51017);will-change:transform,opacity}
+.lx__wall{position:absolute;top:0;bottom:0;background-color:#3a3c3f;background-repeat:no-repeat;--panel:calc(var(--h)*.24)}
+.lx__wall--l{left:0;right:calc(50% + var(--h)*.2813 - 2px);background-image:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.03) 70%,rgba(0,0,0,.12)),repeating-linear-gradient(270deg,transparent 0 calc(var(--panel) - 2px),rgba(0,0,0,.28) calc(var(--panel) - 2px) calc(var(--panel) - 1px),rgba(255,255,255,.10) calc(var(--panel) - 1px) var(--panel)),url(img/wall-l.png);background-size:100% 100%,auto,100% 100%}
+.lx__wall--r{right:0;left:calc(50% + var(--h)*.2813 - 2px);background-image:linear-gradient(270deg,rgba(0,0,0,.28),rgba(255,255,255,.03) 70%,rgba(0,0,0,.10)),repeating-linear-gradient(90deg,transparent 0 calc(var(--panel) - 2px),rgba(0,0,0,.28) calc(var(--panel) - 2px) calc(var(--panel) - 1px),rgba(255,255,255,.10) calc(var(--panel) - 1px) var(--panel)),url(img/wall-r.png);background-size:100% 100%,auto,100% 100%}
+.lx__stage{position:absolute;top:0;left:50%;height:100%;width:calc(var(--h)*.56263);transform:translateX(-50%)}
+/* marco con el hueco de la puerta recortado: por el hueco se ve la página */
+.lx .lx__bg{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,11.073% 8.137%,87.796% 8.137%,87.796% 93.897%,11.073% 93.897%,11.073% 8.137%)}
+.lx__cab{position:absolute;left:11.073%;top:8.137%;width:76.723%;height:85.760%;overflow:hidden}
+.lx__door{position:absolute;top:0;height:100%;overflow:hidden}
+.lx__door--l{left:0;width:48.306%;box-shadow:10px 0 22px rgba(0,0,0,.35)}
+.lx__door--r{left:48.306%;width:51.694%;box-shadow:-10px 0 22px rgba(0,0,0,.35)}
+.lx .lx__door img{position:absolute;display:block;max-width:none;top:-9.488%;height:116.605%}
+.lx .lx__door--l img{left:-29.878%;width:269.817%}
+.lx .lx__door--r img{left:-121.368%;width:252.137%}
+/* indicador de planta sobre la puerta */
+.lx__floor{position:absolute;left:49.43%;top:4.1%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.45em;min-width:2.6em;justify-content:center;padding:.36em .7em;border-radius:.28em;background:#0b0b0c;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 1px 0 rgba(255,255,255,.14);font:500 max(13px,calc(var(--h)*.021))/1 'Google Sans',system-ui,sans-serif;color:#ffb347;text-shadow:0 0 .55em rgba(255,165,50,.55);letter-spacing:.04em;font-variant-numeric:tabular-nums;transition:color .3s,text-shadow .3s}
+.lx__floor::before{content:var(--lxa,"");font-size:.62em}
+.lx__floor::after{content:var(--lxn,"")}
+html.lx-ding .lx__floor{color:#fff1d6;text-shadow:0 0 .4em #ffcf7a,0 0 1.2em rgba(255,170,60,.9)}
+
+/* llegada */
+html.lx-in .lx__door--l{animation:lxOpenL .85s cubic-bezier(.65,0,.35,1) var(--lxd,.25s) both}
+html.lx-in .lx__door--r{animation:lxOpenR .85s cubic-bezier(.65,0,.35,1) var(--lxd,.25s) both}
+html.lx-in .lx__zoom{animation:lxIn 1s cubic-bezier(.7,0,.25,1) calc(var(--lxd,.25s) + .4s) both,lxFade .4s linear calc(var(--lxd,.25s) + 1s) both}
+html.lx-in .lx{animation:lxGone 0s linear calc(var(--lxd,.25s) + 1.45s) both}
+/* llegada al Index arriba: el ascensor de la portada ya está ahí, solo se funde */
+html.lx-in.lx-home .lx__door{animation:none}
+html.lx-in.lx-home .lx__zoom{animation:lxFade .5s ease calc(var(--lxd,.25s) + .1s) both}
+html.lx-in.lx-home .lx{animation:lxGone 0s linear calc(var(--lxd,.25s) + .6s) both}
+
+/* salida */
+html.lx-out .lx__zoom{animation:lxOut .7s cubic-bezier(.55,0,.2,1) both}
+html.lx-out .lx__door--l{animation:lxCloseL .5s cubic-bezier(.65,0,.35,1) .35s both}
+html.lx-out .lx__door--r{animation:lxCloseR .5s cubic-bezier(.65,0,.35,1) .35s both}
+html.lx-out.lx-home .lx__zoom,html.lx-out.lx-home .lx__door{animation:none}
+
+@keyframes lxOpenL{from{transform:none}to{transform:translateX(-100%)}}
+@keyframes lxOpenR{from{transform:none}to{transform:translateX(100%)}}
+@keyframes lxCloseL{from{transform:translateX(-100%)}to{transform:none}}
+@keyframes lxCloseR{from{transform:translateX(100%)}to{transform:none}}
+@keyframes lxIn{from{transform:none}to{transform:scale(var(--lxz,4))}}
+@keyframes lxOut{from{transform:scale(var(--lxz,4));opacity:0}20%{opacity:1}to{transform:none;opacity:1}}
+@keyframes lxFade{from{opacity:1}to{opacity:0}}
+@keyframes lxGone{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.lx{display:none!important}}

@@ -246,8 +246,30 @@ i.cur{font-style:italic}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
+<link rel="stylesheet" href="assets/lift.css">
+<script>
+/* llegada en ascensor: prepara las puertas cerradas antes del primer pintado (ver assets/lift.js) */
+(function(){try{var h=document.documentElement,s=sessionStorage,v=JSON.parse(s.getItem('lm-lift')||'null');if(!v)return;s.removeItem('lm-lift');
+if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
+h.classList.add('lx-in');if(home)h.classList.add('lx-home');
+st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'""');
+window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
+</script>
 </head>
 <body>
+<div class="lx" aria-hidden="true">
+  <div class="lx__zoom">
+    <div class="lx__wall lx__wall--l"></div><div class="lx__wall lx__wall--r"></div>
+    <div class="lx__stage">
+      <img class="lx__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573">
+      <div class="lx__cab"><div class="lx__door lx__door--l"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div><div class="lx__door lx__door--r"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div></div>
+      <span class="lx__floor"></span>
+    </div>
+  </div>
+</div>
+
 <a class="skip" href="#bienvenida">Saltar al contenido</a>
 
 <header class="bar" data-theme="steel">
@@ -622,5 +644,6 @@ i.cur{font-style:italic}
   });
 })();
 </script>
+<script src="assets/lift.js"></script>
 </body>
 </html>
