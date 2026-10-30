@@ -27,7 +27,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 |---|---|
 | `index.html` | El Index completo (HTML, CSS y JS en un solo archivo) |
 | `gallery.html` | Gallery: cita de L.M y seis casillas (01 Hot Readers, 03 Design Freaks; el resto, próximamente). Al entrar, el marco de cada casilla se dibuja y la casilla aparece dentro |
-| `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda. Cada portada es un libro 3D: al pasar el ratón se abre, las hojas se abren en abanico y aparece el «Ex libris»; en móvil se entreabre al aparecer |
+| `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda. Cada portada es un libro 3D: un toque o clic lo abre (tapa y hojas en abanico) y dentro aparecen título, autor, año y «Ver el libro», que es lo único que lleva a la tienda; otro toque o Escape lo cierra. Con ratón se entreabre al pasar por encima; en móvil se entreabre una vez al aparecer |
 | `design-freaks.html` | Diseñadores y arquitectos, con enlaces a cada artículo |
 | `melara-glow.html` | Web de Melara Glow en construcción. Al arrancar (arrastrar o pulsar) las dos cintas amarillas aparece un código promocional de ejemplo (`MELARA10`). Enlazada desde «Con tu mirada» y desde Design Freaks |
 | `curated-shopping.html`, `more.html` | Plantas 2 y 3 en obras: título, «Muy pronto» y las cintas amarillas |
