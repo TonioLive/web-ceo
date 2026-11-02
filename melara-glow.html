@@ -114,13 +114,12 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   <a class="back mg__back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
   <div class="mg__stage">
     <p class="sr-only" id="mg-help">Debajo de las cintas hay una sorpresa. Arranca las dos cintas para descubrirla: arrástralas o pulsa sobre ellas.</p>
-    <div class="prize" id="prize" data-code="MELARA10" aria-hidden="true">
-      <p class="prize__k">Código secreto</p>
-      <p class="prize__code" id="prize-code">XXXXXXXX</p>
-      <p class="prize__desc">10&nbsp;% en tu primer pedido el día del lanzamiento.</p>
+    <div class="prize" id="prize" aria-hidden="true">
+      <p class="prize__k">Acceso privado</p>
+      <p class="prize__code" id="prize-code">Nº 0000</p>
+      <p class="prize__desc">Tu invitación personal al lanzamiento privado de Melara Glow: entrarás antes que nadie.</p>
       <div class="prize__actions">
-        <button class="prize__btn prize__copy" type="button" tabindex="-1">Copiar código</button>
-        <a class="prize__btn prize__btn--yel" href="index.html#lista" tabindex="-1">Guárdalo en la lista →</a>
+        <a class="prize__btn prize__btn--yel" href="index.html#lista" tabindex="-1">Reservar mi acceso →</a>
       </div>
       <button class="prize__again" type="button" tabindex="-1">Volver a pegar las cintas</button>
     </div>
@@ -157,21 +156,26 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   var LM = window.LM; if (!LM) return;
   var d = document, G = LM.G, motion = LM.motion;
   var stage = LM.$('.mg__stage'), tapes = LM.$$('.tape'), prize = LM.$('#prize'), codeEl = LM.$('#prize-code');
-  var hint = LM.$('.mg__hint'), live = LM.$('#prize-live'), CODE = prize.getAttribute('data-code');
+  var hint = LM.$('.mg__hint'), live = LM.$('#prize-live');
+  /* número de invitación: uno por visitante y siempre el mismo en ese navegador (decorativo hasta conectar la lista) */
+  var NUM = null;
+  try { NUM = localStorage.getItem('mg-invite'); } catch (e) {}
+  if (!/^\d{4}$/.test(NUM || '')) { NUM = ('000' + (1 + Math.floor(Math.random() * 999))).slice(-4); try { localStorage.setItem('mg-invite', NUM); } catch (e) {} }
+  var CODE = 'Nº ' + NUM;
   var inner = LM.$$('.prize button, .prize a');
   function hideHint() { hint.classList.add('is-off'); }
   function remaining() { return tapes.filter(function (t) { return !t.classList.contains('is-gone'); }); }
 
   function unlock() {
-    codeEl.textContent = CODE; LM.$('.prize__k').textContent = 'Has desbloqueado';
+    codeEl.textContent = CODE; LM.$('.prize__k').textContent = 'Tu invitación privada';
     prize.removeAttribute('aria-hidden'); prize.classList.add('is-open');
     inner.forEach(function (el) { el.removeAttribute('tabindex'); });
-    live.textContent = 'Código desbloqueado: ' + CODE + '. ' + LM.$('.prize__desc').textContent;
+    live.textContent = 'Invitación desbloqueada, número ' + NUM + '. ' + LM.$('.prize__desc').textContent;
     if (motion) G.fromTo(prize, { scale: 0.9 }, { scale: 1, duration: 1, ease: 'back.out(1.8)', xPercent: -50, yPercent: -50, clearProps: 'scale' });
-    setTimeout(function () { LM.$('.prize__copy').focus({ preventScroll: true }); }, 450);
+    setTimeout(function () { LM.$('.prize__btn--yel').focus({ preventScroll: true }); }, 450);
   }
   function lock() {
-    prize.classList.remove('is-open'); prize.setAttribute('aria-hidden', 'true'); codeEl.textContent = 'XXXXXXXX'; LM.$('.prize__k').textContent = 'Código secreto';
+    prize.classList.remove('is-open'); prize.setAttribute('aria-hidden', 'true'); codeEl.textContent = 'Nº 0000'; LM.$('.prize__k').textContent = 'Acceso privado';
     inner.forEach(function (el) { el.setAttribute('tabindex', '-1'); });
     live.textContent = '';
   }
@@ -220,11 +224,6 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     });
   });
 
-  LM.$('.prize__copy').addEventListener('click', function () {
-    var ok = function () { LM.toast('Código copiado: ' + CODE); };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(CODE).then(ok, function () { LM.toast('Tu código es ' + CODE); });
-    else LM.toast('Tu código es ' + CODE);
-  });
   LM.$('.prize__again').addEventListener('click', function () {
     lock();
     tapes.forEach(function (t) { t.classList.remove('is-gone'); t.removeAttribute('aria-hidden'); t.removeAttribute('tabindex'); });

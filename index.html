@@ -541,39 +541,46 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   onScroll();
   if (!motion) return;
 
-  /* ---------- 01 · las puertas se abren al bajar ---------- */
-  var sticky = $('.lift__sticky'), scene = $('.lift__scene'), cab = $('.lift__cab');
-  var geo = {};
-  function measure() {
-    var h = sticky.clientHeight, w = sticky.clientWidth, sw = h * 0.56263;
-    var cw = sw * 0.76723, ch = h * 0.8576;
-    geo.cx = w / 2 + sw * (0.11073 + 0.383615 - 0.5);
-    geo.cy = h * (0.08137 + 0.4288);
-    geo.zoom = (h / ch) * 1.05;
-    G.set(scene, { transformOrigin: geo.cx + 'px ' + geo.cy + 'px' });
+  /* ---------- 01 · las puertas se abren solas al empezar a bajar ----------
+     Sin anclar el scroll: la página baja con normalidad y las puertas se abren por tiempo
+     en cuanto empiezas a bajar. Al volver arriba del todo se cierran y vuelve el menú.
+     «Abrir» (en ordenador) las abre o cierra sin bajar. Aquí irá el vídeo del interior. */
+  var cab = $('.lift__cab'), isOpen = false, wasDown = false, doorTl = null;
+  var SHADOW_L = '10px 0 22px rgba(0,0,0,0.35)', SHADOW_R = '-10px 0 22px rgba(0,0,0,0.35)', NOSHADOW = '0px 0 0px rgba(0,0,0,0)';
+  G.set('.lift__lucia', { filter: 'brightness(0.5)' });
+  function setDoors(open, hideMenu) {
+    if (open === isOpen) return;
+    isOpen = open;
+    if (doorTl) doorTl.kill();
+    $('.lift__call').setAttribute('aria-label', open ? 'Cerrar las puertas del ascensor' : 'Abrir las puertas del ascensor');
+    doorTl = G.timeline();
+    if (open) {
+      doorTl
+        .to(['.lift__domain', '.lift__cue', '.lift__hint', '.lift__crack'], { autoAlpha: 0, duration: 0.3, overwrite: 'auto' }, 0)
+        .to('.lift__glow', { opacity: 1, duration: 0.2 }, 0)
+        .to('.lift__door--l', { xPercent: -100, x: 0, duration: 1.3, ease: 'power3.inOut', overwrite: 'auto' }, 0.1)
+        .to('.lift__door--r', { xPercent: 100, x: 0, duration: 1.3, ease: 'power3.inOut', overwrite: 'auto' }, 0.1)
+        .to('.lift__lucia', { filter: 'brightness(1)', duration: 1.2, ease: 'power1.out' }, 0.2)
+        .to('.lift__glow', { opacity: 0, duration: 0.5 }, 0.7)
+        .to('.lift__door--l', { boxShadow: NOSHADOW, duration: 0.3 }, 1.1)
+        .to('.lift__door--r', { boxShadow: NOSHADOW, duration: 0.3 }, 1.1);
+      if (hideMenu) doorTl.to('.lift__menu a', { y: -20, autoAlpha: 0, stagger: 0.04, duration: 0.4, ease: 'power2.in' }, 0);
+    } else {
+      doorTl
+        .set('.lift__door--l', { boxShadow: SHADOW_L }, 0)
+        .set('.lift__door--r', { boxShadow: SHADOW_R }, 0)
+        .to(['.lift__door--l', '.lift__door--r'], { xPercent: 0, duration: 1.1, ease: 'power3.inOut' }, 0)
+        .to('.lift__lucia', { filter: 'brightness(0.5)', duration: 0.9 }, 0)
+        .to('.lift__menu a', { y: 0, autoAlpha: 1, stagger: 0.04, duration: 0.5, ease: 'power2.out' }, 0.5)
+        .to(['.lift__domain', '.lift__cue'], { autoAlpha: 1, duration: 0.5 }, 0.7);
+    }
   }
-  measure();
-  ST.addEventListener('refreshInit', measure);
-  var mobile = window.innerWidth < 700;
-  var lift = G.timeline({
-    defaults: { ease: 'none' },
-    scrollTrigger: { trigger: '.lift', start: 'top top', end: function () { return '+=' + Math.round(window.innerHeight * (mobile ? 1.9 : 2.4)); }, pin: sticky, scrub: 0.7, anticipatePin: 1, invalidateOnRefresh: true }
-  });
-  lift
-    .to('.lift__menu a', { y: -26, autoAlpha: 0, stagger: 0.025, duration: 0.14, ease: 'power1.in' }, 0.02)
-    .to(['.lift__domain', '.lift__cue', '.lift__call'], { autoAlpha: 0, duration: 0.1 }, 0)
-    .to('.lift__glow', { opacity: 1, duration: 0.08 }, 0.04)
-    .fromTo('.lift__lucia', { scale: 1.2, filter: 'brightness(0.5)' }, { scale: 1, filter: 'brightness(1)', duration: 0.56, ease: 'power1.out' }, 0.04)
-    .to('.lift__door--l', { xPercent: -100, duration: 0.5, ease: 'power2.inOut' }, 0.07)
-    .to('.lift__door--r', { xPercent: 100, duration: 0.5, ease: 'power2.inOut' }, 0.07)
-    .to('.lift__glow', { opacity: 0, duration: 0.16 }, 0.3)
-    .to(['.lift__door--l', '.lift__door--r'], { boxShadow: '0 0 0 rgba(0,0,0,0)', duration: 0.12 }, 0.45)
-    .to(cab, { boxShadow: '0 0 0 200vmax rgba(8,8,9,0.82)', duration: 0.38, ease: 'power1.in' }, 0.6)
-    .to(scene, { scale: function () { return geo.zoom; }, duration: 0.42, ease: 'power2.in' }, 0.58);
-
-  $('.lift__call').addEventListener('click', function () {
-    var st = lift.scrollTrigger; scrollToY(st.start + (st.end - st.start) * 0.58);
-  });
+  window.addEventListener('scroll', function () {
+    var y = window.pageYOffset;
+    if (y > 8) { wasDown = true; setDoors(true, true); }
+    else if (y <= 2 && wasDown) { wasDown = false; setDoors(false); }
+  }, { passive: true });
+  $('.lift__call').addEventListener('click', function () { setDoors(!isOpen, false); });
 
   /* ---------- 01b · al entrar, las puertas se entreabren para invitar a bajar ----------
      Se anima «x» (px) y no «xPercent», que es lo que mueve el scroll: así no se pisan.
@@ -581,7 +588,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   var doors = ['.lift__door--l', '.lift__door--r'], tease = null, teased = 0;
   function crack() { return cab.clientWidth * 0.065; }
   function teaseDoors(delay) {
-    if (window.pageYOffset > 4 || teased >= 2) return;
+    if (window.pageYOffset > 4 || teased >= 2 || isOpen) return;
     teased++;
     tease = G.timeline({ delay: delay, onComplete: function () {
       tease = null;
@@ -599,8 +606,6 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     if (window.pageYOffset <= 4) return;
     teased = 2;
     if (tease) { tease.kill(); tease = null; }
-    G.to(doors, { x: 0, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-    G.to(['.lift__crack', '.lift__hint'], { autoAlpha: 0, duration: 0.3, overwrite: 'auto' });
     window.removeEventListener('scroll', stopTease);
   }
   window.addEventListener('scroll', stopTease, { passive: true });
@@ -608,33 +613,9 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   var LL = window.LM_LIFT;
   teaseDoors(LL && LL.home ? LL.reveal + 0.5 : 0.9);
 
-  /* ---------- 02 · la letra se escribe, la foto se pega ---------- */
-  var hw = ['.wl-welcome', '.wl-site', '.wl-signature'];
-  var band = { '.wl-g1': ['0%', '66.7%'], '.wl-g2': ['33.3%', '30.8%'], '.wl-g3': ['69.2%', '0%'] };
-  var line = function (sel, r) { return 'inset(' + band[sel][0] + ' ' + r + ' ' + band[sel][1] + ' 0%)'; };
-  G.set(hw, { clipPath: 'inset(-10% 100% -10% 0)' });
-  Object.keys(band).forEach(function (k) { G.set(k, { clipPath: line(k, '100%') }); });
-  G.set('.wl-note', { autoAlpha: 0, y: -50, rotation: -5, transformOrigin: '50% 0%' });
-  var open = { clipPath: 'inset(-10% 0% -10% 0)', ease: 'power1.inOut' };
-  G.timeline({ scrollTrigger: { trigger: '.welcome', start: 'top 55%', once: true } })
-    .to('.wl-welcome', Object.assign({ duration: 1.5 }, open))
-    .to('.wl-site', Object.assign({ duration: 0.45 }, open), '-=0.1')
-    .to('.wl-note', { autoAlpha: 1, y: 0, rotation: 0, duration: 1.1, ease: 'back.out(1.4)' }, 0.5)
-    .to('.wl-g1', { clipPath: line('.wl-g1', '0%'), duration: 0.55, ease: 'power1.inOut' }, 1.3)
-    .to('.wl-g2', { clipPath: line('.wl-g2', '0%'), duration: 0.75, ease: 'power1.inOut' })
-    .to('.wl-g3', { clipPath: line('.wl-g3', '0%'), duration: 0.45, ease: 'power1.inOut' })
-    .to('.wl-signature', Object.assign({ duration: 1 }, open), '+=0.15');
+  /* ---------- 02 · bienvenida: estática (sin animaciones, se ve completa al llegar) ---------- */
 
-  if (fine) {
-    var depth = [['.wl-welcome', -10], ['.wl-site', -10], ['.wl-note', 16], ['.wl-g1', 8], ['.wl-g2', 8], ['.wl-g3', 8], ['.wl-signature', -6]];
-    var setters = depth.map(function (p) { var el = $(p[0]); return [G.quickTo(el, 'x', { duration: 1, ease: 'power3.out' }), G.quickTo(el, 'yPercent', { duration: 1, ease: 'power3.out' }), p[1]]; });
-    $('.welcome').addEventListener('mousemove', function (e) {
-      var nx = e.clientX / window.innerWidth - 0.5, ny = e.clientY / window.innerHeight - 0.5;
-      setters.forEach(function (s) { s[0](nx * s[2]); s[1](ny * s[2] * 0.25); });
-    });
-  }
-
-  /* ---------- 03 · el texto se ilumina al leer ---------- */
+  /* ---------- 03 · el texto se ilumina al leer (la foto queda fija, sin zoom) ---------- */
   $$('[data-words]').forEach(function (block) {
     var target = block.querySelector('p') || block;
     (function walk(node) {
@@ -652,8 +633,6 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     })(target);
     G.fromTo($$('.wd', block), { opacity: 0.16 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: block, start: 'top 82%', end: 'bottom 58%', scrub: true } });
   });
-  G.fromTo('.about__frame', { clipPath: 'inset(14% 18% 14% 18%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.about__photo', start: 'top 92%', end: 'center 55%', scrub: true } });
-  G.fromTo('.about__frame img', { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.about__photo', start: 'top bottom', end: 'bottom top', scrub: true } });
   G.from('.about__sign', { autoAlpha: 0, y: 24, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.about__sign', start: 'top 92%', once: true } });
 
   /* ---------- 04 · in the making: titular, la obra se abre y el collage sube ---------- */
@@ -663,19 +642,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   G.from('.mk-cap-obra', { autoAlpha: 0, y: 12, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.mk-cap-obra', start: 'top 95%', once: true } });
   G.from('.mk-collage', { y: 90, autoAlpha: 0, duration: 1.3, ease: 'power3.out', scrollTrigger: { trigger: '.mk-collage', start: 'top 88%', once: true } });
 
-  /* ---------- 05 · new chapter: la foto se descubre y «new Chapter» se escribe cuatro veces ---------- */
-  G.set('.ch-row', { clipPath: 'inset(-14% 100% -14% 0%)' });
-  G.timeline({
-    defaults: { ease: 'none' },
-    scrollTrigger: { trigger: '.chapter', start: 'top top', end: function () { return '+=' + Math.round(window.innerHeight * 1.3); }, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true }
-  })
-    .fromTo('.ch-photo', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.3, ease: 'power2.out' }, 0)
-    .fromTo('.ch-photo img', { scale: 1.14 }, { scale: 1, duration: 0.3, ease: 'power2.out' }, 0)
-    .to('.ch-r1', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.3)
-    .to('.ch-r2', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.44)
-    .to('.ch-r3', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.58)
-    .to('.ch-r4', { clipPath: 'inset(-14% 0% -14% 0%)', duration: 0.16 }, 0.72)
-    .fromTo('.ch-join', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.1 }, 0.9);
+  /* ---------- 05 · new chapter: estático, foto y las cuatro líneas a la vista ---------- */
 
   /* ---------- 06 · lista de espera ---------- */
   G.from('.join__form > *', { y: 28, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.join', start: 'top 72%', once: true } });
