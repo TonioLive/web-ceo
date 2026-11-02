@@ -7,6 +7,7 @@ Web personal de Lucía Morales (luciamorales.es): Creator, Business, Owner. Llev
 - **Web:** https://toniolive.github.io/web-ceo/
 - **Vista por dispositivos (escritorio, tablet y móvil):** https://toniolive.github.io/web-ceo/preview.html
 - **Primera propuesta (estilo anterior):** https://toniolive.github.io/web-ceo/v1/
+- **Propuesta v2 (movimiento intermedio, para comparar):** https://toniolive.github.io/web-ceo/v2/ · por dispositivos: https://toniolive.github.io/web-ceo/v2/preview.html
 
 Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no ves el cambio, recarga sin caché (Ctrl+Shift+R o Cmd+Shift+R).
 
@@ -45,6 +46,19 @@ Index (planta 0), Gallery (1), CURATEDShopping (2) y +More (3) son plantas de un
 2. **Llegada:** el indicador rojo sobre la puerta cuenta las plantas (▲/▼), se ilumina al llegar, las puertas se abren con la página nueva detrás y la cámara cruza la puerta. Al volver a la portada del Index, el ascensor ya está ahí y solo se funde.
 
 Funciona con cualquier enlace a esas cuatro páginas, también desde Hot Readers, Design Freaks y Melara Glow. El viaje se guarda en `sessionStorage` y un script en el `<head>` deja las puertas cerradas antes del primer pintado. Con `prefers-reduced-motion` se navega sin transición.
+
+## Propuesta v2
+
+Copia completa de la web en `v2/` para comparar con la actual (cada página lleva la etiqueta «Propuesta v2 · ver actual»). Misma estructura y mismo contenido; cambia solo el movimiento, con una regla común:
+
+- Nada bloquea ni marea: sin anclajes, sin zoom, nada que obligue a esperar para bajar.
+- Bienvenida: todo a la vista; cada capa (letra, foto, firma) se desplaza un poco distinto al bajar.
+- Sobre mí: los textos entran con un movimiento corto; la foto no se agranda, solo se desliza unos píxeles.
+- New chapter: sin anclaje; la foto ya está y las cuatro líneas se escriben en un segundo.
+- Gallery: título, cita y casillas entran igual que el resto; al pasar el ratón la casilla sube un poco.
+- Igual que la actual: ascensor, In the making, Join the list, Hot Readers, Design Freaks, Melara y plantas 2 y 3.
+
+Se genera con el mismo script que las páginas interiores, a partir de la versión actual (`v2/index.html` sale del `index.html` de la raíz con sus bloques de movimiento cambiados).
 
 ## Tecnología
 

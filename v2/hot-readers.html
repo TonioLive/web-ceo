@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hot Readers · Lucía Morales · v2</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Hot Readers: la lista de libros de Lucía Morales de septiembre a febrero de 2026.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="../assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/img/hot-readers.jpg" as="image">
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/lift.css">
+<script>
+/* llegada en ascensor: prepara las puertas cerradas antes del primer pintado (ver assets/lift.js) */
+(function(){try{var h=document.documentElement,s=sessionStorage,v=JSON.parse(s.getItem('lm-lift')||'null');if(!v)return;s.removeItem('lm-lift');
+if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
+h.classList.add('lx-in');if(home)h.classList.add('lx-home');
+st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
+window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
+</script>
+<style>
+/* Hot Readers: portada con la foto de la estantería y lista de libros en fondo grafito. */
+.hr-hero{position:relative;height:100vh;height:calc(var(--vh)*100);min-height:560px;overflow:hidden;background:#C2C2C0;color:var(--black)}
+.hr-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 48%;transform-origin:50% 70%}
+.hr-hero__txt{position:absolute;left:var(--gutter);right:var(--gutter);top:calc(96px + env(safe-area-inset-top,0px));color:#fff;mix-blend-mode:difference}
+.hr-hero__title{font-weight:400;font-size:min(12.6vw,calc(var(--vh)*22));line-height:.92;letter-spacing:-.012em;white-space:nowrap}
+.hr-hero__sub{margin-top:min(3.2vw,calc(var(--vh)*5));font-size:clamp(15px,2vw,30px);line-height:1.18;text-transform:uppercase}
+.hr-hero__cue{position:absolute;color:#fff;mix-blend-mode:difference;left:var(--gutter);bottom:calc(28px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;text-decoration:none}
+.hr-hero__cue span{display:inline-block;animation:bob 2.2s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.hr-list{overflow-x:clip;background:var(--night);color:var(--night-text);padding:clamp(96px,9vw,150px) var(--gutter) clamp(96px,10vw,160px)}
+.hr-list__in{max-width:1180px;margin-inline:auto}
+.hr-list__head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px clamp(40px,8vw,120px)}
+.hr-list__title{font-weight:400;font-size:clamp(44px,6.6vw,104px);line-height:.95;letter-spacing:-.01em}
+.hr-list__sub{padding-top:.6em;font-size:clamp(14px,1.6vw,22px);line-height:1.2;text-transform:uppercase}
+.books{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(48px,6vw,90px) clamp(24px,6vw,96px);margin-top:clamp(56px,6vw,96px)}
+.book{position:relative}
+.book.is-open{z-index:3}
+.book__row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:end;gap:clamp(16px,3vw,44px)}
+.book__meta{display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(13px,1.45vw,20px);line-height:1.2;text-transform:uppercase;cursor:pointer;transition:opacity .45s,transform .8s cubic-bezier(.2,.75,.2,1)}
+.book__meta i{font-style:italic}
+.book__go{display:inline-flex;align-items:center;gap:.6em;margin-top:1.1em;font-size:.68em;letter-spacing:.14em;font-weight:500;opacity:.75;transition:opacity .3s}
+.book__go::before{content:"+";display:grid;place-items:center;width:1.9em;height:1.9em;border:1px solid currentColor;border-radius:50%;letter-spacing:0;font-size:1.1em;line-height:1;transition:transform .5s cubic-bezier(.2,.75,.2,1)}
+.book__obj:hover+.book__meta .book__go,.book__meta:hover .book__go{opacity:1}
+.book__obj:hover+.book__meta .book__go::before,.book__meta:hover .book__go::before{transform:rotate(90deg)}
+/* abierto: el texto de al lado se aparta, porque ya está dentro del libro */
+.book.is-open .book__meta{opacity:0;transform:translateX(18px);pointer-events:none}
+
+/* Libro 3D: tapa (portada + guarda), tres hojas, página interior, cantos, lomo y contratapa.
+   Un toque o clic lo abre (botón invisible sobre la portada) y otro lo cierra; solo «Ver el libro» lleva al enlace.
+   Con ratón, al pasar por encima se entreabre; abierto, el ratón lo inclina. */
+.book__obj{position:relative;container-type:inline-size;perspective:1500px;perspective-origin:50% 30%}
+.book__toggle{position:absolute;inset:0;z-index:5;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.book__toggle:focus-visible{outline:2px solid var(--night-text);outline-offset:6px}
+.book.is-open .book__toggle{pointer-events:none}
+.book.is-open .book__obj{cursor:pointer}
+/* en 3D el plano del propio .bk queda delante de la página: sin eventos salvo en la página (para el enlace) */
+.bk{--t:6.5cqw;--rx:0deg;--ry:0deg;--sx:0px;--z:0px;position:relative;display:block;transform-style:preserve-3d;pointer-events:none;
+  transform:translate3d(var(--sx),0,var(--z)) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .9s cubic-bezier(.2,.75,.2,1)}
+.bk>*{position:absolute;display:block}
+.bk .bk__front{position:relative;transform-style:preserve-3d;transform-origin:0 50%;transition:transform 1.15s cubic-bezier(.2,.75,.2,1) .1s}
+.bk__front img{position:relative;width:100%;height:auto;backface-visibility:hidden}
+.bk__front::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.22),rgba(255,255,255,0) 2.2%,rgba(0,0,0,.14) 3.6%,rgba(0,0,0,0) 7%);backface-visibility:hidden;pointer-events:none}
+.bk__inside{position:absolute;inset:0;transform:rotateY(180deg);backface-visibility:hidden;
+  background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(0,0,0,0) 60%,rgba(0,0,0,.34)),var(--e)}
+.bk__inside::after{content:"";position:absolute;inset:5% 6% 5% 7%;border:1px solid rgba(255,255,255,.18)}
+.bk__page,.bk__leaf{top:1.1%;bottom:1.1%;left:0;right:1.8%;background:linear-gradient(90deg,rgba(60,40,10,.18),rgba(60,40,10,0) 9%),#F4EFE4}
+.bk .bk__page{display:flex;flex-direction:column;justify-content:space-between;gap:max(6px,3cqw);transform:translateZ(-4px);padding:9cqw 8cqw 7cqw 11cqw;color:#1A1A1A;line-height:1.25;cursor:pointer;pointer-events:auto}
+.bk__no{display:flex;justify-content:space-between;font-size:max(8px,3.4cqw);letter-spacing:.16em;text-transform:uppercase}
+.bk__info{display:flex;flex-direction:column;gap:max(3px,1.6cqw)}
+.bk__info::before{content:"";width:12cqw;height:1px;background:currentColor;margin-bottom:max(6px,3cqw)}
+.bk__t{font-style:italic;font-size:max(15px,9.4cqw);line-height:1.02;letter-spacing:-.005em}
+.bk__a,.bk__y{font-size:max(10px,4.3cqw);letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
+.bk__foot{display:flex;flex-direction:column;align-items:flex-start}
+.bk__ex{font-size:max(8px,3.4cqw);letter-spacing:.06em}
+.bk__ex i{font-style:italic}
+.bk__cta{display:inline-block;padding:max(8px,3.4cqw) 0 .3em;font-weight:500;font-size:max(10px,3.9cqw);letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .4s cubic-bezier(.2,.75,.2,1)}
+.bk__cta:hover{background-size:40% 1px}
+.bk__cta:focus-visible{outline:2px solid #1A1A1A;outline-offset:3px}
+.bk__leaf{--lz:-1px;--la:0deg;transform-origin:0 50%;transform:translateZ(var(--lz)) rotateY(var(--la));transition:transform 1s cubic-bezier(.2,.75,.2,1)}
+.bk__leaf:nth-of-type(2){--lz:-2px;background:linear-gradient(90deg,rgba(60,40,10,.2),rgba(60,40,10,0) 12%),#EFE9DC}
+.bk__leaf:nth-of-type(3){--lz:-3px}
+.bk__edge{top:1.1%;bottom:1.1%;right:1.8%;width:var(--t);transform-origin:100% 50%;transform:rotateY(-90deg);
+  background:linear-gradient(90deg,rgba(0,0,0,.12),rgba(0,0,0,0) 30%,rgba(0,0,0,.18)),repeating-linear-gradient(90deg,#F2ECDF 0 1px,#D6CDBB 1px 2px)}
+.bk__head{top:1.1%;left:0;right:1.8%;height:var(--t);transform-origin:50% 0;transform:rotateX(-90deg);background:repeating-linear-gradient(0deg,#F2ECDF 0 1px,#D9D1C0 1px 2px)}
+.bk__spine{top:0;bottom:0;left:0;width:var(--t);transform-origin:0 50%;transform:rotateY(90deg);background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(255,255,255,.12) 45%,rgba(0,0,0,.3)),var(--c)}
+.bk__back{inset:0;transform:translateZ(calc(-1 * var(--t)));background:var(--c);box-shadow:0 18px 40px -18px rgba(0,0,0,.7);transition:box-shadow .9s cubic-bezier(.2,.75,.2,1)}
+
+/* ratón por encima (cerrado): se entreabre para invitar a abrirlo */
+@media (hover:hover) and (pointer:fine){
+  .book:not(.is-open) .book__obj:hover .bk{--z:18px;--ry:-4deg}
+  .book:not(.is-open) .book__obj:hover .bk__front{transform:rotateY(-24deg);transition-delay:0s}
+  .book:not(.is-open) .book__obj:hover .bk__leaf{--la:-14deg}
+  .book:not(.is-open) .book__obj:hover .bk__leaf:nth-of-type(2){--la:-9deg}
+  .book:not(.is-open) .book__obj:hover .bk__leaf:nth-of-type(3){--la:-4deg}
+}
+/* abierto */
+.book.is-open .bk{--sx:var(--shift,46cqw);--z:40px;--ry:-7deg;--rx:3deg}
+.book.is-open .bk__front{transform:rotateY(-148deg);transition-delay:0s}
+.book.is-open .bk__leaf{--la:-140deg;transition-delay:.05s}
+.book.is-open .bk__leaf:nth-of-type(2){--la:-127deg;transition-delay:.1s}
+.book.is-open .bk__leaf:nth-of-type(3){--la:-113deg;transition-delay:.15s}
+.book.is-open .bk__back{box-shadow:30px 46px 60px -22px rgba(0,0,0,.85)}
+
+/* táctil: el libro se entreabre una vez al aparecer */
+@keyframes bkPeek{0%,100%{transform:none}38%,58%{transform:rotateY(-64deg)}}
+@keyframes bkPeekLeaf{0%,100%{transform:translateZ(var(--lz))}38%,58%{transform:translateZ(var(--lz)) rotateY(var(--pk))}}
+.book.is-peek .bk__front{animation:bkPeek 2.3s cubic-bezier(.45,0,.2,1) both}
+.book.is-peek .bk__leaf{--pk:-50deg;animation:bkPeekLeaf 2.3s cubic-bezier(.45,0,.2,1) .06s both}
+.book.is-peek .bk__leaf:nth-of-type(2){--pk:-36deg;animation-delay:.12s}
+.book.is-peek .bk__leaf:nth-of-type(3){--pk:-22deg;animation-delay:.18s}
+@media (prefers-reduced-motion:reduce){.bk,.bk>*,.bk__front,.book__meta{transition:none!important;animation:none!important}}
+.hr-back{margin-top:clamp(64px,7vw,110px)}
+@media (max-width:699px){
+  .books{grid-template-columns:minmax(0,1fr)}
+  .book__row{grid-template-columns:42% minmax(0,1fr)}
+  .hr-hero__img{object-position:38% 80%}
+}
+</style>
+<style>.v2tag{position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:8000;display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:rgba(14,14,14,.82);color:#fff;font:500 11px/1 'Google Sans',system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}.v2tag u{text-decoration:none;opacity:.7}.v2tag:hover u{opacity:1}</style>
+</head>
+<body class="pg-hot">
+<div class="lx" aria-hidden="true">
+  <div class="lx__zoom">
+    <div class="lx__wall lx__wall--l"></div><div class="lx__wall lx__wall--r"></div>
+    <div class="lx__stage">
+      <img class="lx__bg" src="../assets/img/elevator.jpg" alt="" width="885" height="1573">
+      <div class="lx__cab"><div class="lx__door lx__door--l"><img src="../assets/img/elevator.jpg" alt="" width="885" height="1573"></div><div class="lx__door lx__door--r"><img src="../assets/img/elevator.jpg" alt="" width="885" height="1573"></div></div>
+      <span class="lx__floor"></span>
+    </div>
+  </div>
+</div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hr-hero" data-theme="photo" aria-labelledby="hr-t">
+    <img class="hr-hero__img" src="../assets/img/hot-readers.jpg" alt="Seis libros apilados junto a una lámpara negra de seta sobre una cómoda blanca" width="2000" height="2193">
+    <div class="hr-hero__txt">
+      <h1 class="hr-hero__title" id="hr-t">HOT READERS</h1>
+      <p class="hr-hero__sub">Book list<br>from September<br>to February 2026</p>
+    </div>
+    <a class="hr-hero__cue" href="#lista"><span aria-hidden="true">↓</span> Ver la lista</a>
+  </section>
+  <section class="hr-list" id="lista" data-theme="dark" aria-labelledby="hl-t">
+    <div class="hr-list__in">
+      <header class="hr-list__head">
+        <h2 class="hr-list__title" id="hl-t" data-reveal>HOT READERS</h2>
+        <p class="hr-list__sub" data-reveal>Book list from September<br>to February 2026</p>
+      </header>
+      <ul class="books" data-reveal-group>
+      <li class="book" data-title="«A contraluz», de Rachel Cusk" style="--c:#E8402A;--e:#C9220E">
+        <div class="book__row">
+          <div class="book__obj">
+            <div class="bk">
+              <span class="bk__back" aria-hidden="true"></span><span class="bk__spine" aria-hidden="true"></span><span class="bk__head" aria-hidden="true"></span><span class="bk__edge" aria-hidden="true"></span>
+              <div class="bk__page" id="bk-p1" aria-hidden="true">
+                <span class="bk__no" aria-hidden="true"><span>Hot Readers</span><span>01/06</span></span>
+                <span class="bk__info"><i class="bk__t">A contraluz</i><span class="bk__a">Rachel Cusk</span><span class="bk__y">2014</span></span>
+                <span class="bk__foot"><span class="bk__ex" aria-hidden="true"><i>Ex libris</i> · Lucía Morales</span><a class="bk__cta" href="https://www.casadellibro.com/libro-a-contraluz/9788416213825/3472900" target="_blank" rel="noopener" tabindex="-1">Ver el libro ↗<span class="sr-only">: A contraluz (se abre en otra pestaña)</span></a></span>
+              </div>
+              <span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span>
+              <span class="bk__front" aria-hidden="true"><img src="../assets/img/book-contraluz.jpg" alt="" width="720" height="1105" loading="lazy"><span class="bk__inside"></span></span>
+            </div>
+            <button class="book__toggle" type="button" aria-expanded="false" aria-controls="bk-p1"><span class="sr-only">Abrir A contraluz, de Rachel Cusk, 2014</span></button>
+          </div>
+          <div class="book__meta" aria-hidden="true"><i>A CONTRALUZ</i><span>RACHEL CUSK</span><span>2014</span><span class="book__go">Abrir el libro</span></div>
+        </div>
+      </li>
+      <li class="book" data-title="«Ay, William», de Elizabeth Strout" style="--c:#E9E2CF;--e:#8E9433">
+        <div class="book__row">
+          <div class="book__obj">
+            <div class="bk">
+              <span class="bk__back" aria-hidden="true"></span><span class="bk__spine" aria-hidden="true"></span><span class="bk__head" aria-hidden="true"></span><span class="bk__edge" aria-hidden="true"></span>
+              <div class="bk__page" id="bk-p2" aria-hidden="true">
+                <span class="bk__no" aria-hidden="true"><span>Hot Readers</span><span>02/06</span></span>
+                <span class="bk__info"><i class="bk__t">Ay, William</i><span class="bk__a">Elizabeth Strout</span><span class="bk__y">2022</span></span>
+                <span class="bk__foot"><span class="bk__ex" aria-hidden="true"><i>Ex libris</i> · Lucía Morales</span><a class="bk__cta" href="https://www.amazon.es/Ay-William-Best-Seller-Ficci%C3%B3n/dp/8466364137" target="_blank" rel="noopener" tabindex="-1">Ver el libro ↗<span class="sr-only">: Ay, William (se abre en otra pestaña)</span></a></span>
+              </div>
+              <span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span>
+              <span class="bk__front" aria-hidden="true"><img src="../assets/img/book-william.jpg" alt="" width="720" height="1126" loading="lazy"><span class="bk__inside"></span></span>
+            </div>
+            <button class="book__toggle" type="button" aria-expanded="false" aria-controls="bk-p2"><span class="sr-only">Abrir Ay, William, de Elizabeth Strout, 2022</span></button>
+          </div>
+          <div class="book__meta" aria-hidden="true"><i>AY, WILLIAM</i><span>ELIZABETH STROUT</span><span>2022</span><span class="book__go">Abrir el libro</span></div>
+        </div>
+      </li>
+      <li class="book" data-title="«La vegetariana», de Han Kang" style="--c:#F2EFEC;--e:#8E3734">
+        <div class="book__row">
+          <div class="book__obj">
+            <div class="bk">
+              <span class="bk__back" aria-hidden="true"></span><span class="bk__spine" aria-hidden="true"></span><span class="bk__head" aria-hidden="true"></span><span class="bk__edge" aria-hidden="true"></span>
+              <div class="bk__page" id="bk-p3" aria-hidden="true">
+                <span class="bk__no" aria-hidden="true"><span>Hot Readers</span><span>03/06</span></span>
+                <span class="bk__info"><i class="bk__t">La vegetariana</i><span class="bk__a">Han Kang</span><span class="bk__y">2007</span></span>
+                <span class="bk__foot"><span class="bk__ex" aria-hidden="true"><i>Ex libris</i> · Lucía Morales</span><a class="bk__cta" href="https://www.amazon.es/vegetariana-Random-House-Han-Kang/dp/8439743890" target="_blank" rel="noopener" tabindex="-1">Ver el libro ↗<span class="sr-only">: La vegetariana (se abre en otra pestaña)</span></a></span>
+              </div>
+              <span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span>
+              <span class="bk__front" aria-hidden="true"><img src="../assets/img/book-vegetariana.jpg" alt="" width="720" height="1081" loading="lazy"><span class="bk__inside"></span></span>
+            </div>
+            <button class="book__toggle" type="button" aria-expanded="false" aria-controls="bk-p3"><span class="sr-only">Abrir La vegetariana, de Han Kang, 2007</span></button>
+          </div>
+          <div class="book__meta" aria-hidden="true"><i>LA VEGETARIANA</i><span>HAN KANG</span><span>2007</span><span class="book__go">Abrir el libro</span></div>
+        </div>
+      </li>
+      <li class="book" data-title="«Intermezzo», de Sally Rooney" style="--c:#0B3AC2;--e:#0B3AC2">
+        <div class="book__row">
+          <div class="book__obj">
+            <div class="bk">
+              <span class="bk__back" aria-hidden="true"></span><span class="bk__spine" aria-hidden="true"></span><span class="bk__head" aria-hidden="true"></span><span class="bk__edge" aria-hidden="true"></span>
+              <div class="bk__page" id="bk-p4" aria-hidden="true">
+                <span class="bk__no" aria-hidden="true"><span>Hot Readers</span><span>04/06</span></span>
+                <span class="bk__info"><i class="bk__t">Intermezzo</i><span class="bk__a">Sally Rooney</span><span class="bk__y">2024</span></span>
+                <span class="bk__foot"><span class="bk__ex" aria-hidden="true"><i>Ex libris</i> · Lucía Morales</span><a class="bk__cta" href="https://www.fnac.es/a12027205/Sally-Rooney-Intermezzo" target="_blank" rel="noopener" tabindex="-1">Ver el libro ↗<span class="sr-only">: Intermezzo (se abre en otra pestaña)</span></a></span>
+              </div>
+              <span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span>
+              <span class="bk__front" aria-hidden="true"><img src="../assets/img/book-intermezzo.jpg" alt="" width="720" height="1107" loading="lazy"><span class="bk__inside"></span></span>
+            </div>
+            <button class="book__toggle" type="button" aria-expanded="false" aria-controls="bk-p4"><span class="sr-only">Abrir Intermezzo, de Sally Rooney, 2024</span></button>
+          </div>
+          <div class="book__meta" aria-hidden="true"><i>INTERMEZZO</i><span>SALLY ROONEY</span><span>2024</span><span class="book__go">Abrir el libro</span></div>
+        </div>
+      </li>
+      <li class="book" data-title="«La joven de Teherán», de Marjan Kamali" style="--c:#0D3351;--e:#095388">
+        <div class="book__row">
+          <div class="book__obj">
+            <div class="bk">
+              <span class="bk__back" aria-hidden="true"></span><span class="bk__spine" aria-hidden="true"></span><span class="bk__head" aria-hidden="true"></span><span class="bk__edge" aria-hidden="true"></span>
+              <div class="bk__page" id="bk-p5" aria-hidden="true">
+                <span class="bk__no" aria-hidden="true"><span>Hot Readers</span><span>05/06</span></span>
+                <span class="bk__info"><i class="bk__t">La joven de Teherán</i><span class="bk__a">Marjan Kamali</span><span class="bk__y">2019</span></span>
+                <span class="bk__foot"><span class="bk__ex" aria-hidden="true"><i>Ex libris</i> · Lucía Morales</span><a class="bk__cta" href="https://www.casadellibro.com/libro-la-joven-de-teheran/9788410080010/15983112" target="_blank" rel="noopener" tabindex="-1">Ver el libro ↗<span class="sr-only">: La joven de Teherán (se abre en otra pestaña)</span></a></span>
+              </div>
+              <span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span>
+              <span class="bk__front" aria-hidden="true"><img src="../assets/img/book-teheran.jpg" alt="" width="720" height="1095" loading="lazy"><span class="bk__inside"></span></span>
+            </div>
+            <button class="book__toggle" type="button" aria-expanded="false" aria-controls="bk-p5"><span class="sr-only">Abrir La joven de Teherán, de Marjan Kamali, 2019</span></button>
+          </div>
+          <div class="book__meta" aria-hidden="true"><i>LA JOVEN DE TEHERÁN</i><span>MARJAN KAMALI</span><span>2019</span><span class="book__go">Abrir el libro</span></div>
+        </div>
+      </li>
+      <li class="book" data-title="«Con tu mirada», de Almudena Navarro Cuartero" style="--c:#C8B7A2;--e:#8A715A">
+        <div class="book__row">
+          <div class="book__obj">
+            <div class="bk">
+              <span class="bk__back" aria-hidden="true"></span><span class="bk__spine" aria-hidden="true"></span><span class="bk__head" aria-hidden="true"></span><span class="bk__edge" aria-hidden="true"></span>
+              <div class="bk__page" id="bk-p6" aria-hidden="true">
+                <span class="bk__no" aria-hidden="true"><span>Hot Readers</span><span>06/06</span></span>
+                <span class="bk__info"><i class="bk__t">Ensayo. Con tu mirada</i><span class="bk__a">Almudena Navarro Cuartero</span><span class="bk__y">2025</span></span>
+                <span class="bk__foot"><span class="bk__ex" aria-hidden="true"><i>Ex libris</i> · Lucía Morales</span><a class="bk__cta" href="melara-glow.html" tabindex="-1">Ver Melara →<span class="sr-only">: Con tu mirada</span></a></span>
+              </div>
+              <span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span><span class="bk__leaf" aria-hidden="true"></span>
+              <span class="bk__front" aria-hidden="true"><img src="../assets/img/book-mirada.jpg" alt="" width="720" height="1092" loading="lazy"><span class="bk__inside"></span></span>
+            </div>
+            <button class="book__toggle" type="button" aria-expanded="false" aria-controls="bk-p6"><span class="sr-only">Abrir Ensayo. Con tu mirada, de Almudena Navarro Cuartero, 2025</span></button>
+          </div>
+          <div class="book__meta" aria-hidden="true"><i>ENSAYO. CON TU MIRADA</i><span>ALMUDENA NAVARRO CUARTERO</span><span>2025</span><span class="book__go">Abrir el libro</span></div>
+        </div>
+      </li>
+      </ul>
+      <a class="back hr-back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/lift.js"></script>
+<script>
+(function () {
+  var LM = window.LM; if (!LM) return;
+  var G = LM.G, motion = LM.motion, d = document;
+  if (motion) {
+    G.timeline({ delay: 0.1 })
+      .from('.hr-hero__img', { scale: 1.12, duration: 1.8, ease: 'power3.out' }, 0)
+      .from('.hr-hero__title', { yPercent: 40, autoAlpha: 0, duration: 1.3, ease: 'power4.out' }, 0.2)
+      .from('.hr-hero__sub', { y: 20, autoAlpha: 0, duration: 1, ease: 'power3.out' }, 0.55)
+      .from('.hr-hero__cue', { autoAlpha: 0, duration: 0.8 }, 0.9);
+    G.to('.hr-hero__img', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hr-hero', start: 'top top', end: 'bottom top', scrub: true } });
+    G.to('.hr-hero__txt', { yPercent: -40, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: '.hr-hero', start: 'top top', end: 'bottom top', scrub: true } });
+  }
+
+  /* ---- libros: un toque abre, otro cierra; solo «Ver el libro» navega ---- */
+  var books = LM.$$('.book');
+  function setOpen(li, open, byKey) {
+    if (open === li.classList.contains('is-open')) return;
+    var btn = li.querySelector('.book__toggle'), page = li.querySelector('.bk__page'), cta = li.querySelector('.bk__cta');
+    if (open) books.forEach(function (o) { if (o !== li) setOpen(o, false); });
+    li.classList.toggle('is-open', open); li.classList.remove('is-peek');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.querySelector('.sr-only').textContent = (open ? 'Cerrar ' : 'Abrir ') + li.getAttribute('data-title');
+    page.setAttribute('aria-hidden', open ? 'false' : 'true');
+    cta.tabIndex = open ? 0 : -1;
+    if (open && byKey) setTimeout(function () { cta.focus({ preventScroll: true }); }, motion ? 650 : 0);
+    if (!open) { var bk = li.querySelector('.bk'); bk.style.removeProperty('--ry'); bk.style.removeProperty('--rx'); }
+  }
+  /* abierto, el libro se centra en su fila sin salirse de la pantalla */
+  function shifts() {
+    var vw = d.documentElement.clientWidth;
+    books.forEach(function (li) {
+      var cv = li.querySelector('.book__obj').getBoundingClientRect(), row = li.querySelector('.book__row').getBoundingClientRect(), w = cv.width;
+      var want = row.left + row.width / 2 - cv.left, min = w * 1.02 - (cv.left - 12), max = vw - 12 - cv.left - w * 1.04;
+      li.style.setProperty('--shift', Math.max(0, Math.min(Math.max(want, min), Math.max(min, max))).toFixed(0) + 'px');
+    });
+  }
+  shifts(); window.addEventListener('resize', shifts); window.addEventListener('load', shifts);
+
+  books.forEach(function (li, i) {
+    var btn = li.querySelector('.book__toggle'), obj = li.querySelector('.book__obj'), bk = li.querySelector('.bk');
+    btn.addEventListener('click', function (ev) { setOpen(li, !li.classList.contains('is-open'), ev.detail === 0); });
+    li.querySelector('.book__meta').addEventListener('click', function () { setOpen(li, true); });
+    li.addEventListener('click', function (ev) {
+      if (li.classList.contains('is-open') && !btn.contains(ev.target) && !ev.target.closest('.bk__cta, .book__meta')) setOpen(li, false);
+    });
+    if (!motion) return;
+    if (LM.fine) {
+      obj.addEventListener('pointermove', function (ev) {
+        if (ev.pointerType !== 'mouse') return;
+        var r = obj.getBoundingClientRect(), open = li.classList.contains('is-open');
+        var x = Math.max(-0.6, Math.min(1.6, (ev.clientX - r.left) / r.width)) - 0.5;
+        var y = Math.max(0, Math.min(1, (ev.clientY - r.top) / r.height)) - 0.5;
+        bk.style.setProperty('--ry', ((open ? -7 : -4) + x * (open ? 14 : 10)).toFixed(2) + 'deg');
+        bk.style.setProperty('--rx', ((open ? 3 : 0) - y * 8).toFixed(2) + 'deg');
+      });
+      obj.addEventListener('pointerleave', function () { bk.style.removeProperty('--ry'); bk.style.removeProperty('--rx'); });
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (en) {
+        if (!en[0].isIntersecting) return;
+        io.disconnect();
+        setTimeout(function () { if (!li.classList.contains('is-open')) li.classList.add('is-peek'); }, 500 + (i % 2) * 160);
+      }, { threshold: 0.75 });
+      io.observe(obj);
+    }
+  });
+  /* fuera del libro o con Escape, se cierra */
+  d.addEventListener('click', function (ev) { if (!ev.target.closest('.book')) books.forEach(function (li) { setOpen(li, false); }); });
+  d.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape') return;
+    var o = LM.$('.book.is-open'); if (!o) return;
+    setOpen(o, false); o.querySelector('.book__toggle').focus({ preventScroll: true });
+  });
+})();
+</script>
+<a class="v2tag" href="../hot-readers.html" aria-label="Estás viendo la propuesta v2. Ver la versión actual">Propuesta v2 <u>· ver actual</u></a>
+</body>
+</html>
