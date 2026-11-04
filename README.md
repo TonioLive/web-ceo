@@ -21,6 +21,8 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 | 04 · In the making | Foto de la obra de las nuevas oficinas, cita de L.M y collage «MG days» y «MG design process». |
 | 05 · New chapter | Foto en la escalera con «new Chapter» cuatro veces, estática. «Join the list» lleva al formulario. |
 | 06 · Lista de espera | «Introduce tu mail» y, al enviarlo, «Gracias, ya estás en la lista». |
+| 07 · Gallery | Las seis casillas en orden (01 Hot Readers y 03 Design Freaks enlazadas), estáticas, en el mismo scroll. |
+| 08 · Plantas 2 y 3 | CURATEDShopping y +More, en obras, con las cintas amarillas. Después, el pie. |
 
 ## Páginas
 
@@ -30,7 +32,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 | `gallery.html` | Gallery: cita de L.M y seis casillas (01 Hot Readers, 03 Design Freaks; el resto, próximamente). Estática |
 | `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda. Cada portada es un libro 3D: un toque o clic lo abre (tapa y hojas en abanico) y dentro aparecen título, autor, año y «Ver el libro», que es lo único que lleva a la tienda; otro toque o Escape lo cierra. Con ratón se entreabre al pasar por encima; en móvil se entreabre una vez al aparecer |
 | `design-freaks.html` | Diseñadores y arquitectos, con enlaces a cada artículo |
-| `melara-glow.html` | Web de Melara Glow en construcción. Al arrancar (arrastrar o pulsar) las dos cintas amarillas aparece una invitación privada numerada al lanzamiento (sin descuentos). Enlazada desde «Con tu mirada» y desde Design Freaks |
+| `melara-glow.html` | Web de Melara Glow en construcción. Estática: título y cintas amarillas, sin juego de momento (la versión con las cintas que se arrancan está en el commit 4ecb451). Enlazada desde «Con tu mirada» y desde Design Freaks |
 | `curated-shopping.html`, `more.html` | Plantas 2 y 3 en obras: título, «Muy pronto» y las cintas amarillas |
 | `assets/site.css`, `assets/site.js` | Barra, menú de puertas, pie y animaciones comunes de las páginas interiores |
 | `assets/lift.css`, `assets/lift.js` | Transición de ascensor entre plantas (ver abajo) |
@@ -69,7 +71,8 @@ Se genera con el mismo script que las páginas interiores, a partir de la versi�
 ## Pendiente
 
 - [ ] Conectar el formulario de la lista de espera a la herramienta de email (Shopify, Klaviyo, Brevo…). Ahora solo muestra «Gracias» y no guarda el email.
-- [ ] Invitación de Melara Glow: el número (Nº 0001–0999) es decorativo, uno por navegador. Al conectar la lista de espera se puede usar el número real de alta y definir qué da la invitación (acceso anticipado, evento…).
+- [ ] Melara Glow: cuando se decida, recuperar las cintas que se arrancan (commit 4ecb451) con la idea que elijan; ahora la página es estática.
+- [ ] «Con tu mirada»: cuando exista la web de Melara, cambiar el enlace de «Ver el libro» de `melara-glow.html` a la web real.
 - [ ] Vídeo del interior del ascensor y sonido (los envía Lucía).
 - [ ] Nuevo texto de «Lo que va a venir» en Sobre mí (lo reenvía Lucía).
 - [ ] Confirmar el año de «La vegetariana»: el diseño pone 2024 y el correo 2007 (se ha puesto 2007, el de la edición original).

@@ -54,6 +54,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 .bar[data-theme="blue"]{--bar-fg:var(--red);--bar-bg:rgba(153,188,244,.82)}
 .bar[data-theme="making"]{--bar-fg:var(--ink-black);--bar-bg:rgba(153,188,244,.82)}
 .bar[data-theme="cream"]{--bar-fg:var(--ink-black);--bar-bg:rgba(247,245,232,.86)}
+.bar[data-theme="light"]{--bar-fg:var(--ink-black);--bar-bg:rgba(255,255,255,.84)}
 .bar__name{font-weight:500;font-size:17px;text-decoration:none;padding:10px 0;white-space:nowrap}
 .bar__nav{display:flex;gap:28px;font-size:15px;font-weight:500}
 .bar__nav a{position:relative;text-decoration:none;padding:12px 0}
@@ -82,10 +83,8 @@ i.cur{font-style:italic}
 .lift__door--l img{left:-29.878%;width:269.817%}
 .lift__door--r img{left:-121.368%;width:252.137%}
 .lift__call{position:absolute;z-index:2;left:5.65%;top:48.06%;width:3.6%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%}
-.lift__call::before{content:"";position:absolute;inset:-30%;border-radius:50%;box-shadow:0 0 0 1px rgba(150,190,255,.85),0 0 12px 3px rgba(90,150,255,.55);animation:call 2.4s var(--ease-out) infinite}
 .lift__call::after{content:"Abrir";position:absolute;left:calc(100% + 14px);top:50%;transform:translate(-6px,-50%);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:#fff;white-space:nowrap;opacity:0;transition:opacity .3s,transform .4s var(--ease-out)}
 .lift__call:hover::after,.lift__call:focus-visible::after{opacity:1;transform:translate(0,-50%)}
-@keyframes call{0%{transform:scale(.8);opacity:1}70%,100%{transform:scale(1.7);opacity:0}}
 .lift__menu{position:absolute;z-index:3;top:calc(var(--vh)*39.4);right:max(6vw,calc(50vw - var(--vh)*22.39));display:flex;flex-direction:column;align-items:flex-end;font-size:min(calc(var(--vh)*5.8),8.4vw);line-height:1.1;font-weight:500;letter-spacing:-.012em;color:#fff}
 .lift__menu a{position:relative;display:inline-block;text-decoration:none;text-shadow:0 .04em .45em rgba(0,0,0,.2);transition:transform .5s var(--ease-out)}
 .lift__menu a::before,.sheet__links a::before{content:attr(data-floor);position:absolute;right:calc(100% + .35em);top:50%;display:grid;place-items:center;width:1.5em;height:1.5em;font-size:.4em;font-style:normal;letter-spacing:0;border:1px solid currentColor;border-radius:50%;opacity:0;transform:translateY(-50%) scale(.6);transition:opacity .3s,transform .45s var(--ease-out)}
@@ -119,7 +118,7 @@ i.cur{font-style:italic}
 .fine .wl-note:hover img{transform:rotate(-1.2deg) scale(1.025);filter:drop-shadow(0 18px 24px rgba(0,0,0,.14))}
 
 /* ---------- 03 · sobre mí ---------- */
-.about{position:relative;background:var(--blue);color:var(--red);padding-block:clamp(96px,10vw,170px) clamp(80px,9vw,150px)}
+.about{position:relative;background:var(--blue);color:var(--red);padding-block:clamp(64px,6.5vw,110px) clamp(28px,3vw,48px)}
 .about__inner{max-width:1320px;margin-inline:auto;padding-inline:var(--gutter);text-transform:uppercase;font-size:clamp(24px,2.45vw,38px);line-height:1.22;letter-spacing:.004em}
 .about__me,.about__quote p{text-align:justify;text-justify:inter-word;hyphens:manual}
 .about__me .k{font-weight:500}
@@ -132,8 +131,9 @@ i.cur{font-style:italic}
 .wd{transition:opacity .2s linear}
 
 /* ---------- 04 · in the making (diseño 03, medidas sobre 3200×4347) ---------- */
-.making{position:relative;background:var(--blue);color:var(--ink-black);padding:clamp(24px,4vw,64px) var(--gutter) clamp(80px,8vw,140px)}
-.mk-board{position:relative;max-width:1320px;margin-inline:auto;aspect-ratio:3200/4347;container-type:inline-size}
+.making{position:relative;background:var(--blue);color:var(--ink-black);padding:clamp(24px,4vw,64px) var(--gutter) clamp(28px,3vw,48px)}
+/* el diseño deja un hueco vacío bajo «MG design process»: se recorta para que el azul acabe justo después */
+.mk-board{position:relative;max-width:1320px;margin-inline:auto;aspect-ratio:3200/4347;container-type:inline-size;margin-bottom:calc(min(100%,1320px) * -.045)}
 .mk{position:absolute;left:var(--l);top:var(--t);width:var(--w,auto)}
 .trim{text-box:trim-both cap alphabetic}
 .mk-title{--l:2.66%;--t:1.98%;font-weight:400;font-size:13.53cqw;line-height:1;letter-spacing:-.028em;white-space:nowrap}
@@ -152,7 +152,7 @@ i.cur{font-style:italic}
 .mk-cap-design{position:absolute;left:27.69%;top:87.75%}
 
 /* ---------- 05 · new chapter (diseño 04, medidas sobre 3200×3700) ---------- */
-.chapter{position:relative;background:var(--cream);color:var(--ink-black);display:grid;place-items:center;min-height:100vh;min-height:calc(var(--vh)*100);padding:calc(72px + env(safe-area-inset-top,0px)) var(--gutter) 40px}
+.chapter{position:relative;background:var(--cream);color:var(--ink-black);display:grid;justify-items:center;padding:clamp(56px,5.5vw,76px) var(--gutter) clamp(28px,3vw,44px)}
 .ch-board{position:relative;width:min(100%,calc((var(--vh)*100 - 128px) * .8649),1040px);aspect-ratio:3200/3700;container-type:inline-size}
 .ch-photo{position:absolute;left:2.75%;top:2.351%;width:57.78%}
 .ch-photo img{display:block;width:100%;height:auto}
@@ -168,7 +168,7 @@ i.cur{font-style:italic}
 .ch-join:hover svg{transform:translateX(.25em)}
 
 /* ---------- 06 · lista de espera (diseños 05 y 06) ---------- */
-.join{position:relative;background:var(--cream);color:var(--ink-black);min-height:min(62vw,calc(var(--vh)*100));min-height:max(min(62vw,calc(var(--vh)*100)),520px);display:grid;align-items:center;padding:clamp(72px,8vw,120px) var(--gutter)}
+.join{position:relative;background:var(--cream);color:var(--ink-black);display:grid;align-items:center;padding:clamp(20px,2.5vw,40px) var(--gutter) clamp(64px,7vw,110px)}
 .join__form{margin-left:calc(31.9vw - var(--gutter));width:min(64.8vw,calc(68.1vw - var(--gutter)));display:flex;flex-direction:column}
 .join__quote{margin:0 0 0 1.2vw;font-style:italic;font-size:clamp(20px,3.3vw,46px);line-height:1.22;text-transform:uppercase}
 .join__label{margin-top:clamp(28px,4.2vw,60px);font-size:clamp(18px,2.9vw,40px);line-height:1;text-transform:uppercase}
@@ -184,6 +184,59 @@ i.cur{font-style:italic}
 .join__done{text-align:center;font-size:clamp(18px,2.9vw,40px);line-height:1.22;text-transform:uppercase}
 .join__done:focus{outline:0}
 
+/* ---------- 07 · Gallery, CURATEDShopping y +More dentro del Index (generado por build_pages.py) ---------- */
+/* Gallery: hoja blanca de catálogo, casillas con borde negro como en el diseño. */
+.gal{padding:calc(120px + env(safe-area-inset-top,0px)) var(--gutter) clamp(96px,10vw,160px)}
+.gal__in{max-width:1180px;margin-inline:auto}
+.gal__title{text-align:center;font-weight:400;font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:.005em}
+.gal__quote{margin:clamp(36px,4.4vw,64px) auto 0;max-width:880px;font-style:italic;font-size:clamp(17px,1.9vw,28px);line-height:1.32;color:var(--grey);text-transform:uppercase}
+.gal__quote p{text-align:justify;text-justify:inter-word}
+.gal__quote footer{margin-top:.1em}
+.gal__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,6vw,72px) clamp(28px,8vw,110px);margin:clamp(56px,6vw,96px) auto 0;max-width:880px;counter-reset:n}
+@media (min-width:1024px){.gal__grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1180px;column-gap:clamp(40px,4.6vw,72px)}}
+.gal__item{display:flex;flex-direction:column;gap:10px;min-width:0}
+.gal__num{font-size:clamp(14px,1.3vw,18px);line-height:1}
+.card{position:relative;display:block;aspect-ratio:258/297;border:2px solid var(--line);overflow:hidden;container-type:inline-size;background:var(--white);text-decoration:none;color:var(--black);transition:box-shadow .6s var(--ease-out)}
+a.card:hover,a.card:focus-visible{box-shadow:0 26px 50px -24px rgba(0,0,0,.45)}
+.card__go{position:absolute;right:4cqi;bottom:3.6cqi;display:grid;place-items:center;width:13cqi;height:13cqi;border-radius:50%;background:var(--black);color:var(--white);font-size:6cqi;opacity:0;transform:scale(.6) rotate(-45deg);transition:opacity .35s,transform .6s var(--ease-out)}
+a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
+/* 01 · Hot Readers */
+.card--hot{background:#C2C2C0}
+.card--hot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 88%}
+.card--hot .card__title{position:absolute;left:4cqi;top:7.2cqi;font-size:12.6cqi;line-height:1;font-weight:400;letter-spacing:-.005em;white-space:nowrap}
+.card--hot .card__sub{position:absolute;left:4.4cqi;top:25cqi;font-size:3.2cqi;line-height:1.18;text-transform:uppercase}
+/* 03 · Design Freaks */
+.card--df{display:flex;flex-direction:column;align-items:center;padding-top:6.4%;text-align:center}
+.card--df .card__title{font-size:11.8cqi;line-height:1;font-weight:400;white-space:nowrap;letter-spacing:-.005em}
+.card--df .card__sub{margin-top:5.6cqi;font-size:4.6cqi;line-height:1.12;text-transform:uppercase}
+.card--df figure{width:58.6%;margin-top:6cqi;overflow:hidden}
+.card--df figure img{width:100%;aspect-ratio:1334/889;object-fit:cover}
+.card--df figcaption{margin-top:1.6cqi;font-size:2.4cqi;text-align:left}
+/* vacías */
+.card--empty{display:grid;place-items:end start;padding:5%}
+.card__soon{font-size:4.4cqi;letter-spacing:.12em;text-transform:uppercase;color:#8A8A8A;opacity:0;transform:translateY(6px);transition:opacity .45s,transform .6s var(--ease-out)}
+.gal__item:hover .card__soon{opacity:1;transform:none}
+@media (max-width:559px){.gal__grid{gap:36px 18px}}
+.gal__box{position:relative}
+.ix{--line:#0E0E0E;--grey:#3B3B3B;--black:#0E0E0E;--white:#FFFFFF}
+.ix img{height:auto}
+.ix ol{padding:0;list-style:none}
+.gal.ix{background:#fff;color:#0E0E0E;padding:clamp(64px,7vw,110px) var(--gutter) clamp(56px,6vw,96px)}
+.floors{position:relative;overflow:hidden;background:#fff;color:#0E0E0E;padding-top:clamp(48px,5vw,80px);border-top:1px solid rgba(14,14,14,.1)}
+.floors__in{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px clamp(32px,6vw,96px);max-width:1180px;margin-inline:auto;padding-inline:var(--gutter)}
+.floor__n{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.floor__n b{display:grid;place-items:center;width:34px;height:34px;border:1px solid currentColor;border-radius:50%;font-size:15px;letter-spacing:0;font-weight:500}
+.floor__t{margin-top:18px;font-weight:600;font-size:clamp(40px,5.6vw,92px);line-height:.9;letter-spacing:-.012em;text-transform:uppercase}
+.floor__t .cur{font-style:italic}
+.floor__lead{margin-top:18px;font-size:clamp(16px,1.4vw,20px);line-height:1.4}
+.floor__soon{margin-top:6px;font-size:clamp(16px,1.4vw,20px);font-weight:500}
+.floors__tapes{position:relative;z-index:1;width:100%;aspect-ratio:2400/1221;margin-top:calc(-1 * min(3vw,48px));pointer-events:none}
+.floors__tapes img{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+@media (max-width:699px){
+  .floors__in{grid-template-columns:minmax(0,1fr);gap:40px}
+  .floors__tapes{width:160%;margin-left:-23.6%;margin-top:0}
+}
+/* /07 */
 /* ---------- pie ---------- */
 .foot{position:relative;color:#fff;background:linear-gradient(180deg,rgba(14,15,16,.72),rgba(14,15,16,.92)),url(assets/img/wall-l.png) 0 0/100% 100% no-repeat,var(--steel-900);padding:clamp(72px,8vw,120px) var(--gutter) calc(28px + env(safe-area-inset-bottom,0px))}
 .foot__inner{max-width:1320px;margin-inline:auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,72px)}
@@ -238,7 +291,7 @@ i.cur{font-style:italic}
   .about__inner{font-size:24px;line-height:1.24}
   .about__me,.about__quote p{text-align:left}
   .about__photo{width:78%}
-  .mk-board{aspect-ratio:auto}
+  .mk-board{aspect-ratio:auto;margin-bottom:0}
   .mk{position:static}
   .mk-obra{width:86%;margin:28px 0 0 7%}
   .mk-cap-obra{display:block;margin:10px 0 0 7%}
@@ -412,6 +465,73 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       <p>Ya estás en la lista, te mantendremos informado</p>
     </div>
   </section>
+  <!-- 07 · Gallery, CURATEDShopping y +More (generado por build_pages.py) -->
+  <section class="gal ix" id="gallery" data-theme="light" aria-labelledby="gal-t">
+    <div class="gal__in">
+      <h2 class="gal__title" id="gal-t">GALLERY</h2>
+      <blockquote class="gal__quote">
+        <p>“Observar la belleza, apreciar el arte, habitar los espacios, sentir la literatura, cultivar tu mejor versión, en definitiva, saber vivir.”</p>
+        <footer>L.M</footer>
+      </blockquote>
+      <ol class="gal__grid">
+        <li class="gal__item">
+          <span class="gal__num" aria-hidden="true"><span>01.</span></span>
+          <div class="gal__box"><a class="card card--hot" href="hot-readers.html" aria-label="01. Hot Readers: book list from September to February 2026">
+            <img src="assets/img/hot-readers.jpg" alt="" width="2000" height="2193" loading="lazy">
+            <span class="card__title" aria-hidden="true">HOT READERS</span>
+            <span class="card__sub" aria-hidden="true">BOOK LIST<br>FROM SEPTEMBER<br>TO FEBRUARY 2026</span>
+            <span class="card__go" aria-hidden="true">→</span>
+          </a></div>
+        </li>
+        <li class="gal__item">
+          <span class="gal__num" aria-hidden="true"><span>02.</span></span>
+          <div class="gal__box"><div class="card card--empty"><span class="sr-only">02. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        </li>
+        <li class="gal__item">
+          <span class="gal__num" aria-hidden="true"><span>03.</span></span>
+          <div class="gal__box"><a class="card card--df" href="design-freaks.html" aria-label="03. Design Freaks: diseñadores y arquitectos que transforman los espacios">
+            <span class="card__title" aria-hidden="true">DESIGN FREAKS</span>
+            <span class="card__sub" aria-hidden="true">Diseñadores y arquitectos que<br>transforman los espacios,<br>mejoran nuestras vidas y hacen<br>de lo cotidiano algo<br>extraordinario</span>
+            <figure aria-hidden="true"><img src="assets/img/chair-kwangholee.jpg" alt="" width="1600" height="1066" loading="lazy"><figcaption>KWANGHOLEE</figcaption></figure>
+            <span class="card__go" aria-hidden="true">→</span>
+          </a></div>
+        </li>
+        <li class="gal__item">
+          <span class="gal__num" aria-hidden="true"><span>04.</span></span>
+          <div class="gal__box"><div class="card card--empty"><span class="sr-only">04. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        </li>
+        <li class="gal__item">
+          <span class="gal__num" aria-hidden="true"><span>05.</span></span>
+          <div class="gal__box"><div class="card card--empty"><span class="sr-only">05. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        </li>
+        <li class="gal__item">
+          <span class="gal__num" aria-hidden="true"><span>06.</span></span>
+          <div class="gal__box"><div class="card card--empty"><span class="sr-only">06. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="floors ix" id="plantas" data-theme="light" aria-label="CURATEDShopping y +More">
+    <div class="floors__in">
+      <article class="floor">
+        <p class="floor__n"><b>2</b> Planta 2 · En obras</p>
+        <h2 class="floor__t"><i class="cur">CURATED</i><br>Shopping</h2>
+        <p class="floor__lead">Lo que uso y recomiendo, elegido a mano.</p>
+        <p class="floor__soon">Muy pronto.</p>
+      </article>
+      <article class="floor">
+        <p class="floor__n"><b>3</b> Planta 3 · En obras</p>
+        <h2 class="floor__t">+More</h2>
+        <p class="floor__lead">Todos mis canales en un sitio.</p>
+        <p class="floor__soon">Muy pronto.</p>
+      </article>
+    </div>
+    <div class="floors__tapes" aria-hidden="true">
+      <img src="assets/img/melara-tape-a.webp" alt="" width="2400" height="1221" loading="lazy">
+      <img src="assets/img/melara-tape-d.webp" alt="" width="2400" height="1221" loading="lazy">
+    </div>
+  </section>
+  <!-- /07 -->
 </main>
 
 <footer class="foot" data-theme="steel">

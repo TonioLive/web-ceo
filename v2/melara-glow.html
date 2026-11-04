@@ -35,6 +35,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
 .mg__title span i{display:block;font-style:normal}
 .mg__back{position:absolute;z-index:6;right:var(--gutter);top:calc(84px + env(safe-area-inset-top,0px))}
 .mg__stage{position:relative;z-index:3;width:100%;aspect-ratio:2400/1221;margin-top:calc(-1 * min(9vw,150px))}
+.mg__tape{position:absolute;inset:0;width:100%;height:100%;max-width:none}
 /* cintas: cada una es un botón recortado con la forma de la cinta, para que solo se agarre la cinta */
 .tape{position:absolute;inset:0;padding:0;border:0;background:none;cursor:grab;touch-action:pan-y;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
 .tape.is-drag{cursor:grabbing}
@@ -113,21 +114,9 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     <h1 class="mg__title" aria-label="Melara Glow: website under construction"><span><i>MELARA GLOW</i></span><span><i>WEBSITE</i></span><span><i>UNDER</i></span><span><i>CONSTRUCTION</i></span></h1>
   </div>
   <a class="back mg__back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
-  <div class="mg__stage">
-    <p class="sr-only" id="mg-help">Debajo de las cintas hay una sorpresa. Arranca las dos cintas para descubrirla: arrástralas o pulsa sobre ellas.</p>
-    <div class="prize" id="prize" aria-hidden="true">
-      <p class="prize__k">Acceso privado</p>
-      <p class="prize__code" id="prize-code">Nº 0000</p>
-      <p class="prize__desc">Tu invitación personal al lanzamiento privado de Melara Glow: entrarás antes que nadie.</p>
-      <div class="prize__actions">
-        <a class="prize__btn prize__btn--yel" href="index.html#lista" tabindex="-1">Reservar mi acceso →</a>
-      </div>
-      <button class="prize__again" type="button" tabindex="-1">Volver a pegar las cintas</button>
-    </div>
-    <button class="tape tape--a" type="button" aria-describedby="mg-help" aria-label="Arrancar la cinta que sube"><img src="../assets/img/melara-tape-a.webp" alt="" width="2400" height="1221"></button>
-    <button class="tape tape--d" type="button" aria-describedby="mg-help" aria-label="Arrancar la cinta que baja"><img src="../assets/img/melara-tape-d.webp" alt="" width="2400" height="1221"></button>
-    <p class="mg__hint" aria-hidden="true">Tira de las cintas <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13L13 3M6 3h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
-    <p class="sr-only" id="prize-live" aria-live="polite"></p>
+  <div class="mg__stage" aria-hidden="true">
+    <img class="mg__tape" src="../assets/img/melara-tape-a.webp" alt="" width="2400" height="1221">
+    <img class="mg__tape" src="../assets/img/melara-tape-d.webp" alt="" width="2400" height="1221">
   </div>
 </main>
 
@@ -153,93 +142,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
 <script src="../assets/site.js"></script>
 <script src="../assets/lift.js"></script>
 <script>
-(function () {
-  var LM = window.LM; if (!LM) return;
-  var d = document, G = LM.G, motion = LM.motion;
-  var stage = LM.$('.mg__stage'), tapes = LM.$$('.tape'), prize = LM.$('#prize'), codeEl = LM.$('#prize-code');
-  var hint = LM.$('.mg__hint'), live = LM.$('#prize-live');
-  /* número de invitación: uno por visitante y siempre el mismo en ese navegador (decorativo hasta conectar la lista) */
-  var NUM = null;
-  try { NUM = localStorage.getItem('mg-invite'); } catch (e) {}
-  if (!/^\d{4}$/.test(NUM || '')) { NUM = ('000' + (1 + Math.floor(Math.random() * 999))).slice(-4); try { localStorage.setItem('mg-invite', NUM); } catch (e) {} }
-  var CODE = 'Nº ' + NUM;
-  var inner = LM.$$('.prize button, .prize a');
-  function hideHint() { hint.classList.add('is-off'); }
-  function remaining() { return tapes.filter(function (t) { return !t.classList.contains('is-gone'); }); }
-
-  function unlock() {
-    codeEl.textContent = CODE; LM.$('.prize__k').textContent = 'Tu invitación privada';
-    prize.removeAttribute('aria-hidden'); prize.classList.add('is-open');
-    inner.forEach(function (el) { el.removeAttribute('tabindex'); });
-    live.textContent = 'Invitación desbloqueada, número ' + NUM + '. ' + LM.$('.prize__desc').textContent;
-    if (motion) G.fromTo(prize, { scale: 0.9 }, { scale: 1, duration: 1, ease: 'back.out(1.8)', xPercent: -50, yPercent: -50, clearProps: 'scale' });
-    setTimeout(function () { LM.$('.prize__btn--yel').focus({ preventScroll: true }); }, 450);
-  }
-  function lock() {
-    prize.classList.remove('is-open'); prize.setAttribute('aria-hidden', 'true'); codeEl.textContent = 'Nº 0000'; LM.$('.prize__k').textContent = 'Acceso privado';
-    inner.forEach(function (el) { el.setAttribute('tabindex', '-1'); });
-    live.textContent = '';
-  }
-  function finish(t) {
-    t.classList.add('is-gone'); t.setAttribute('aria-hidden', 'true'); t.tabIndex = -1;
-    var left = remaining();
-    if (!left.length) unlock(); else if (d.activeElement === t || d.activeElement === d.body) left[0].focus({ preventScroll: true });
-  }
-  function rip(t, vx, vy) {
-    if (t.classList.contains('is-gone') || t.dataset.flying) return;
-    hideHint();
-    if (!motion) return finish(t);
-    t.dataset.flying = '1';
-    var a = Math.atan2(vy, vx), far = Math.max(window.innerWidth, window.innerHeight) * 1.2;
-    G.to(t, { x: '+=' + Math.cos(a) * far, y: '+=' + (Math.sin(a) * far - 80), rotation: '+=' + (vx >= 0 ? 28 : -28), autoAlpha: 0, duration: 0.85, ease: 'power2.in',
-      onComplete: function () { delete t.dataset.flying; finish(t); } });
-  }
-
-  tapes.forEach(function (t, i) {
-    var sx = 0, sy = 0, dx = 0, dy = 0, down = false, pid = null, swallow = false;
-    var defDir = i === 0 ? [1, -0.55] : [1, 0.35];
-    t.addEventListener('pointerdown', function (e) {
-      if (e.button > 0 || t.dataset.flying) return;
-      down = true; pid = e.pointerId; sx = e.clientX; sy = e.clientY; dx = dy = 0;
-      t.setPointerCapture(pid); t.classList.add('is-drag'); hideHint();
-      if (motion) G.killTweensOf(t);
-    });
-    t.addEventListener('pointermove', function (e) {
-      if (!down || e.pointerId !== pid) return;
-      dx = e.clientX - sx; dy = e.clientY - sy;
-      if (motion) G.set(t, { x: dx * 0.9, y: dy * 0.9, rotation: dx * 0.018, scale: 1 + Math.min(Math.hypot(dx, dy) / 3000, 0.04) });
-    });
-    function end(e, cancelled) {
-      if (!down) return;
-      down = false; t.classList.remove('is-drag');
-      var dist = Math.hypot(dx, dy), need = Math.min(170, stage.clientWidth * 0.12);
-      if (!cancelled && dist > need) { swallow = true; rip(t, dx, dy); return; }
-      if (dist > 6) swallow = true;
-      if (motion) G.to(t, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.9, ease: 'elastic.out(1, 0.45)' });
-    }
-    t.addEventListener('pointerup', function (e) { end(e, false); });
-    t.addEventListener('pointercancel', function (e) { end(e, true); });
-    t.addEventListener('click', function () {
-      if (swallow) { swallow = false; return; }
-      rip(t, defDir[0], defDir[1]);
-    });
-  });
-
-  LM.$('.prize__again').addEventListener('click', function () {
-    lock();
-    tapes.forEach(function (t) { t.classList.remove('is-gone'); t.removeAttribute('aria-hidden'); t.removeAttribute('tabindex'); });
-    if (motion) G.fromTo(tapes, { x: 0, y: -60, rotation: 0, scale: 1, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out', stagger: 0.18 });
-    else G && G.set(tapes, { clearProps: 'all' });
-    tapes[tapes.length - 1].focus({ preventScroll: true });
-  });
-
-  if (!motion) return;
-  G.timeline({ delay: 0.15 })
-    .from('.mg__title i', { yPercent: 110, duration: 1.1, ease: 'power4.out', stagger: 0.09 }, 0)
-    .fromTo('.tape img', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.3, ease: 'power3.inOut', stagger: 0.25 }, 0.35)
-    .from('.prize', { autoAlpha: 0, duration: 0.6 }, 0.9)
-    .from(hint, { autoAlpha: 0, y: 12, duration: 0.6, ease: 'power3.out', clearProps: 'opacity,visibility,transform' }, 1.8);
-})();
+/* Melara Glow: página estática (sin animaciones ni juego, de momento). */
 </script>
 <a class="v2tag" href="../melara-glow.html" aria-label="Estás viendo la propuesta v2. Ver la versión actual">Propuesta v2 <u>· ver actual</u></a>
 </body>
