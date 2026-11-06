@@ -7,7 +7,7 @@
   if (!d.querySelector('.lx')) return;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MAIN = { '': 0, 'index.html': 0, 'gallery.html': 1, 'curated-shopping.html': 2, 'more.html': 3 };
-  var SUB = { 'hot-readers.html': 1, 'design-freaks.html': 1, 'melara-glow.html': 1 };
+  var SUB = { 'hot-readers.html': 1, 'design-freaks.html': 1, 'melara-glow.html': 1, 'artholics.html': 1, 'wardrobe-edit.html': 1 };
   function file(p) { return p.split('/').pop(); }
   function mainFloor(p) { var f = file(p); return f in MAIN ? MAIN[f] : null; }
   var hereMain = mainFloor(location.pathname);

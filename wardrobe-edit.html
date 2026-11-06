@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wardrobe Edit · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Wardrobe Edit: las piezas clave de otoño-invierno 2026 de Lucía Morales, con enlace a cada una.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/lift.css">
+<script>
+/* llegada en ascensor: prepara las puertas cerradas antes del primer pintado (ver assets/lift.js) */
+(function(){try{var h=document.documentElement,s=sessionStorage,v=JSON.parse(s.getItem('lm-lift')||'null');if(!v)return;s.removeItem('lm-lift');
+if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
+h.classList.add('lx-in');if(home)h.classList.add('lx-home');
+st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
+window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
+</script>
+<style>
+/* Wardrobe Edit: fondo gris del diseño; portada, foto con las palabras enlazadas y lista de piezas */
+.wr{background:#ECECEC;color:#0E0E0E}
+.wr-hero{padding:calc(76px + env(safe-area-inset-top,0px)) var(--gutter) 0}
+.wr-hero img{width:min(100%,1080px);margin-inline:auto}
+.kp{position:relative;width:min(100%,1280px);margin:clamp(24px,4vw,64px) auto 0}
+.kp img{width:100%}
+.kp__w{position:absolute;display:block;border-radius:6px;-webkit-tap-highlight-color:transparent}
+.kp__w::after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:2px;background:#0E0E0E;transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease-out)}
+.kp__w:hover::after,.kp__w:focus-visible::after{transform:scaleX(1)}
+.kp__w:focus-visible{outline:2px solid #0E0E0E;outline-offset:2px}
+.kp__hint{margin:14px auto 0;width:min(100% - 2 * var(--gutter),1280px);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.wr-list{max-width:1180px;margin-inline:auto;padding:clamp(48px,6vw,96px) var(--gutter) clamp(64px,8vw,120px)}
+.wr-list__t{font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.wr-list ol{list-style:none;padding:0;margin-top:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,6vw,96px);border-top:1px solid rgba(14,14,14,.18)}
+.wr-list li{border-bottom:1px solid rgba(14,14,14,.18)}
+.wr-list ol a{display:grid;grid-template-columns:7.5em minmax(0,1fr) auto;align-items:baseline;gap:12px;padding:14px 0;color:inherit;text-decoration:none;font-size:clamp(15px,1.25vw,18px);line-height:1.3}
+.wr-list .w{font-style:italic;text-transform:lowercase}
+.wr-list .s{font-size:.8em;letter-spacing:.06em;text-transform:uppercase;opacity:.65;white-space:nowrap}
+.wr-list ol a:hover .p,.wr-list ol a:focus-visible .p{text-decoration:underline;text-underline-offset:3px}
+.wr .back{margin-top:clamp(40px,5vw,72px)}
+@media (max-width:699px){
+  .wr-list ol{grid-template-columns:minmax(0,1fr)}
+  .wr-list ol a{grid-template-columns:5.6em minmax(0,1fr);row-gap:2px}
+  .wr-list .s{grid-column:2}
+}
+</style>
+</head>
+<body class="pg-wr">
+<div class="lx" aria-hidden="true">
+  <div class="lx__zoom">
+    <div class="lx__wall lx__wall--l"></div><div class="lx__wall lx__wall--r"></div>
+    <div class="lx__stage">
+      <img class="lx__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573">
+      <div class="lx__cab"><div class="lx__door lx__door--l"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div><div class="lx__door lx__door--r"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div></div>
+      <span class="lx__floor"></span>
+    </div>
+  </div>
+</div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main" class="wr" data-theme="light">
+  <h1 class="sr-only">Wardrobe Edit: Pieces Worth Buying</h1>
+  <div class="wr-hero"><img src="assets/img/wardrobe-edit.jpg" alt="Wardrobe Edit: un bolso negro colgado de una puerta y unas sandalias negras de tiras sobre el parqué. Pieces Worth Buying." width="1800" height="1965"></div>
+  <section aria-labelledby="kp-t">
+    <h2 class="sr-only" id="kp-t">Key Pieces A/W 26’</h2>
+    <div class="kp">
+      <img src="assets/img/key-pieces.jpg" alt="Lucía Morales leyendo apoyada en un banco de madera; en la pared, escritas a mano, las piezas clave de otoño-invierno 2026" width="2000" height="2193" loading="lazy">
+      <a class="kp__w" href="https://www.santaeulalia.com/products/toteme-gabardina-oversized-algodn-771-001722-01" target="_blank" rel="noopener" style="left:3.5%;top:5.02%;width:12.21%;height:6.88%" aria-label="trench: Gabardina oversize de algodón, Toteme en Santa Eulalia (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://lie-studio.dk/products/the-lola-earrings-black-onyx" target="_blank" rel="noopener" style="left:5.46%;top:16.23%;width:16.04%;height:7.07%" aria-label="earrings: The Lola Earrings, ónix negro en Lié Studio (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.mytheresa.com/euro/en/women/the-row-agnes-16-leather-tote-bag-black-p01131333" target="_blank" rel="noopener" style="left:26.21%;top:18.02%;width:9.04%;height:9.96%" aria-label="bag: Agnes 16, The Row en Mytheresa (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.celine.com/es-es/mujer/pret-a-porter/camisas-y-tops/camisa-holgada-de-popelina-de-algodón-RC0LO0T01.01BC.34.html" target="_blank" rel="noopener" style="left:4.67%;top:26.95%;width:13.42%;height:7.75%" aria-label="shirt: Camisa holgada de popelina de algodón en Celine (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.ysl.com/es-es/pr/vestido-con-espalda-descubierta-de-punto-con-cadena-cassandre-814346303.html" target="_blank" rel="noopener" style="left:28.62%;top:29.3%;width:13.12%;height:9.88%" aria-label="night: Vestido de punto con espalda descubierta en Saint Laurent (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.massimodutti.com/es/chaqueta-detalle-alamares-piel-l04752302?cS=800" target="_blank" rel="noopener" style="left:12.75%;top:37.74%;width:14.96%;height:6.96%" aria-label="leather: Chaqueta de piel con alamares en Massimo Dutti (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.mytheresa.com/euro/es/mujer/victoria-beckham-camiseta-tilly-de-jersey-de-algodon-blanco-p01177302" target="_blank" rel="noopener" style="left:6.25%;top:44.2%;width:6.42%;height:6.92%" aria-label="tee: Camiseta Tilly, Victoria Beckham en Mytheresa (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.tiffany.es/jewelry/bracelets/ep-bone-sterling-silver-bracelets-73120861.html" target="_blank" rel="noopener" style="left:19.38%;top:51.24%;width:17.54%;height:6.99%" aria-label="bracelet: Bone cuff, Elsa Peretti en Tiffany &amp; Co. (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.levi.com/ES/es_ES/ropa/mujer/vaqueros/recto/jeans-501-90s-selvedge/p/A19590117" target="_blank" rel="noopener" style="left:43.29%;top:12.96%;width:13.38%;height:7.3%" aria-label="jeans: 501 ’90s Selvedge en Levi’s (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.farfetch.com/es/shopping/women/toteme-bailarinas-slip-on-item-36967536.aspx" target="_blank" rel="noopener" style="left:55.5%;top:21.02%;width:11.75%;height:8.29%" aria-label="flats: Bailarinas, Toteme en Farfetch (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://oliviavonhalle.com/products/coco-ivory-oyster-silk-pyjamas?variant=32877788692573" target="_blank" rel="noopener" style="left:80.62%;top:9.2%;width:15.21%;height:7.26%" aria-label="pijama: Pijama de seda Coco en Olivia von Halle (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.zapatoscastellano.com/collections/default-category-mujer-clasicos/products/mocasines-2200p-de-piel-antik-color-negro" target="_blank" rel="noopener" style="left:75.58%;top:29.65%;width:14.88%;height:8.29%" aria-label="loafers: Mocasines 2200P, piel Antik negra en Castellano (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.luisaviaroma.com/es/khaite/mujer/zapatos/botas/botines-nevada-de-napa-de-cordero-225223.html" target="_blank" rel="noopener" style="left:88.96%;top:36.18%;width:10.71%;height:7.83%" aria-label="boots: Botines Nevada, Khaite en LuisaViaRoma (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.mytheresa.com/euro/es/mujer/aesther-ekme-clutch-nina-medium-de-piel-negro-p01104608" target="_blank" rel="noopener" style="left:69.58%;top:41.43%;width:13.12%;height:6.96%" aria-label="clutch: Clutch Nina Medium, Aesther Ekme en Mytheresa (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.cos.com/es-es/men/accessories/hatsscarvesgloves/scarves/cashmere/product/cashmere-scarf-purple-1032425039" target="_blank" rel="noopener" style="left:67.33%;top:55.3%;width:11.58%;height:6.08%" aria-label="scarf: Bufanda de cachemir en COS (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.uniqlo.com/es/es/products/E488534-000/00?colorDisplayCode=15&amp;sizeDisplayCode=004" target="_blank" rel="noopener" style="left:83.04%;top:56.48%;width:10.62%;height:6.31%" aria-label="wool: Punto de lana en Uniqlo (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.massimodutti.com/es/vestido-midi-tirantes-con-lino-l06640752?cS=800" target="_blank" rel="noopener" style="left:68.46%;top:12.96%;width:11.38%;height:7.68%" aria-label="dress: Vestido midi de tirantes con lino en Massimo Dutti (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.mytheresa.com/euro/es/mujer/the-row-sandalias-bare-de-piel-negro-p00376694" target="_blank" rel="noopener" style="left:86.79%;top:45.88%;width:12.25%;height:7.83%" aria-label="heels: Sandalias Bare, The Row en Mytheresa (se abre en otra pestaña)"></a>
+      <a class="kp__w" href="https://www.massimodutti.com/es/americana-dos-botones-100-lana-extrafina-l06026685?cS=800" target="_blank" rel="noopener" style="left:82.58%;top:18.36%;width:13.54%;height:8.48%" aria-label="blazer: Americana de dos botones, lana extrafina en Massimo Dutti (se abre en otra pestaña)"></a>
+    </div>
+    <p class="kp__hint">Pulsa cada palabra para ver la pieza</p>
+  </section>
+  <section class="wr-list" aria-labelledby="wl-t">
+    <h2 class="wr-list__t" id="wl-t">Pieces worth buying</h2>
+    <ol>
+        <li><a href="https://www.santaeulalia.com/products/toteme-gabardina-oversized-algodn-771-001722-01" target="_blank" rel="noopener"><span class="w">trench</span><span class="p">Gabardina oversize de algodón, Toteme</span><span class="s">Santa Eulalia ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://lie-studio.dk/products/the-lola-earrings-black-onyx" target="_blank" rel="noopener"><span class="w">earrings</span><span class="p">The Lola Earrings, ónix negro</span><span class="s">Lié Studio ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.mytheresa.com/euro/en/women/the-row-agnes-16-leather-tote-bag-black-p01131333" target="_blank" rel="noopener"><span class="w">bag</span><span class="p">Agnes 16, The Row</span><span class="s">Mytheresa ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.celine.com/es-es/mujer/pret-a-porter/camisas-y-tops/camisa-holgada-de-popelina-de-algodón-RC0LO0T01.01BC.34.html" target="_blank" rel="noopener"><span class="w">shirt</span><span class="p">Camisa holgada de popelina de algodón</span><span class="s">Celine ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.ysl.com/es-es/pr/vestido-con-espalda-descubierta-de-punto-con-cadena-cassandre-814346303.html" target="_blank" rel="noopener"><span class="w">night</span><span class="p">Vestido de punto con espalda descubierta</span><span class="s">Saint Laurent ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.massimodutti.com/es/chaqueta-detalle-alamares-piel-l04752302?cS=800" target="_blank" rel="noopener"><span class="w">leather</span><span class="p">Chaqueta de piel con alamares</span><span class="s">Massimo Dutti ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.mytheresa.com/euro/es/mujer/victoria-beckham-camiseta-tilly-de-jersey-de-algodon-blanco-p01177302" target="_blank" rel="noopener"><span class="w">tee</span><span class="p">Camiseta Tilly, Victoria Beckham</span><span class="s">Mytheresa ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.tiffany.es/jewelry/bracelets/ep-bone-sterling-silver-bracelets-73120861.html" target="_blank" rel="noopener"><span class="w">bracelet</span><span class="p">Bone cuff, Elsa Peretti</span><span class="s">Tiffany &amp; Co. ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.levi.com/ES/es_ES/ropa/mujer/vaqueros/recto/jeans-501-90s-selvedge/p/A19590117" target="_blank" rel="noopener"><span class="w">jeans</span><span class="p">501 ’90s Selvedge</span><span class="s">Levi’s ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.farfetch.com/es/shopping/women/toteme-bailarinas-slip-on-item-36967536.aspx" target="_blank" rel="noopener"><span class="w">flats</span><span class="p">Bailarinas, Toteme</span><span class="s">Farfetch ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://oliviavonhalle.com/products/coco-ivory-oyster-silk-pyjamas?variant=32877788692573" target="_blank" rel="noopener"><span class="w">pijama</span><span class="p">Pijama de seda Coco</span><span class="s">Olivia von Halle ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.zapatoscastellano.com/collections/default-category-mujer-clasicos/products/mocasines-2200p-de-piel-antik-color-negro" target="_blank" rel="noopener"><span class="w">loafers</span><span class="p">Mocasines 2200P, piel Antik negra</span><span class="s">Castellano ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.luisaviaroma.com/es/khaite/mujer/zapatos/botas/botines-nevada-de-napa-de-cordero-225223.html" target="_blank" rel="noopener"><span class="w">boots</span><span class="p">Botines Nevada, Khaite</span><span class="s">LuisaViaRoma ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.mytheresa.com/euro/es/mujer/aesther-ekme-clutch-nina-medium-de-piel-negro-p01104608" target="_blank" rel="noopener"><span class="w">clutch</span><span class="p">Clutch Nina Medium, Aesther Ekme</span><span class="s">Mytheresa ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.cos.com/es-es/men/accessories/hatsscarvesgloves/scarves/cashmere/product/cashmere-scarf-purple-1032425039" target="_blank" rel="noopener"><span class="w">scarf</span><span class="p">Bufanda de cachemir</span><span class="s">COS ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.uniqlo.com/es/es/products/E488534-000/00?colorDisplayCode=15&amp;sizeDisplayCode=004" target="_blank" rel="noopener"><span class="w">wool</span><span class="p">Punto de lana</span><span class="s">Uniqlo ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.massimodutti.com/es/vestido-midi-tirantes-con-lino-l06640752?cS=800" target="_blank" rel="noopener"><span class="w">dress</span><span class="p">Vestido midi de tirantes con lino</span><span class="s">Massimo Dutti ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.mytheresa.com/euro/es/mujer/the-row-sandalias-bare-de-piel-negro-p00376694" target="_blank" rel="noopener"><span class="w">heels</span><span class="p">Sandalias Bare, The Row</span><span class="s">Mytheresa ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        <li><a href="https://www.massimodutti.com/es/americana-dos-botones-100-lana-extrafina-l06026685?cS=800" target="_blank" rel="noopener"><span class="w">blazer</span><span class="p">Americana de dos botones, lana extrafina</span><span class="s">Massimo Dutti ↗</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+    </ol>
+    <a class="back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/lift.js"></script>
+<script>
+
+</script>
+</body>
+</html>

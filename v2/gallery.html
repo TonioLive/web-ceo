@@ -60,6 +60,10 @@ a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
 @media (max-width:559px){.gal__grid{gap:36px 18px}}
 .gal__box{position:relative}
 
+/* 04 · Artholics y 05 · Wardrobe Edit: la portada de cada página, en pequeño */
+.card.card--img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card--art img{object-position:50% 100%}
+
 /* v2: las casillas suben un poco al pasar el ratón (sin inclinación) */
 a.card{transition:box-shadow .6s var(--ease-out),transform .6s var(--ease-out)}
 a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
@@ -127,11 +131,17 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
       </li>
       <li class="gal__item">
         <span class="gal__num" aria-hidden="true"><span>04.</span></span>
-        <div class="gal__box"><div class="card card--empty"><span class="sr-only">04. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        <div class="gal__box"><a class="card card--img card--art" href="artholics.html" aria-label="04. Artholics: for all those who cannot live without art">
+          <img src="../assets/img/card-artholics.jpg" alt="" width="756" height="814" loading="lazy">
+          <span class="card__go" aria-hidden="true">→</span>
+        </a></div>
       </li>
       <li class="gal__item">
         <span class="gal__num" aria-hidden="true"><span>05.</span></span>
-        <div class="gal__box"><div class="card card--empty"><span class="sr-only">05. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        <div class="gal__box"><a class="card card--img" href="wardrobe-edit.html" aria-label="05. Wardrobe Edit: pieces worth buying">
+          <img src="../assets/img/card-wardrobe.jpg" alt="" width="760" height="829" loading="lazy">
+          <span class="card__go" aria-hidden="true">→</span>
+        </a></div>
       </li>
       <li class="gal__item">
         <span class="gal__num" aria-hidden="true"><span>06.</span></span>

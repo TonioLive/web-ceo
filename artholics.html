@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Artholics · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Artholics: para quienes no pueden vivir sin arte. Los artistas que sigue Lucía Morales.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/lift.css">
+<script>
+/* llegada en ascensor: prepara las puertas cerradas antes del primer pintado (ver assets/lift.js) */
+(function(){try{var h=document.documentElement,s=sessionStorage,v=JSON.parse(s.getItem('lm-lift')||'null');if(!v)return;s.removeItem('lm-lift');
+if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
+h.classList.add('lx-in');if(home)h.classList.add('lx-home');
+st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
+window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
+</script>
+<style>
+/* Artholics: portada gris con el título grande abajo, como el diseño; «who» en blanco con las cajas de los artistas */
+.ar{background:#ECECEC;color:#000}
+.ar-hero{display:flex;flex-direction:column;justify-content:flex-end;min-height:min(78vh,calc(var(--vh)*78));padding:calc(96px + env(safe-area-inset-top,0px)) var(--gutter) clamp(40px,5vw,72px);max-width:1320px;margin-inline:auto;container-type:inline-size}
+.ar-t{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 2.2cqw;font-weight:600;line-height:.9;letter-spacing:-.02em}
+.ar-t b{font-weight:600;font-size:min(17.5cqw,230px)}
+.ar-t span{font-size:min(5.1cqw,68px);letter-spacing:-.01em}
+.ar-lead{margin:2.4cqw 0 0 min(26cqw,340px);max-width:46em;width:min(47cqw,620px);font-size:max(15px,min(1.85cqw,24px));line-height:1.3;text-align:justify;text-justify:inter-word}
+.ar-av{margin-top:clamp(28px,4vw,56px)}
+.ar-av h2{font-weight:600;font-size:max(17px,min(2.2cqw,28px))}
+.ar-av ul{list-style:none;padding:0;display:flex;gap:1.4cqw;margin-top:1.4cqw;align-items:flex-start}
+.ar-av li:first-child{width:min(17.7cqw,232px)}
+.ar-av li:last-child{width:min(32cqw,420px)}
+.ar-av img{width:100%}
+.who{background:#fff;padding:clamp(56px,6vw,96px) var(--gutter) clamp(64px,8vw,120px)}
+.who__in{max-width:1000px;margin-inline:auto}
+.who h2{font-weight:600;font-size:clamp(56px,9vw,120px);line-height:.9;letter-spacing:-.02em;margin-left:5%}
+.who__grid{position:relative;list-style:none;padding:0;margin-top:clamp(20px,3vw,40px);aspect-ratio:2400/3850;container-type:inline-size}
+.who__grid li{position:absolute;width:27.44%;height:14.94%}
+.who__box{position:relative;display:block;width:100%;height:100%;color:inherit;text-decoration:none;transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out)}
+a.who__box:hover,a.who__box:focus-visible{transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(0,0,0,.55)}
+a.who__box:focus-visible{outline:2px solid #000;outline-offset:3px}
+.who__name{position:absolute;font-weight:500;font-size:max(9.5px,2.05cqw);line-height:1.2;max-width:88%}
+.who__name small{display:block;font-size:1em}
+.who__go{position:absolute;right:5%;bottom:5%;font-size:max(10px,2cqw);opacity:0;transition:opacity .3s}
+a.who__box:hover .who__go,a.who__box:focus-visible .who__go{opacity:1}
+.ar .back{margin-top:clamp(40px,5vw,72px)}
+@media (max-width:699px){
+  .ar-hero{min-height:auto;padding-top:calc(120px + env(safe-area-inset-top,0px))}
+  .ar-lead{margin-left:0;width:auto;text-align:left}
+  .ar-av ul{gap:8px}
+  .ar-av li:first-child{width:35%}
+  .ar-av li:last-child{width:63%}
+}
+</style>
+</head>
+<body class="pg-ar">
+<div class="lx" aria-hidden="true">
+  <div class="lx__zoom">
+    <div class="lx__wall lx__wall--l"></div><div class="lx__wall lx__wall--r"></div>
+    <div class="lx__stage">
+      <img class="lx__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573">
+      <div class="lx__cab"><div class="lx__door lx__door--l"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div><div class="lx__door lx__door--r"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div></div>
+      <span class="lx__floor"></span>
+    </div>
+  </div>
+</div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main" class="ar" data-theme="light">
+  <section class="ar-hero" aria-labelledby="ar-t">
+    <h1 class="ar-t" id="ar-t"><b>artholics</b><span aria-hidden="true">artholics</span></h1>
+    <p class="ar-lead">For all those who cannot live, breathe, or exist without art. This space is a safe haven where meaning and emotion reign supreme.</p>
+    <div class="ar-av">
+      <h2>Avant-garde</h2>
+      <ul>
+        <li><img src="assets/img/art-avant-1.jpg" alt="Obra abstracta sobre fondo blanco con manchas rojas, verdes y azules" width="895" height="1200" loading="lazy"></li>
+        <li><img src="assets/img/art-avant-2.jpg" alt="Obra monocroma en rojo terroso" width="1200" height="888" loading="lazy"></li>
+      </ul>
+    </div>
+  </section>
+  <section class="who" aria-labelledby="who-t">
+    <div class="who__in">
+      <h2 id="who-t">who</h2>
+      <ul class="who__grid">
+      <li style="left:5.04%;top:0.00%"><div class="who__box" style="background:#a49b96;color:#ffffff"><span class="who__name" style="left:43%;top:62%">Jaime Monge<small>Madrid</small></span></div></li>
+      <li style="left:35.25%;top:0.00%"><a class="who__box" href="https://www.rafaarmengol.com" target="_blank" rel="noopener" style="background:#a49689;color:#4fd13b" aria-label="Armengol: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:8%;top:24%">Armengol</span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:64.88%;top:0.00%"><a class="who__box" href="https://galeriallamazares.com/es/artistas/jose-maria-sicilia/" target="_blank" rel="noopener" style="background:#b2a497;color:#e3262b" aria-label="José María Sicilia, Madrid, 1954: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:32%;top:33%">José María Sicilia<small>Madrid, 1954</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:0.62%;top:15.61%"><a class="who__box" href="http://jenyadatsko.com" target="_blank" rel="noopener" style="background:#000000;color:#ffffff" aria-label="Jenya Datsko, Rusia, 1991: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:17%;top:25%">Jenya Datsko<small>Rusia, 1991</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:29.38%;top:16.54%"><a class="who__box" href="https://www.hugoalonso.info" target="_blank" rel="noopener" style="background:#292826;color:#8fa0a0" aria-label="Hugo Alonso, Soria, 1981: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:42%;top:43%">Hugo Alonso<small>Soria, 1981</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:59.0%;top:16.54%"><div class="who__box" style="background:#9b2b29;color:#ffffff"><span class="who__name" style="left:4%;top:11%">Marta Camallonga<small>València</small></span></div></li>
+      <li style="left:8.5%;top:32.83%"><a class="who__box" href="https://www.adrianagatagan.com" target="_blank" rel="noopener" style="background:#712c27;color:#a29a98" aria-label="Adriana Gatagán, Based Palma de Mallorca: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:5%;top:62%">Adriana Gatagán<small>Based Palma de Mallorca</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:38.75%;top:33.84%"><a class="who__box" href="https://juancarlosvega.com" target="_blank" rel="noopener" style="background:#ea4819;color:#2a33d6" aria-label="Juan Carlos Vega, Oviedo, 1975: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:8%;top:75%">Juan Carlos Vega<small>Oviedo, 1975</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:68.33%;top:32.83%"><a class="who__box" href="https://www.helenatc.com" target="_blank" rel="noopener" style="background:#a32113;color:#4fc23b" aria-label="Helena Toraño, Llanes, Asturias, 1984: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:8%;top:14%">Helena Toraño<small>Llanes, Asturias, 1984</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:2.38%;top:49.40%"><a class="who__box" href="https://lantomo.com/2025w/" target="_blank" rel="noopener" style="background:#445447;color:#9eaa9e" aria-label="Lantomo, Italia: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:36%;top:55%">Lantomo<small>Italia</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:32.58%;top:49.40%"><a class="who__box" href="https://www.covarios.com" target="_blank" rel="noopener" style="background:#636b56;color:#aeb29e" aria-label="Cova Ríos, Oviedo: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:23%;top:38%">Cova Ríos<small>Oviedo</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:62.21%;top:49.40%"><a class="who__box" href="https://antoniovejero.cargo.site" target="_blank" rel="noopener" style="background:#8da49e;color:#f4f13a" aria-label="Antonio Ovejero, València, 1999: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:34%;top:73%">Antonio Ovejero<small>València, 1999</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:8.33%;top:66.20%"><a class="who__box" href="https://www.hugofontela.es" target="_blank" rel="noopener" style="background:#287139;color:#e7801d" aria-label="Hugo Fontela, Grado, 1986: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:35%;top:68%">Hugo Fontela<small>Grado, 1986</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:38.25%;top:65.32%"><a class="who__box" href="https://www.mxmgaleria.com/raquel-jm" target="_blank" rel="noopener" style="background:#2d3d54;color:#ffffff" aria-label="Raquel Jiménez Molina, España, 1989: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:8%;top:33%">Raquel Jiménez Molina<small>España, 1989</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:68.17%;top:66.20%"><a class="who__box" href="https://mojeassefjah.com/about/" target="_blank" rel="noopener" style="background:#292826;color:#e78be8" aria-label="Mojé Assefjah, Irán, 1970: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:39%;top:40%">Mojé Assefjah<small>Irán, 1970</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:0.62%;top:84.00%"><div class="who__box" style="background:#cc018e;color:#f2e93a"><span class="who__name" style="left:19%;top:65%">Mr. x Peexwo<small>Italia, 1995</small></span></div></li>
+      <li style="left:30.79%;top:84.00%"><a class="who__box" href="https://www.solfelpeto.com" target="_blank" rel="noopener" style="background:#15416e;color:#f2e93a" aria-label="Sol Felpeto, Venezuela, 1990: ver su web (se abre en otra pestaña)"><span class="who__name" style="left:13%;top:32%">Sol Felpeto<small>Venezuela, 1990</small></span><span class="who__go" aria-hidden="true">↗</span></a></li>
+      <li style="left:61.0%;top:84.85%"><div class="who__box" style="background:#52679e;color:#f2e93a"><span class="who__name" style="left:39%;top:52%">Inés Longevial<small>Francia</small></span></div></li>
+      </ul>
+      <a class="back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/lift.js"></script>
+<script>
+
+</script>
+</body>
+</html>

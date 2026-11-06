@@ -119,15 +119,16 @@ i.cur{font-style:italic}
 
 /* ---------- 03 · sobre mí ---------- */
 .about{position:relative;background:var(--blue);color:var(--red);padding-block:clamp(64px,6.5vw,110px) clamp(28px,3vw,48px)}
-.about__inner{max-width:1320px;margin-inline:auto;padding-inline:var(--gutter);text-transform:uppercase;font-size:clamp(24px,2.45vw,38px);line-height:1.22;letter-spacing:.004em}
-.about__me,.about__quote p{text-align:justify;text-justify:inter-word;hyphens:manual}
+/* diseño 02 (nov): letra más pequeña, foto más pequeña y la cita en minúscula, para que no «grite» */
+.about__inner{max-width:1320px;margin-inline:auto;padding-inline:var(--gutter);text-transform:uppercase;font-size:clamp(16px,1.62vw,25px);line-height:1.3;letter-spacing:.004em}
+.about__me{text-align:justify;text-justify:inter-word;hyphens:manual}
 .about__me .k{font-weight:500}
-.about__photo{width:min(36%,520px);margin:clamp(28px,3.4vw,56px) auto}
+.about__photo{width:min(21.5%,340px);margin:clamp(4px,.6vw,10px) auto clamp(20px,2.4vw,40px)}
 .about__frame{position:relative;overflow:hidden;aspect-ratio:1300/1918;background:#7d8fb9}
 .about__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 40%}
-.about__next{font:inherit;margin-top:clamp(8px,1vw,16px)}
-.about__quote{margin:0;font-style:italic}
-.about__sign{margin-top:1.6em;font-style:italic}
+.about__next{font:inherit;font-style:italic;margin-top:clamp(8px,1vw,16px)}
+.about__quote{margin:1.3em 0 0;font-style:italic;text-transform:none}
+.about__sign{margin-top:1.3em;font-style:italic}
 .wd{transition:opacity .2s linear}
 
 /* ---------- 04 · in the making (diseño 03, medidas sobre 3200×4347) ---------- */
@@ -218,6 +219,10 @@ a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
 .gal__item:hover .card__soon{opacity:1;transform:none}
 @media (max-width:559px){.gal__grid{gap:36px 18px}}
 .gal__box{position:relative}
+
+/* 04 · Artholics y 05 · Wardrobe Edit: la portada de cada página, en pequeño */
+.card.card--img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card--art img{object-position:50% 100%}
 .ix{--line:#0E0E0E;--grey:#3B3B3B;--black:#0E0E0E;--white:#FFFFFF}
 .ix img{height:auto}
 .ix ol{padding:0;list-style:none}
@@ -288,9 +293,9 @@ a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
   .wl-note{--l:6%;--t:26.3%;--w:88%}
   .wl-greet{--l:50%;--t:66.4%;--w:38.5%}
   .wl-signature{--l:8%;--t:84.2%;--w:36.9%}
-  .about__inner{font-size:24px;line-height:1.24}
-  .about__me,.about__quote p{text-align:left}
-  .about__photo{width:78%}
+  .about__inner{font-size:17px;line-height:1.3}
+  .about__me{text-align:left}
+  .about__photo{width:62%}
   .mk-board{aspect-ratio:auto;margin-bottom:0}
   .mk{position:static}
   .mk-obra{width:86%;margin:28px 0 0 7%}
@@ -499,11 +504,17 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
         </li>
         <li class="gal__item">
           <span class="gal__num" aria-hidden="true"><span>04.</span></span>
-          <div class="gal__box"><div class="card card--empty"><span class="sr-only">04. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+          <div class="gal__box"><a class="card card--img card--art" href="artholics.html" aria-label="04. Artholics: for all those who cannot live without art">
+            <img src="../assets/img/card-artholics.jpg" alt="" width="756" height="814" loading="lazy">
+            <span class="card__go" aria-hidden="true">→</span>
+          </a></div>
         </li>
         <li class="gal__item">
           <span class="gal__num" aria-hidden="true"><span>05.</span></span>
-          <div class="gal__box"><div class="card card--empty"><span class="sr-only">05. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+          <div class="gal__box"><a class="card card--img" href="wardrobe-edit.html" aria-label="05. Wardrobe Edit: pieces worth buying">
+            <img src="../assets/img/card-wardrobe.jpg" alt="" width="760" height="829" loading="lazy">
+            <span class="card__go" aria-hidden="true">→</span>
+          </a></div>
         </li>
         <li class="gal__item">
           <span class="gal__num" aria-hidden="true"><span>06.</span></span>
