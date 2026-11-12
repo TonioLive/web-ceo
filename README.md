@@ -15,7 +15,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 
 | Bloque | Qué es |
 |---|---|
-| 01 · Ascensor | Puertas de acero con el menú y el indicador rojo de planta (0) encima. Al entrar se entreabren un momento (luz por la rendija y «Baja para abrir») para invitar a bajar; si sigues arriba se repite una vez. En cuanto empiezas a bajar se abren solas y aparece Lucía, sin frenar el scroll; al volver arriba se cierran. Aquí irán el vídeo del interior y el sonido. |
+| 01 · Ascensor | Puertas de acero con el menú y el indicador rojo de planta (0) encima. Al entrar se entreabren un momento (luz por la rendija y «Baja para abrir») para invitar a bajar; si sigues arriba se repite una vez. Al bajar se van abriendo con el scroll durante un recorrido corto (80 % de pantalla, 70 % en móvil), con el interior de la mudanza y el sonido; luego la página sigue normal y al subir se cierran. |
 | 02 · Bienvenida | Pared blanca con la letra a mano, la cinta «C B O» y la foto. Estática: se ve completa al llegar. |
 | 03 · Sobre mí | Fondo azul y texto rojo: trayectoria, foto (fija) y «Lo que va a venir». El texto se ilumina al leer. |
 | 04 · In the making | Foto de la obra de las nuevas oficinas, cita de L.M y collage «MG days» y «MG design process». |

@@ -640,50 +640,42 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   onScroll();
   if (!motion) return;
 
-  /* ---------- 01 · las puertas se abren solas al empezar a bajar ----------
-     Sin anclar el scroll: la página baja con normalidad y las puertas se abren por tiempo
-     en cuanto empiezas a bajar. Al volver arriba del todo se cierran y vuelve el menú.
-     «Abrir» (en ordenador) las abre o cierra sin bajar. Aquí irá el vídeo del interior. */
-  var cab = $('.lift__cab'), isOpen = false, wasDown = false, doorTl = null;
-  var SHADOW_L = '10px 0 22px rgba(0,0,0,0.35)', SHADOW_R = '-10px 0 22px rgba(0,0,0,0.35)', NOSHADOW = '0px 0 0px rgba(0,0,0,0)';
-  G.set('.lift__lucia', { filter: 'brightness(0.5)' });
+  /* ---------- 01 · las puertas se abren a medida que bajas ----------
+     El ascensor se queda fijo un recorrido corto (80 % de la pantalla; 70 % en móvil) y las puertas se abren
+     siguiendo el scroll: hay que ir bajando para abrirlas del todo. Sin zoom; al terminar, la página sigue normal.
+     Al subir se vuelven a cerrar. «Abrir» (en ordenador) baja justo hasta tenerlas abiertas. */
+  var cab = $('.lift__cab'), isOpen = false;
   /* sonido del ascensor al abrirse (el navegador solo deja sonar si ya se ha tocado o pulsado algo en la página) */
   var liftSound = new Audio('assets/audio/ascensor.mp3'); liftSound.preload = 'auto'; liftSound.volume = 0.8;
   function playLift() { try { liftSound.currentTime = 0; var pr = liftSound.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} }
-  function setDoors(open, hideMenu) {
-    if (open === isOpen) return;
-    isOpen = open;
-    if (open) playLift();
-    if (doorTl) doorTl.kill();
-    $('.lift__call').setAttribute('aria-label', open ? 'Cerrar las puertas del ascensor' : 'Abrir las puertas del ascensor');
-    doorTl = G.timeline();
-    if (open) {
-      doorTl
-        .to(['.lift__domain', '.lift__cue', '.lift__hint', '.lift__crack'], { autoAlpha: 0, duration: 0.3, overwrite: 'auto' }, 0)
-        .to('.lift__glow', { opacity: 1, duration: 0.2 }, 0)
-        .to('.lift__door--l', { xPercent: -100, x: 0, duration: 1.3, ease: 'power3.inOut', overwrite: 'auto' }, 0.1)
-        .to('.lift__door--r', { xPercent: 100, x: 0, duration: 1.3, ease: 'power3.inOut', overwrite: 'auto' }, 0.1)
-        .to('.lift__lucia', { filter: 'brightness(1)', duration: 1.2, ease: 'power1.out' }, 0.2)
-        .to('.lift__glow', { opacity: 0, duration: 0.5 }, 0.7)
-        .to('.lift__door--l', { boxShadow: NOSHADOW, duration: 0.3 }, 1.1)
-        .to('.lift__door--r', { boxShadow: NOSHADOW, duration: 0.3 }, 1.1);
-      if (hideMenu) doorTl.to('.lift__menu a', { y: -20, autoAlpha: 0, stagger: 0.04, duration: 0.4, ease: 'power2.in' }, 0);
-    } else {
-      doorTl
-        .set('.lift__door--l', { boxShadow: SHADOW_L }, 0)
-        .set('.lift__door--r', { boxShadow: SHADOW_R }, 0)
-        .to(['.lift__door--l', '.lift__door--r'], { xPercent: 0, duration: 1.1, ease: 'power3.inOut' }, 0)
-        .to('.lift__lucia', { filter: 'brightness(0.5)', duration: 0.9 }, 0)
-        .to('.lift__menu a', { y: 0, autoAlpha: 1, stagger: 0.04, duration: 0.5, ease: 'power2.out' }, 0.5)
-        .to(['.lift__domain', '.lift__cue'], { autoAlpha: 1, duration: 0.5 }, 0.7);
+  var played = false;
+  var doorsTl = G.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: '.lift', start: 'top top', end: function () { return '+=' + Math.round(window.innerHeight * (window.innerWidth < 700 ? 0.7 : 0.8)); },
+      pin: true, scrub: 0.6, invalidateOnRefresh: true,
+      onUpdate: function (st) {
+        isOpen = st.progress > 0.5;
+        $('.lift__call').setAttribute('aria-label', isOpen ? 'Cerrar las puertas del ascensor' : 'Abrir las puertas del ascensor');
+        if (st.progress > 0.04 && st.direction > 0 && !played) { played = true; playLift(); }
+        if (st.progress < 0.01) played = false;
+      }
     }
-  }
-  window.addEventListener('scroll', function () {
-    var y = window.pageYOffset;
-    if (y > 8) { wasDown = true; setDoors(true, true); }
-    else if (y <= 2 && wasDown) { wasDown = false; setDoors(false); }
-  }, { passive: true });
-  $('.lift__call').addEventListener('click', function () { setDoors(!isOpen, false); });
+  });
+  doorsTl
+    .fromTo(['.lift__domain', '.lift__cue', '.lift__hint', '.lift__crack'], { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.12 }, 0)
+    .fromTo('.lift__menu a', { y: 0, autoAlpha: 1 }, { y: -20, autoAlpha: 0, duration: 0.14, stagger: 0.02 }, 0)
+    .fromTo('.lift__glow', { opacity: 0 }, { opacity: 1, duration: 0.08 }, 0.02)
+    .fromTo('.lift__door--l', { xPercent: 0 }, { xPercent: -100, duration: 0.86, ease: 'power1.inOut' }, 0.06)
+    .fromTo('.lift__door--r', { xPercent: 0 }, { xPercent: 100, duration: 0.86, ease: 'power1.inOut' }, 0.06)
+    .fromTo('.lift__lucia', { filter: 'brightness(0.5)' }, { filter: 'brightness(1)', duration: 0.7 }, 0.1)
+    .to('.lift__glow', { opacity: 0, duration: 0.3 }, 0.45)
+    .to(['.lift__door--l', '.lift__door--r'], { boxShadow: '0px 0 0px rgba(0,0,0,0)', duration: 0.08 }, 0.92);
+  $('.lift__call').addEventListener('click', function () {
+    var st = doorsTl.scrollTrigger;
+    playLift(); played = true;
+    scrollToY(isOpen ? 0 : st.end + 2);
+  });
 
   /* ---------- 01b · al entrar, las puertas se entreabren para invitar a bajar ----------
      Se anima «x» (px) y no «xPercent», que es lo que mueve el scroll: así no se pisan.
@@ -709,6 +701,8 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     if (window.pageYOffset <= 4) return;
     teased = 2;
     if (tease) { tease.kill(); tease = null; }
+    G.to(doors, { x: 0, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+    G.to('.lift__hint', { autoAlpha: 0, duration: 0.25, overwrite: 'auto' });
     window.removeEventListener('scroll', stopTease);
   }
   window.addEventListener('scroll', stopTease, { passive: true });
