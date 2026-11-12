@@ -85,7 +85,7 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
 
 <header class="bar" data-theme="light">
   <a class="bar__name" href="index.html">Lucía Morales</a>
-  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
   <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
 </header>
 
@@ -94,7 +94,7 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
   <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
   <div class="sheet__body">
     <button class="sheet__close" type="button">Cerrar</button>
-    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a><a href="more.html" data-floor="3">+More</a></nav>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2">Shop</a><a href="more.html" data-floor="3">+More</a></nav>
     <p class="sheet__domain">luciamorales.es</p>
   </div>
 </div>
@@ -118,7 +118,10 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
       </li>
       <li class="gal__item">
         <span class="gal__num" aria-hidden="true"><span>02.</span></span>
-        <div class="gal__box"><div class="card card--empty"><span class="sr-only">02. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        <div class="gal__box"><a class="card card--img" href="beauty-lab.html" aria-label="02. Beauty Lab: rituales de día y de noche">
+          <img src="../assets/img/card-beauty.jpg" alt="" width="760" height="820" loading="lazy">
+          <span class="card__go" aria-hidden="true">→</span>
+        </a></div>
       </li>
       <li class="gal__item">
         <span class="gal__num" aria-hidden="true"><span>03.</span></span>
@@ -145,7 +148,10 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
       </li>
       <li class="gal__item">
         <span class="gal__num" aria-hidden="true"><span>06.</span></span>
-        <div class="gal__box"><div class="card card--empty"><span class="sr-only">06. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+        <div class="gal__box"><a class="card card--img" href="melara-glow.html" aria-label="06. Melara: próximamente">
+          <img src="../assets/img/card-melara.jpg" alt="" width="760" height="820" loading="lazy">
+          <span class="card__go" aria-hidden="true">→</span>
+        </a></div>
       </li>
     </ol>
   </div>
@@ -155,7 +161,7 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px)}
   <div class="foot__inner">
     <p class="foot__big">luciamorales.es</p>
     <div class="foot__row">
-      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a><a href="more.html">+More</a></nav>
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
       <div class="foot__meta">
         <span>© 2026 Lucía Morales</span>
         <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>

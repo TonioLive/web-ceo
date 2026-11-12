@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beauty Lab · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Beauty Lab: los rituales de día y de noche de Lucía Morales, con cada producto.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/lift.css">
+<script>
+/* llegada en ascensor: prepara las puertas cerradas antes del primer pintado (ver assets/lift.js) */
+(function(){try{var h=document.documentElement,s=sessionStorage,v=JSON.parse(s.getItem('lm-lift')||'null');if(!v)return;s.removeItem('lm-lift');
+if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
+h.classList.add('lx-in');if(home)h.classList.add('lx-home');
+st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
+window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
+</script>
+<style>
+/* Beauty Lab · Day / Night: el diseño es un lienzo (7415 × 8000) con la mitad de arriba blanca y la de abajo beige;
+   en ordenador se coloca igual que el diseño y en móvil se apila: título, foto y pasos. */
+.bl{background:linear-gradient(#fff 0 50%,#F2EADF 50% 100%);color:#000}
+.bl-c{position:relative;width:100%;max-width:1600px;margin-inline:auto;aspect-ratio:7415/8000;container-type:inline-size}
+.bl-ph{position:absolute;left:59.26%;width:36.87%;border-radius:2.1cqw;overflow:hidden}
+.bl-ph img{width:100%;height:100%;object-fit:cover}
+.bl-ph--day{top:4.64%;height:40.54%}
+.bl-ph--night{top:54.33%;height:40.51%}
+.bl-t{position:absolute;left:0;margin:0;font-weight:500;font-size:12.6cqw;line-height:.79;letter-spacing:-.01em;text-box:trim-both cap alphabetic}
+.bl-t--day{top:41.55%}
+.bl-t--night{top:50.05%}
+.bl-steps{position:absolute;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2.38cqw;font-weight:500;font-size:1.72cqw;line-height:1}
+.bl-steps--day{left:41.37%;top:17.75%}
+.bl-steps--night{left:11.22%;top:70.7%}
+.bl-steps a{position:relative;display:inline-block;color:inherit;text-decoration:none;text-box:trim-both cap alphabetic}
+.bl-steps a::after{content:"";position:absolute;left:0;right:0;bottom:-.35em;height:1px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease-out)}
+.bl-steps a:hover::after,.bl-steps a:focus-visible::after{transform:scaleX(1)}
+.bl-steps .go{position:absolute;left:100%;margin-left:.4em;opacity:0;transition:opacity .3s}
+.bl-steps a:hover .go,.bl-steps a:focus-visible .go{opacity:1}
+.bl .back{display:inline-flex;margin:0 0 clamp(48px,6vw,90px) var(--gutter)}
+@media (max-width:699px){
+  .bl{background:#fff}
+  .bl-c{aspect-ratio:auto;display:flex;flex-direction:column;padding:calc(84px + env(safe-area-inset-top,0px)) 0 0}
+  .bl-c .bl-t,.bl-c .bl-ph,.bl-c .bl-steps{position:static}
+  .bl-half{padding:0 var(--gutter) 44px}
+  .bl-half--night{background:#F2EADF;padding-top:36px}
+  .bl-t{font-size:min(30vw,140px);line-height:.8}
+  .bl-ph{width:100%;aspect-ratio:1180/1400;height:auto;margin-top:22px;border-radius:18px}
+  .bl-steps{gap:20px;font-size:19px;margin-top:26px}
+  .bl .back{margin:0;padding:28px var(--gutter) 56px;background:#F2EADF;width:100%}
+}
+@media (min-width:700px){.bl-half{display:contents}}
+</style>
+</head>
+<body class="pg-bl">
+<div class="lx" aria-hidden="true">
+  <div class="lx__zoom">
+    <div class="lx__wall lx__wall--l"></div><div class="lx__wall lx__wall--r"></div>
+    <div class="lx__stage">
+      <img class="lx__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573">
+      <div class="lx__cab"><div class="lx__door lx__door--l"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div><div class="lx__door lx__door--r"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div></div>
+      <span class="lx__floor"></span>
+    </div>
+  </div>
+</div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html">Index</a><a href="gallery.html" aria-current="page">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0">Index</a><a href="gallery.html" data-floor="1" aria-current="page">Gallery</a><a href="curated-shopping.html" data-floor="2">Shop</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main" class="bl" data-theme="light">
+  <h1 class="sr-only">Beauty Lab: rituales de día y de noche</h1>
+  <div class="bl-c">
+    <section class="bl-half bl-half--day" aria-labelledby="bl-day">
+      <h2 class="bl-t bl-t--day" id="bl-day">DAY</h2>
+      <figure class="bl-ph bl-ph--day"><img src="assets/img/day-chair.jpg" alt="Butaca de piel negra junto a una pared con luz de mañana y una taza de café en el suelo" width="1180" height="1400"></figure>
+        <ol class="bl-steps bl-steps--day">
+          <li><a href="https://www.sephora.es/p/the-foaming-cleanser---desmaquillante-espumoso-763045.html" target="_blank" rel="noopener" aria-label="01 limpieza: The Foaming Cleanser en Sephora (se abre en otra pestaña)">01 limpieza<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.skinceuticals.es/productos/c-e-ferulic-serum-de-acido-ferulico-con-vitamina-c/S17.html" target="_blank" rel="noopener" aria-label="02 antioxidante: C E Ferulic, SkinCeuticals en SkinCeuticals (se abre en otra pestaña)">02 antioxidante<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.promofarma.com/es/medik8-hydr8-b5-intense-30ml/p-488242" target="_blank" rel="noopener" aria-label="03 sérum: Hydr8 B5 Intense, Medik8 en PromoFarma (se abre en otra pestaña)">03 sérum<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.amazon.com/dp/B0D23S1CYS" target="_blank" rel="noopener" aria-label="04 crema: Crema hidratante en Amazon (se abre en otra pestaña)">04 crema<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.sephora.es/p/supreme-screen-spf50---crema-solar-de-rostro-hidratante-587515.html" target="_blank" rel="noopener" aria-label="05 protección: Supreme Screen SPF50 en Sephora (se abre en otra pestaña)">05 protección<span class="go" aria-hidden="true">↗</span></a></li>
+        </ol>
+    </section>
+    <section class="bl-half bl-half--night" aria-labelledby="bl-night">
+      <h2 class="bl-t bl-t--night" id="bl-night">NIGHT</h2>
+      <figure class="bl-ph bl-ph--night"><img src="assets/img/night-bed.jpg" alt="Cama deshecha con ropa de lino en una habitación en penumbra" width="1181" height="1400" loading="lazy"></figure>
+        <ol class="bl-steps bl-steps--night">
+          <li><a href="https://elemis.com/eu/product/pro-collagen-fragrance-free-cleansing-balm" target="_blank" rel="noopener" aria-label="01 limpieza: Pro-Collagen Cleansing Balm sin perfume, Elemis en Elemis (se abre en otra pestaña)">01 limpieza<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.amazon.es/dp/B0026TOCK2" target="_blank" rel="noopener" aria-label="02 segunda limpieza: Cleansing Complex, iS Clinical en Amazon (se abre en otra pestaña)">02 segunda limpieza<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.niche-beauty.com/es-es/productos/medik8-crystal-retinal-3/825-026" target="_blank" rel="noopener" aria-label="03 renovación celular: Crystal Retinal 3, Medik8 en Niche Beauty (se abre en otra pestaña)">03 renovación celular<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.cultbeauty.com/p/niod-multi-molecular-hyaluronic-complex-serum-30ml/11135679/" target="_blank" rel="noopener" aria-label="04 hidratación profunda: Multi-Molecular Hyaluronic Complex, NIOD en Cult Beauty (se abre en otra pestaña)">04 hidratación profunda<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.amazon.es/dp/B07PK2P2XB" target="_blank" rel="noopener" aria-label="05 reparación barrera: Crema calmante con niacinamida, Dr. Althea en Amazon (se abre en otra pestaña)">05 reparación barrera<span class="go" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.primor.eu/es_es/la-mer-the-eye-concentrate-contorno-ojos-antiedad-13736.html" target="_blank" rel="noopener" aria-label="06 contorno: The Eye Concentrate, La Mer en Primor (se abre en otra pestaña)">06 contorno<span class="go" aria-hidden="true">↗</span></a></li>
+        </ol>
+    </section>
+  </div>
+  <a class="back" href="gallery.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver a Gallery</a>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/lift.js"></script>
+<script>
+
+</script>
+</body>
+</html>

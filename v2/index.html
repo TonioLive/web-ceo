@@ -73,7 +73,7 @@ i.cur{font-style:italic}
 .lift__stage{position:absolute;top:0;left:50%;height:100%;width:calc(var(--vh)*56.263);transform:translateX(-50%)}
 .lift__bg{position:absolute;inset:0;width:100%;height:100%}
 .lift__cab{position:absolute;left:11.073%;top:8.137%;width:76.723%;height:85.760%;overflow:hidden;background:#0c0b0b;box-shadow:0 0 0 200vmax rgba(8,8,9,0)}
-.lift__lucia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 42%;transform-origin:60% 45%}
+.lift__lucia{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .lift__shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,238,210,.20),transparent 28%,transparent 72%,rgba(0,0,0,.38));box-shadow:inset 0 0 calc(var(--vh)*6) rgba(0,0,0,.55)}
 .lift__glow{position:absolute;top:0;bottom:0;left:48.306%;width:2px;margin-left:-1px;background:#fff6e8;box-shadow:0 0 calc(var(--vh)*2.4) calc(var(--vh)*1.1) rgba(255,236,205,.55),0 0 calc(var(--vh)*9) calc(var(--vh)*3) rgba(255,222,176,.22);opacity:0;pointer-events:none}
 .lift__door{position:absolute;top:0;height:100%;overflow:hidden;will-change:transform}
@@ -343,7 +343,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   <nav class="bar__nav" aria-label="Menú">
     <a href="#index" aria-current="page">Index</a>
     <a href="gallery.html">Gallery</a>
-    <a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a>
+    <a href="curated-shopping.html">Shop</a>
     <a href="more.html">+More</a>
   </nav>
   <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
@@ -357,7 +357,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     <nav class="sheet__links" aria-label="Menú">
       <a href="#index" data-floor="0">Index</a>
       <a href="gallery.html" data-floor="1">Gallery</a>
-      <a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a>
+      <a href="curated-shopping.html" data-floor="2">Shop</a>
       <a href="more.html" data-floor="3">+More</a>
     </nav>
     <p class="sheet__domain">luciamorales.es</p>
@@ -375,7 +375,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
           <img class="lift__bg" src="../assets/img/elevator.jpg" alt="" width="885" height="1573" aria-hidden="true">
           <span class="lift__floor" aria-hidden="true">0</span>
           <div class="lift__cab">
-            <img class="lift__lucia" src="../assets/img/lucia-cafe.jpg" alt="Lucía Morales trabajando con su portátil en una cafetería, con gorra roja y camisa azul" width="1300" height="1918">
+            <img class="lift__lucia" src="../assets/img/cab-interior.jpg" alt="Interior del ascensor con cajas de mudanza, cuadros y una lámpara de pie: el traslado a las nuevas oficinas" width="656" height="1342">
             <span class="lift__shade" aria-hidden="true"></span>
             <span class="lift__glow" aria-hidden="true"></span>
             <span class="lift__crack" aria-hidden="true"></span>
@@ -392,7 +392,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       <nav class="lift__menu" aria-label="Menú principal">
         <a href="#index" data-floor="0" aria-current="page">Index</a>
         <a href="gallery.html" data-floor="1">Gallery</a>
-        <a href="curated-shopping.html" data-floor="2"><i class="cur">CURATED</i>Shopping</a>
+        <a href="curated-shopping.html" data-floor="2">Shop</a>
         <a href="more.html" data-floor="3">+More</a>
       </nav>
     </div>
@@ -451,26 +451,11 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       <img class="ch-row ch-r2" src="../assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
       <img class="ch-row ch-r3" src="../assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
       <img class="ch-row ch-r4" src="../assets/img/new-chapter.webp" alt="" width="2443" height="328" aria-hidden="true">
-      <a class="ch-join trim" href="#lista" data-join>Join the list <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="ch-join trim" href="lista.html">Join the list <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </section>
 
   <!-- 06 · Lista de espera -->
-  <section class="join" id="lista" data-theme="cream" aria-labelledby="join-t">
-    <form class="join__form" id="join-form" novalidate>
-      <blockquote class="join__quote trim"><p>“La expresión artística es la llama que mueve esta idea, ven con nosotros”</p></blockquote>
-      <label class="join__label trim" id="join-t" for="join-email">Introduce tu mail</label>
-      <div class="join__box">
-        <input id="join-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="join-msg" placeholder="nombre@email.com">
-        <button type="submit"><span>Enviar</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-      <p class="join__msg" id="join-msg" aria-live="polite"></p>
-    </form>
-    <div class="join__done" id="join-done" tabindex="-1" hidden>
-      <p>Gracias</p>
-      <p>Ya estás en la lista, te mantendremos informado</p>
-    </div>
-  </section>
   <!-- 07 · Gallery, CURATEDShopping y +More (generado por build_pages.py) -->
   <section class="gal ix" id="gallery" data-theme="light" aria-labelledby="gal-t">
     <div class="gal__in">
@@ -491,7 +476,10 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
         </li>
         <li class="gal__item">
           <span class="gal__num" aria-hidden="true"><span>02.</span></span>
-          <div class="gal__box"><div class="card card--empty"><span class="sr-only">02. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+          <div class="gal__box"><a class="card card--img" href="beauty-lab.html" aria-label="02. Beauty Lab: rituales de día y de noche">
+            <img src="../assets/img/card-beauty.jpg" alt="" width="760" height="820" loading="lazy">
+            <span class="card__go" aria-hidden="true">→</span>
+          </a></div>
         </li>
         <li class="gal__item">
           <span class="gal__num" aria-hidden="true"><span>03.</span></span>
@@ -518,16 +506,19 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
         </li>
         <li class="gal__item">
           <span class="gal__num" aria-hidden="true"><span>06.</span></span>
-          <div class="gal__box"><div class="card card--empty"><span class="sr-only">06. Próximamente</span><span class="card__soon" aria-hidden="true">Próximamente</span></div></div>
+          <div class="gal__box"><a class="card card--img" href="melara-glow.html" aria-label="06. Melara: próximamente">
+            <img src="../assets/img/card-melara.jpg" alt="" width="760" height="820" loading="lazy">
+            <span class="card__go" aria-hidden="true">→</span>
+          </a></div>
         </li>
       </ol>
     </div>
   </section>
-  <section class="floors ix" id="plantas" data-theme="light" aria-label="CURATEDShopping y +More">
+  <section class="floors ix" id="plantas" data-theme="light" aria-label="Shop y +More">
     <div class="floors__in">
       <article class="floor">
         <p class="floor__n"><b>2</b> Planta 2 · En obras</p>
-        <h2 class="floor__t"><i class="cur">CURATED</i><br>Shopping</h2>
+        <h2 class="floor__t">Shop</h2>
         <p class="floor__lead">Lo que uso y recomiendo, elegido a mano.</p>
         <p class="floor__soon">Muy pronto.</p>
       </article>
@@ -553,7 +544,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       <nav class="foot__nav" aria-label="Pie de página">
         <a href="#index">Index</a>
         <a href="gallery.html">Gallery</a>
-        <a href="curated-shopping.html"><i class="cur">CURATED</i>Shopping</a>
+        <a href="curated-shopping.html">Shop</a>
         <a href="more.html">+More</a>
       </nav>
       <div class="foot__meta">
@@ -645,30 +636,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     });
   });
 
-  /* ---------- lista de espera: formulario y gracias (funciona también sin animaciones) ---------- */
-  var form = $('#join-form'), input = $('#join-email'), msg = $('#join-msg'), done = $('#join-done');
-  $$('[data-join]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      setTimeout(function () { if (!form.hidden) input.focus({ preventScroll: true }); }, reduce ? 60 : 1400);
-    });
-  });
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = input.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
-      form.classList.add('is-error'); input.setAttribute('aria-invalid', 'true');
-      msg.textContent = v ? 'Revisa el email: falta la @ o el dominio (por ejemplo, nombre@email.com).' : 'Escribe tu email para unirte a la lista.';
-      input.focus();
-      return;
-    }
-    form.classList.remove('is-error'); input.removeAttribute('aria-invalid'); msg.textContent = '';
-    var show = function () {
-      form.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
-      if (motion) G.from(done.children, { y: 24, autoAlpha: 0, duration: 0.9, ease: 'power3.out', stagger: 0.14 });
-    };
-    if (motion) G.to(form, { autoAlpha: 0, y: -16, duration: 0.45, ease: 'power2.in', onComplete: show }); else show();
-  });
-  input.addEventListener('input', function () { if (form.classList.contains('is-error')) { form.classList.remove('is-error'); input.removeAttribute('aria-invalid'); msg.textContent = ''; } });
+  /* ---------- lista de espera: ahora es su propia página (lista.html) ---------- */
 
   onScroll();
   if (!motion) return;
@@ -680,9 +648,13 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   var cab = $('.lift__cab'), isOpen = false, wasDown = false, doorTl = null;
   var SHADOW_L = '10px 0 22px rgba(0,0,0,0.35)', SHADOW_R = '-10px 0 22px rgba(0,0,0,0.35)', NOSHADOW = '0px 0 0px rgba(0,0,0,0)';
   G.set('.lift__lucia', { filter: 'brightness(0.5)' });
+  /* sonido del ascensor al abrirse (el navegador solo deja sonar si ya se ha tocado o pulsado algo en la página) */
+  var liftSound = new Audio('../assets/audio/ascensor.mp3'); liftSound.preload = 'auto'; liftSound.volume = 0.8;
+  function playLift() { try { liftSound.currentTime = 0; var pr = liftSound.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} }
   function setDoors(open, hideMenu) {
     if (open === isOpen) return;
     isOpen = open;
+    if (open) playLift();
     if (doorTl) doorTl.kill();
     $('.lift__call').setAttribute('aria-label', open ? 'Cerrar las puertas del ascensor' : 'Abrir las puertas del ascensor');
     doorTl = G.timeline();
@@ -786,13 +758,12 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   ['#gallery .gal__title', '#gallery .gal__quote', '.floors__in'].forEach(function (s) { soft($(s)); });
   $$('#gallery .gal__item').forEach(function (el, i) { soft(el, (i % 3) * 0.07); });
 
-  /* ---------- 06 · lista de espera ---------- */
-  G.from('.join__form > *', { y: 28, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '.join', start: 'top 72%', once: true } });
+  /* ---------- 06 · lista de espera: en lista.html ---------- */
 
   window.addEventListener('load', function () {
     ST.refresh();
     /* si se llega desde otra página a #lista (por ejemplo, desde Melara Glow), se baja al formulario cuando ya están puestos los anclajes */
-    if (location.hash === '#lista') setTimeout(function () { window.scrollTo(0, $('#lista').getBoundingClientRect().top + window.pageYOffset); }, 120);
+    if (location.hash === '#lista') location.replace('lista.html');
   });
 })();
 </script>

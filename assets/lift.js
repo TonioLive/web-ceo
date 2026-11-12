@@ -1,5 +1,5 @@
 /* Transición de ascensor entre plantas. Ver assets/lift.css.
-   Salida: cualquier enlace a Index, Gallery, CURATEDShopping o +More cierra el ascensor y guarda el viaje en sessionStorage.
+   Salida: cualquier enlace a Index, Gallery, Shop o +More cierra el ascensor y guarda el viaje en sessionStorage.
    Llegada: el script del <head> (LIFT_HEAD) prepara las puertas antes del primer pintado; aquí solo se cuentan las plantas. */
 (function () {
   'use strict';
@@ -7,7 +7,7 @@
   if (!d.querySelector('.lx')) return;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MAIN = { '': 0, 'index.html': 0, 'gallery.html': 1, 'curated-shopping.html': 2, 'more.html': 3 };
-  var SUB = { 'hot-readers.html': 1, 'design-freaks.html': 1, 'melara-glow.html': 1, 'artholics.html': 1, 'wardrobe-edit.html': 1 };
+  var SUB = { 'hot-readers.html': 1, 'design-freaks.html': 1, 'melara-glow.html': 1, 'artholics.html': 1, 'wardrobe-edit.html': 1, 'beauty-lab.html': 1, 'lista.html': 0 };
   function file(p) { return p.split('/').pop(); }
   function mainFloor(p) { var f = file(p); return f in MAIN ? MAIN[f] : null; }
   var hereMain = mainFloor(location.pathname);

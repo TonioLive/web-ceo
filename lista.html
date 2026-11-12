@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lista de espera · Lucía Morales</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Únete a la lista de espera de Lucía Morales.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/GoogleSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function(){var h=document.documentElement;h.classList.add('js');
+try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('rm');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches)h.classList.add('fine');}catch(e){}})();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/lift.css">
+<script>
+/* llegada en ascensor: prepara las puertas cerradas antes del primer pintado (ver assets/lift.js) */
+(function(){try{var h=document.documentElement,s=sessionStorage,v=JSON.parse(s.getItem('lm-lift')||'null');if(!v)return;s.removeItem('lm-lift');
+if(Date.now()-v.ts>8000||v.p!==location.pathname||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var W=innerWidth,H=innerHeight,n=Math.abs(v.t-v.f),d=.25+n*.2,home=v.t===0&&!location.hash,st=h.style;
+h.classList.add('lx-in');if(home)h.classList.add('lx-home');
+st.setProperty('--lxz',(Math.max(W/(H*.43166),1.166)*1.08).toFixed(3));st.setProperty('--lxd',d.toFixed(2)+'s');
+st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.t<v.f?'"\u25BC"':'none');
+window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
+</script>
+<style>
+:root{--ink-black:#0E0E0E}
+/* ---------- 06 · lista de espera (diseños 05 y 06) ---------- */
+.join{position:relative;background:var(--cream);color:var(--ink-black);display:grid;align-items:center;padding:clamp(20px,2.5vw,40px) var(--gutter) clamp(64px,7vw,110px)}
+.join__form{margin-left:calc(31.9vw - var(--gutter));width:min(64.8vw,calc(68.1vw - var(--gutter)));display:flex;flex-direction:column}
+.join__quote{margin:0 0 0 1.2vw;font-style:italic;font-size:clamp(20px,3.3vw,46px);line-height:1.22;text-transform:uppercase}
+.join__label{margin-top:clamp(28px,4.2vw,60px);font-size:clamp(18px,2.9vw,40px);line-height:1;text-transform:uppercase}
+.join__box{position:relative;display:flex;align-items:stretch;margin-top:clamp(10px,1.1vw,16px);height:clamp(64px,7.5vw,104px);border:2px solid var(--ink-black);transition:box-shadow .4s var(--ease-out)}
+.join__box:focus-within{box-shadow:0 0 0 4px rgba(14,14,14,.12)}
+.join__box input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:0 clamp(16px,1.8vw,28px);font-size:clamp(18px,2.1vw,30px);color:var(--ink-black);border-radius:0}
+.join__box input::placeholder{color:#9A988C}
+.join__box button{flex:none;display:inline-flex;align-items:center;gap:.5em;padding:0 clamp(16px,1.8vw,28px);font-size:clamp(13px,1.1vw,16px);letter-spacing:.14em;text-transform:uppercase;font-weight:500;border-left:2px solid var(--ink-black);transition:background-color .35s,color .35s}
+.join__box button:hover,.join__box button:focus-visible{background:var(--ink-black);color:var(--cream)}
+.join__msg{min-height:1.5em;margin-top:12px;font-size:15px;color:#4A4840}
+.join__form.is-error .join__msg{color:#A1120F;font-weight:500}
+.join__form.is-error .join__box{border-color:#A1120F}
+.join__done{text-align:center;font-size:clamp(18px,2.9vw,40px);line-height:1.22;text-transform:uppercase}
+.join__done:focus{outline:0}
+.trim{text-box:trim-both cap alphabetic}
+@media (max-width:699px){.join__form{margin-left:0;width:100%}.join__quote{margin-left:0;font-size:clamp(20px,6vw,28px)}.join__label{font-size:clamp(18px,5vw,24px)}.join__box button span{display:none}}
+.pg-lista .join{grid-template-columns:minmax(0,1fr)}
+.pg-lista .join{min-height:calc(var(--vh) * 100);align-content:center;padding-top:calc(96px + env(safe-area-inset-top,0px))}
+.pg-lista .back{margin-top:clamp(40px,5vw,64px)}
+</style>
+</head>
+<body class="pg-lista">
+<div class="lx" aria-hidden="true">
+  <div class="lx__zoom">
+    <div class="lx__wall lx__wall--l"></div><div class="lx__wall lx__wall--r"></div>
+    <div class="lx__stage">
+      <img class="lx__bg" src="assets/img/elevator.jpg" alt="" width="885" height="1573">
+      <div class="lx__cab"><div class="lx__door lx__door--l"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div><div class="lx__door lx__door--r"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div></div>
+      <span class="lx__floor"></span>
+    </div>
+  </div>
+</div>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="bar" data-theme="light">
+  <a class="bar__name" href="index.html">Lucía Morales</a>
+  <nav class="bar__nav" aria-label="Menú"><a href="index.html" aria-current="page">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
+  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <span class="sheet__door sheet__door--l" aria-hidden="true"></span>
+  <span class="sheet__door sheet__door--r" aria-hidden="true"></span>
+  <div class="sheet__body">
+    <button class="sheet__close" type="button">Cerrar</button>
+    <nav class="sheet__links" aria-label="Menú"><a href="index.html" data-floor="0" aria-current="page">Index</a><a href="gallery.html" data-floor="1">Gallery</a><a href="curated-shopping.html" data-floor="2">Shop</a><a href="more.html" data-floor="3">+More</a></nav>
+    <p class="sheet__domain">luciamorales.es</p>
+  </div>
+</div>
+
+<main id="main" class="join" data-theme="cream" aria-labelledby="join-t">
+    <form class="join__form" id="join-form" novalidate>
+      <blockquote class="join__quote trim"><p>“La expresión artística es la llama que mueve esta idea, ven con nosotros”</p></blockquote>
+      <label class="join__label trim" id="join-t" for="join-email">Introduce tu mail</label>
+      <div class="join__box">
+        <input id="join-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="join-msg" placeholder="nombre@email.com">
+        <button type="submit"><span>Enviar</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <p class="join__msg" id="join-msg" aria-live="polite"></p>
+    </form>
+    <div class="join__done" id="join-done" tabindex="-1" hidden>
+      <p>Gracias</p>
+      <p>Ya estás en la lista, te mantendremos informado</p>
+    </div>
+    <a class="back" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver al Index</a>
+  </main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <p class="foot__big">luciamorales.es</p>
+    <div class="foot__row">
+      <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
+      <div class="foot__meta">
+        <span>© 2026 Lucía Morales</span>
+        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
+        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
+        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/lift.js"></script>
+<script>
+/* Lista de espera: comprueba el email y muestra «Gracias». Aún no guarda el email (pendiente de conectar con la herramienta de correo). */
+(function () {
+  var LM = window.LM || {}, G = LM.G, motion = LM.motion;
+  var form = document.getElementById('join-form'), input = document.getElementById('join-email'), msg = document.getElementById('join-msg'), done = document.getElementById('join-done');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+      form.classList.add('is-error'); input.setAttribute('aria-invalid', 'true');
+      msg.textContent = v ? 'Revisa el email: falta la @ o el dominio (por ejemplo, nombre@email.com).' : 'Escribe tu email para unirte a la lista.';
+      input.focus(); return;
+    }
+    form.classList.remove('is-error'); input.removeAttribute('aria-invalid'); msg.textContent = '';
+    var show = function () {
+      form.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
+      if (motion && G) G.from(done.children, { y: 24, autoAlpha: 0, duration: 0.9, ease: 'power3.out', stagger: 0.14 });
+    };
+    if (motion && G) G.to(form, { autoAlpha: 0, y: -16, duration: 0.45, ease: 'power2.in', onComplete: show }); else show();
+  });
+  input.addEventListener('input', function () { if (form.classList.contains('is-error')) { form.classList.remove('is-error'); input.removeAttribute('aria-invalid'); msg.textContent = ''; } });
+})();
+</script>
+</body>
+</html>

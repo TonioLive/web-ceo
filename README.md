@@ -20,9 +20,9 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 | 03 · Sobre mí | Fondo azul y texto rojo: trayectoria, foto (fija) y «Lo que va a venir». El texto se ilumina al leer. |
 | 04 · In the making | Foto de la obra de las nuevas oficinas, cita de L.M y collage «MG days» y «MG design process». |
 | 05 · New chapter | Foto en la escalera con «new Chapter» cuatro veces, estática. «Join the list» lleva al formulario. |
-| 06 · Lista de espera | «Introduce tu mail» y, al enviarlo, «Gracias, ya estás en la lista». |
+| 06 · Lista de espera | Ahora es su propia página (`lista.html`); «Join the list» lleva a ella. |
 | 07 · Gallery | Las seis casillas en orden (01 Hot Readers, 03 Design Freaks, 04 Artholics y 05 Wardrobe Edit enlazadas), estáticas, en el mismo scroll. |
-| 08 · Plantas 2 y 3 | CURATEDShopping y +More, en obras, con las cintas amarillas. Después, el pie. |
+| 08 · Plantas 2 y 3 | Shop y +More, en obras, con las cintas amarillas. Después, el pie. |
 
 ## Páginas
 
@@ -31,6 +31,8 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 | `index.html` | El Index completo (HTML, CSS y JS en un solo archivo) |
 | `gallery.html` | Gallery: cita de L.M y seis casillas (01 Hot Readers, 03 Design Freaks; el resto, próximamente). Estática |
 | `hot-readers.html` | Portada con la estantería y la lista de libros, cada uno enlazado a su tienda. Cada portada es un libro 3D: un toque o clic lo abre (tapa y hojas en abanico) y dentro aparecen título, autor, año y «Ver el libro», que es lo único que lleva a la tienda; otro toque o Escape lo cierra. Con ratón se entreabre al pasar por encima; en móvil se entreabre una vez al aparecer |
+| `beauty-lab.html` | Gallery 02: Beauty Lab, rituales Day / Night; cada paso enlaza al producto |
+| `lista.html` | Lista de espera («La expresión artística…» e «Introduce tu mail»); se llega desde «Join the list» |
 | `artholics.html` | Gallery 04: portada «artholics», Avant-garde y «who» con los artistas; cada caja abre la web del artista |
 | `wardrobe-edit.html` | Gallery 05: Wardrobe Edit, la foto «Key Pieces A/W 26'» con cada palabra enlazada a la pieza y la lista «Pieces worth buying» |
 | `design-freaks.html` | Diseñadores y arquitectos, con enlaces a cada artículo |
@@ -44,7 +46,7 @@ Cada cambio que se sube a la rama `main` se publica solo en 1 o 2 minutos. Si no
 
 ## Transición de ascensor
 
-Index (planta 0), Gallery (1), CURATEDShopping (2) y +More (3) son plantas de un edificio. Al ir de una a otra:
+Index (planta 0), Gallery (1), Shop (2) y +More (3) son plantas de un edificio. Al ir de una a otra:
 
 1. **Salida:** el marco del ascensor entra desde fuera de la pantalla y las puertas se cierran. Desde la portada del Index las puertas ya están cerradas y solo se enciende el indicador.
 2. **Llegada:** el indicador rojo sobre la puerta cuenta las plantas (▲/▼), se ilumina al llegar, las puertas se abren con la página nueva detrás y la cámara cruza la puerta. Al volver a la portada del Index, el ascensor ya está ahí y solo se funde.
@@ -76,9 +78,10 @@ Se genera con el mismo script que las páginas interiores, a partir de la versi�
 - [ ] Melara Glow: cuando se decida, recuperar las cintas que se arrancan (commit 4ecb451) con la idea que elijan; ahora la página es estática.
 - [ ] «Con tu mirada»: cuando exista la web de Melara, cambiar el enlace de «Ver el libro» de `melara-glow.html` a la web real.
 - [ ] Vídeo del interior del ascensor y sonido (los envía Lucía).
-- [ ] Artholics: faltan las webs de Jaime Monge, Marta Camallonga, Mr. x Peexwo e Inés Longevial (sus cajas no enlazan). Federico Granell y Pelayo Ortega vienen en el Word pero no en el diseño.
+- [ ] Artholics: falta la web de Marta Camallonga. Mr. x Peewo enlaza a su Google Sites hasta que tenga dominio propio (mrxpeewo.com/.es).
+- [ ] Beauty Lab: «04 crema» enlaza a amazon.com (EE. UU.), confirmar si debe ser amazon.es.
 - [ ] Confirmar el año de «La vegetariana»: el diseño pone 2024 y el correo 2007 (se ha puesto 2007, el de la edición original).
-- [ ] Contenido de las casillas 02, 04, 05 y 06 de Gallery, de *CURATED*Shopping y de +More.
+- [ ] Contenido de las casillas 02, 04, 05 y 06 de Gallery, de Shop y de +More.
 - [ ] Aviso legal, privacidad y cookies.
 - [ ] Dominio luciamorales.es.
 - [ ] Quitar `<meta name="robots" content="noindex, nofollow">` de las páginas cuando la web esté lista para Google.
