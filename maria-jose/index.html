@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>María José Rivas · Professional make-up artist</title>
+<meta name="description" content="María José Rivas, maquilladora profesional en Valencia: social, falleras y eventos, FX y caracterización.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* Simulación para María José Rivas (noviembre 2026). Paleta: morado, rosa y marrón. Los textos entre corchetes y los marcos de foto son de ejemplo. */
+@font-face{font-family:'Google Sans';src:url(../assets/fonts/GoogleSans-Regular.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Google Sans';src:url(../assets/fonts/GoogleSans-Medium.woff2) format('woff2');font-weight:500;font-display:swap}
+:root{
+  --plum:#3E1E35;--plum-2:#5A2D4E;--mauve:#A7778F;--rose:#E7C3C4;--blush:#F3DEDB;--cream:#FAF3EE;--cocoa:#4B3027;--cocoa-2:#6E4A3B;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Google Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --g:clamp(18px,4.4vw,64px);--ease:cubic-bezier(.2,.75,.2,1);color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cream);color:var(--plum);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:99;padding:10px 14px;background:var(--plum);color:var(--cream);border-radius:8px}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--mauve);outline-offset:3px}
+.ph{color:var(--mauve);font-style:italic}
+
+/* barra */
+.nav{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) var(--g) 14px;
+  background:rgba(250,243,238,.72);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(62,30,53,.08)}
+.mono{font-family:var(--serif);font-size:24px;letter-spacing:.06em;text-decoration:none}
+.mono i{color:var(--mauve)}
+.nav ul{display:flex;gap:clamp(14px,2.6vw,36px);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.nav a{text-decoration:none}
+.nav a:hover{color:var(--mauve)}
+
+/* portada */
+.hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(28px,5vw,80px);padding:calc(96px + env(safe-area-inset-top,0px)) var(--g) clamp(40px,6vw,80px);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:62vmax;height:62vmax;right:-22vmax;top:-18vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(231,195,196,.75),rgba(231,195,196,0));z-index:-1}
+.kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cocoa-2)}
+.name{margin-top:18px;font-family:var(--serif);font-weight:400;font-size:clamp(64px,11.5vw,184px);line-height:.86;letter-spacing:-.02em}
+.name span{display:block}
+.name i{font-style:italic;color:var(--plum-2);padding-left:.55em}
+.role{margin-top:26px;display:flex;align-items:center;gap:14px;font-size:clamp(16px,1.5vw,20px)}
+.role::before{content:"";width:46px;height:1px;background:currentColor}
+.hero__cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--plum);transition:background .3s,color .3s}
+.btn--fill{background:var(--plum);color:var(--cream)}
+.btn:hover{background:var(--plum-2);color:var(--cream);border-color:var(--plum-2)}
+.portrait{position:relative;justify-self:end;width:min(100%,460px);aspect-ratio:3/4.2;border-radius:999px 999px 18px 18px;overflow:hidden;
+  background:radial-gradient(120% 80% at 30% 20%,#F3DEDB 0%,#E7C3C4 35%,#A7778F 70%,#5A2D4E 100%)}
+.portrait figcaption{position:absolute;inset:auto 0 0;padding:22px;color:var(--cream);font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-align:center}
+.portrait .ph-icon{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:28%;opacity:.55}
+.scroll{position:absolute;left:var(--g);bottom:24px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cocoa-2);display:flex;align-items:center;gap:10px}
+.scroll::after{content:"";width:1px;height:34px;background:currentColor;animation:drop 2.2s var(--ease) infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* secciones */
+.sec{padding:clamp(72px,9vw,140px) var(--g)}
+.sec__in{max-width:1200px;margin-inline:auto}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;opacity:.8}
+.h2{margin-top:14px;font-family:var(--serif);font-weight:400;font-size:clamp(44px,6.2vw,96px);line-height:.95;letter-spacing:-.01em}
+.h2 i{font-style:italic}
+
+/* CV */
+.cv{background:var(--plum);color:var(--cream)}
+.cv .ph{color:var(--rose)}
+.cv__grid{margin-top:clamp(40px,5vw,72px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px)}
+.cv h3{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);padding-bottom:12px;border-bottom:1px solid rgba(250,243,238,.2)}
+.cv__about p{margin-top:16px;font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1.3}
+.cv__list li{padding:16px 0;border-bottom:1px solid rgba(250,243,238,.14)}
+.cv__list b{display:block;font-weight:500}
+.cv__list span{font-size:14px;opacity:.75}
+.chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{padding:8px 14px;border:1px solid rgba(250,243,238,.35);border-radius:999px;font-size:13px}
+.note{margin-top:clamp(36px,4vw,56px);display:inline-flex;gap:10px;align-items:center;padding:12px 16px;border-radius:12px;background:rgba(250,243,238,.08);font-size:13px}
+
+/* trabajos */
+.work .h2{color:var(--plum)}
+.melara{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;border-radius:24px;overflow:hidden;background:var(--blush);text-decoration:none;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.melara:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(62,30,53,.45)}
+.melara__img{min-height:clamp(260px,32vw,440px);background:#fff;display:grid;place-items:center;position:relative;overflow:hidden}
+.melara__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.melara:hover .melara__img img{transform:scale(1.03)}
+.melara__txt{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.melara__txt h3{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,52px);line-height:1}
+.melara__txt p{max-width:30em}
+.go{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.cat{margin-top:clamp(72px,8vw,120px)}
+.cat__head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:1px solid rgba(62,30,53,.18);padding-bottom:14px}
+.cat__head h3{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,60px);line-height:1}
+.cat__head h3 i{font-style:italic;color:var(--mauve)}
+.cat__head p{font-size:14px;color:var(--cocoa-2)}
+.sub{margin-top:28px}
+.sub h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cocoa-2)}
+.tiles{margin-top:16px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.2vw,16px)}
+.tiles li{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden}
+.tiles li:nth-child(4n+1){background:linear-gradient(160deg,#F3DEDB,#C99AA6)}
+.tiles li:nth-child(4n+2){background:linear-gradient(160deg,#E7C3C4,#7E4B6A)}
+.tiles li:nth-child(4n+3){background:linear-gradient(160deg,#D9B8A8,#6E4A3B)}
+.tiles li:nth-child(4n+4){background:linear-gradient(160deg,#B892A8,#3E1E35)}
+.tiles li.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.tiles span{position:absolute;left:12px;bottom:10px;color:var(--cream);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.fx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px)}
+.fx .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* contacto */
+.contact{background:var(--cocoa);color:var(--cream);padding-bottom:calc(36px + env(safe-area-inset-bottom,0px))}
+.contact .ph{color:var(--rose)}
+.contact .h2 i{color:var(--rose)}
+.contact__grid{margin-top:clamp(36px,4vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid rgba(250,243,238,.2);padding-top:28px}
+.contact dt{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+.contact dd{margin:8px 0 0;font-size:clamp(17px,1.5vw,21px)}
+.contact a{text-underline-offset:4px}
+.foot{margin-top:clamp(56px,7vw,96px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;opacity:.7}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.scroll::after{animation:none}}
+
+@media (max-width:860px){
+  .nav ul{gap:14px;font-size:11px}
+  .hero{grid-template-columns:minmax(0,1fr);padding-top:calc(92px + env(safe-area-inset-top,0px))}
+  .portrait{justify-self:center;width:min(78%,360px);order:-1}
+  .name{font-size:clamp(58px,17vw,110px)}
+  .scroll{display:none}
+  .cv__grid,.contact__grid,.melara,.fx{grid-template-columns:minmax(0,1fr)}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tiles li.big{grid-row:auto;aspect-ratio:4/3.4}
+}
+@media (max-width:420px){.nav ul li:first-child{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="nav">
+  <a class="mono" href="#top" aria-label="María José Rivas, inicio">M<i>J</i>R</a>
+  <nav aria-label="Principal"><ul><li><a href="#cv">CV</a></li><li><a href="#trabajos">Trabajos</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="mj-name">
+    <div>
+      <p class="kicker rv">Valencia · Maquilladora profesional</p>
+      <h1 class="name rv" id="mj-name"><span>María José</span><span><i>Rivas</i></span></h1>
+      <p class="role rv">Professional make-up artist</p>
+      <div class="hero__cta rv">
+        <a class="btn btn--fill" href="#trabajos">Ver trabajos</a>
+        <a class="btn" href="#cv">Mi CV</a>
+      </div>
+    </div>
+    <figure class="portrait rv">
+      <svg class="ph-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="24" r="12" stroke="#FAF3EE" stroke-width="2"/><path d="M10 58c3-12 12-18 22-18s19 6 22 18" stroke="#FAF3EE" stroke-width="2" stroke-linecap="round"/></svg>
+      <figcaption>Aquí irá tu foto de presentación</figcaption>
+    </figure>
+    <p class="scroll" aria-hidden="true">Desliza</p>
+  </section>
+
+  <section class="sec cv" id="cv" aria-labelledby="cv-t">
+    <div class="sec__in">
+      <p class="eyebrow rv">Curriculum</p>
+      <h2 class="h2 rv" id="cv-t">Mi <i>trayectoria</i></h2>
+      <div class="cv__grid">
+        <div class="cv__about rv">
+          <h3>Sobre mí</h3>
+          <p>Maquilladora profesional en Valencia. Maquillaje social, falleras y eventos, y caracterización FX. <span class="ph">[Texto de ejemplo: lo cambiamos con tu presentación.]</span></p>
+        </div>
+        <div class="rv">
+          <h3>Formación</h3>
+          <ul class="cv__list">
+            <li><b class="ph">[Formación principal]</b><span class="ph">[Escuela · ciudad · año]</span></li>
+            <li><b class="ph">[Curso o especialización]</b><span class="ph">[Escuela · año]</span></li>
+            <li><b class="ph">[Curso o especialización]</b><span class="ph">[Escuela · año]</span></li>
+          </ul>
+        </div>
+        <div class="rv">
+          <h3>Experiencia</h3>
+          <ul class="cv__list">
+            <li><b>Make-up artist · Melara Glow</b><span>Valencia · <span class="ph">[desde]</span></span></li>
+            <li><b class="ph">[Trabajo o proyecto]</b><span class="ph">[Lugar · fechas]</span></li>
+            <li><b class="ph">[Trabajo o proyecto]</b><span class="ph">[Lugar · fechas]</span></li>
+          </ul>
+          <h3 style="margin-top:32px">Especialidades</h3>
+          <ul class="chips"><li>Social</li><li>Falleras</li><li>Eventos</li><li>Moros y cristianos</li><li>FX</li></ul>
+        </div>
+      </div>
+      <p class="note rv">✎ Simulación: completamos esta parte con tu CV.</p>
+    </div>
+  </section>
+
+  <section class="sec work" id="trabajos" aria-labelledby="w-t">
+    <div class="sec__in">
+      <p class="eyebrow rv">Portfolio</p>
+      <h2 class="h2 rv" id="w-t">Mis <i>trabajos</i></h2>
+
+      <a class="melara rv" href="melara.html">
+        <div class="melara__img"><img src="../assets/img/card-melara.jpg" alt="" width="760" height="820" loading="lazy"></div>
+        <div class="melara__txt">
+          <div><p class="eyebrow">Marca</p><h3>Make-up artist de Melara Glow</h3></div>
+          <p>Mis trabajos como maquilladora de la marca. La web de Melara Glow está en construcción.</p>
+          <span class="go">Ver Melara Glow →</span>
+        </div>
+      </a>
+
+      <article class="cat rv" aria-labelledby="c-social">
+        <div class="cat__head"><h3 id="c-social">Social</h3><p>Maquillaje social</p></div>
+        <div class="sub">
+          <h4>Falleras y eventos</h4>
+          <ul class="tiles" aria-label="Fotos de falleras y eventos (de ejemplo)">
+            <li class="big"><span>Foto 01</span></li><li><span>Foto 02</span></li><li><span>Foto 03</span></li><li><span>Foto 04</span></li><li><span>Foto 05</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="cat rv" aria-labelledby="c-fx">
+        <div class="cat__head"><h3 id="c-fx"><i>FX</i> y caracterización</h3><p>Moros y cristianos · FX</p></div>
+        <div class="fx">
+          <div class="sub">
+            <h4>Moros y cristianos</h4>
+            <ul class="tiles" aria-label="Fotos de moros y cristianos (de ejemplo)"><li><span>Foto 01</span></li><li><span>Foto 02</span></li><li><span>Foto 03</span></li><li><span>Foto 04</span></li></ul>
+          </div>
+          <div class="sub">
+            <h4>FX <span class="ph">[nombre que nos digas]</span></h4>
+            <ul class="tiles" aria-label="Fotos de FX (de ejemplo)"><li><span>Foto 01</span></li><li><span>Foto 02</span></li><li><span>Foto 03</span></li><li><span>Foto 04</span></li></ul>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contacto" aria-labelledby="ct-t">
+    <div class="sec__in">
+      <p class="eyebrow rv">Contacto</p>
+      <h2 class="h2 rv" id="ct-t">¿Hablamos de tu <i>próximo look?</i></h2>
+      <dl class="contact__grid rv">
+        <div><dt>Email</dt><dd><span class="ph">[tu email]@melaraglow.com</span></dd></div>
+        <div><dt>Teléfono</dt><dd><span class="ph">[tu teléfono]</span></dd></div>
+        <div><dt>Dónde</dt><dd>Valencia</dd></div>
+      </dl>
+      <div class="foot"><span>© 2026 María José Rivas · Professional make-up artist</span><span>Simulación para revisar</span></div>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
