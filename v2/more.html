@@ -123,12 +123,13 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
 (function () {
   var LM = window.LM; if (!LM || !LM.motion) return;
   var G = LM.G, start = window.LM_LIFT ? window.LM_LIFT.reveal : 0.1;
-  G.timeline({ delay: start })
+  var tl = G.timeline({ delay: start })
     .from('.fl__floor', { autoAlpha: 0, y: 10, duration: 0.7, ease: 'power3.out' }, 0)
     .from('.fl__title .ln>span', { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: 0.1 }, 0.05)
-    .from('.fl__side > *', { autoAlpha: 0, y: 14, duration: 0.8, ease: 'power3.out', stagger: 0.08 }, 0.35)
-    .fromTo(LM.$$('.fl__tape--a'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.3)
-    .fromTo(LM.$$('.fl__tape--d'), { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.55);
+    .from('.fl__side > *', { autoAlpha: 0, y: 14, duration: 0.8, ease: 'power3.out', stagger: 0.08 }, 0.35);
+  if (LM.$('.fl__tape--a')) tl
+  .fromTo(LM.$$('.fl__tape--a'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.3)
+  .fromTo(LM.$$('.fl__tape--d'), { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.55);
 })();
 </script>
 <a class="v2tag" href="../more.html" aria-label="Estás viendo la propuesta v2. Ver la versión actual">Propuesta v2 <u>· ver actual</u></a>
