@@ -223,6 +223,11 @@ a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
 /* 04 · Artholics y 05 · Wardrobe Edit: la portada de cada página, en pequeño */
 .card.card--img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .card--art img{object-position:50% 100%}
+.social{display:flex;flex-direction:column;gap:10px;margin-top:22px;list-style:none;padding:0}
+.social a{display:inline-flex;align-items:baseline;gap:14px;color:inherit;text-decoration:none;font-size:clamp(18px,1.7vw,24px);line-height:1.2}
+.social b{font-weight:600;min-width:5.2em}
+.social span{border-bottom:1px solid currentColor;padding-bottom:2px}
+.social a:hover span,.social a:focus-visible span{border-bottom-width:2px}
 .ix{--line:#0E0E0E;--grey:#3B3B3B;--black:#0E0E0E;--white:#FFFFFF}
 .ix img{height:auto}
 .ix ol{padding:0;list-style:none}
@@ -253,6 +258,7 @@ a.card:hover .card__go,a.card:focus-visible .card__go{opacity:1;transform:none}
 .foot__meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px;font-size:14px;color:var(--steel-200)}
 .foot__meta button{padding:10px 0;text-decoration:underline;text-underline-offset:4px}
 .foot__meta button:hover{color:#fff}
+.foot__meta a{padding:10px 0;color:inherit;text-decoration:underline;text-underline-offset:4px}.foot__meta a:hover{color:#fff}
 
 /* ---------- menú a pantalla completa (puertas que se cierran) ---------- */
 /* abrir: las puertas se cierran y luego aparece el menú; cerrar: el menú se apaga y las puertas se abren (sigue visible hasta que acaban) */
@@ -340,7 +346,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
 <header class="bar" data-theme="steel">
   <a class="bar__name" href="#index">Lucía Morales</a>
   <nav class="bar__nav" aria-label="Menú">
-    <a href="#index" aria-current="page">Index</a>
+    <a href="#bienvenida" aria-current="page">Index</a>
     <a href="gallery.html">Gallery</a>
     <a href="curated-shopping.html">Shop</a>
     <a href="more.html">+More</a>
@@ -354,7 +360,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
   <div class="sheet__body">
     <button class="sheet__close" type="button">Cerrar</button>
     <nav class="sheet__links" aria-label="Menú">
-      <a href="#index" data-floor="0">Index</a>
+      <a href="#bienvenida" data-floor="0">Index</a>
       <a href="gallery.html" data-floor="1">Gallery</a>
       <a href="curated-shopping.html" data-floor="2">Shop</a>
       <a href="more.html" data-floor="3">+More</a>
@@ -376,8 +382,6 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
           <div class="lift__cab">
             <img class="lift__lucia" src="assets/img/cab-interior.jpg" alt="Interior del ascensor con cajas de mudanza, cuadros y una lámpara de pie: el traslado a las nuevas oficinas" width="656" height="1342">
             <span class="lift__shade" aria-hidden="true"></span>
-            <span class="lift__glow" aria-hidden="true"></span>
-            <span class="lift__crack" aria-hidden="true"></span>
             <div class="lift__door lift__door--l" aria-hidden="true"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div>
             <div class="lift__door lift__door--r" aria-hidden="true"><img src="assets/img/elevator.jpg" alt="" width="885" height="1573"></div>
           </div>
@@ -389,7 +393,7 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       </div>
       <h1 class="sr-only">Lucía Morales</h1>
       <nav class="lift__menu" aria-label="Menú principal">
-        <a href="#index" data-floor="0" aria-current="page">Index</a>
+        <a href="#bienvenida" data-floor="0" aria-current="page">Index</a>
         <a href="gallery.html" data-floor="1">Gallery</a>
         <a href="curated-shopping.html" data-floor="2">Shop</a>
         <a href="more.html" data-floor="3">+More</a>
@@ -522,10 +526,13 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
         <p class="floor__soon">Muy pronto.</p>
       </article>
       <article class="floor">
-        <p class="floor__n"><b>3</b> Planta 3 · En obras</p>
+        <p class="floor__n"><b>3</b> Planta 3</p>
         <h2 class="floor__t">+More</h2>
         <p class="floor__lead">Todos mis canales en un sitio.</p>
-        <p class="floor__soon">Muy pronto.</p>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/luciamorales.es/" target="_blank" rel="noopener"><b>Instagram</b><span>@luciamorales.es</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+          <li><a href="https://www.tiktok.com/@luciamorales.es1" target="_blank" rel="noopener"><b>TikTok</b><span>@luciamorales.es1</span><span class="sr-only"> (se abre en otra pestaña)</span></a></li>
+        </ul>
       </article>
     </div>
     <div class="floors__tapes" aria-hidden="true">
@@ -541,16 +548,16 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     <p class="foot__big">luciamorales.es</p>
     <div class="foot__row">
       <nav class="foot__nav" aria-label="Pie de página">
-        <a href="#index">Index</a>
+        <a href="#bienvenida">Index</a>
         <a href="gallery.html">Gallery</a>
         <a href="curated-shopping.html">Shop</a>
         <a href="more.html">+More</a>
       </nav>
       <div class="foot__meta">
         <span>© 2026 Lucía Morales</span>
-        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
-        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
-        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
   </div>
@@ -645,10 +652,6 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
      siguiendo el scroll: hay que ir bajando para abrirlas del todo. Sin zoom; al terminar, la página sigue normal.
      Al subir se vuelven a cerrar. «Abrir» (en ordenador) baja justo hasta tenerlas abiertas. */
   var cab = $('.lift__cab'), isOpen = false;
-  /* sonido del ascensor al abrirse (el navegador solo deja sonar si ya se ha tocado o pulsado algo en la página) */
-  var liftSound = new Audio('assets/audio/ascensor.mp3'); liftSound.preload = 'auto'; liftSound.volume = 0.8;
-  function playLift() { try { liftSound.currentTime = 0; var pr = liftSound.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} }
-  var played = false;
   var doorsTl = G.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
@@ -657,23 +660,18 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       onUpdate: function (st) {
         isOpen = st.progress > 0.5;
         $('.lift__call').setAttribute('aria-label', isOpen ? 'Cerrar las puertas del ascensor' : 'Abrir las puertas del ascensor');
-        if (st.progress > 0.04 && st.direction > 0 && !played) { played = true; playLift(); }
-        if (st.progress < 0.01) played = false;
       }
     }
   });
   doorsTl
-    .fromTo(['.lift__domain', '.lift__cue', '.lift__hint', '.lift__crack'], { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.12 }, 0)
+    .fromTo(['.lift__domain', '.lift__cue', '.lift__hint'], { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.12 }, 0)
     .fromTo('.lift__menu a', { y: 0, autoAlpha: 1 }, { y: -20, autoAlpha: 0, duration: 0.14, stagger: 0.02 }, 0)
-    .fromTo('.lift__glow', { opacity: 0 }, { opacity: 1, duration: 0.08 }, 0.02)
     .fromTo('.lift__door--l', { xPercent: 0 }, { xPercent: -100, duration: 0.86, ease: 'power1.inOut' }, 0.06)
     .fromTo('.lift__door--r', { xPercent: 0 }, { xPercent: 100, duration: 0.86, ease: 'power1.inOut' }, 0.06)
     .fromTo('.lift__lucia', { filter: 'brightness(0.5)' }, { filter: 'brightness(1)', duration: 0.7 }, 0.1)
-    .to('.lift__glow', { opacity: 0, duration: 0.3 }, 0.45)
     .to(['.lift__door--l', '.lift__door--r'], { boxShadow: '0px 0 0px rgba(0,0,0,0)', duration: 0.08 }, 0.92);
   $('.lift__call').addEventListener('click', function () {
     var st = doorsTl.scrollTrigger;
-    playLift(); played = true;
     scrollToY(isOpen ? 0 : st.end + 2);
   });
 
@@ -689,12 +687,10 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       tease = null;
       if (teased < 2) G.delayedCall(7, function () { teaseDoors(0); });
     } })
-      .to('.lift__crack', { opacity: 1, duration: 0.6, ease: 'power1.out' }, 0.1)
       .to(doors[0], { x: function () { return -crack(); }, duration: 1, ease: 'power3.inOut' }, 0)
       .to(doors[1], { x: function () { return crack(); }, duration: 1, ease: 'power3.inOut' }, 0)
       .to('.lift__hint', { autoAlpha: 1, x: 0, duration: 0.6, ease: 'power2.out' }, 0.5)
       .to(doors, { x: 0, duration: 0.9, ease: 'power2.inOut' }, 2.1)
-      .to('.lift__crack', { opacity: 0, duration: 0.6 }, 2.3)
       .to('.lift__hint', { autoAlpha: 0, duration: 0.5 }, 3.4);
   }
   function stopTease() {

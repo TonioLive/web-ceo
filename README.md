@@ -78,10 +78,9 @@ Se genera con el mismo script que las páginas interiores, a partir de la versi�
 - [ ] Melara Glow: cuando se decida, recuperar las cintas que se arrancan (commit 4ecb451) con la idea que elijan; ahora la página es estática.
 - [ ] «Con tu mirada»: cuando exista la web de Melara, cambiar el enlace de «Ver el libro» de `melara-glow.html` a la web real.
 - [ ] Vídeo del interior del ascensor y sonido (los envía Lucía).
-- [ ] Artholics: falta la web de Marta Camallonga. Mr. x Peewo enlaza a su Google Sites hasta que tenga dominio propio (mrxpeewo.com/.es).
 - [ ] Beauty Lab: «04 crema» enlaza a amazon.com (EE. UU.), confirmar si debe ser amazon.es.
 - [ ] Confirmar el año de «La vegetariana»: el diseño pone 2024 y el correo 2007 (se ha puesto 2007, el de la edición original).
 - [ ] Contenido de las casillas 02, 04, 05 y 06 de Gallery, de Shop y de +More.
-- [ ] Aviso legal, privacidad y cookies.
+- [x] Aviso legal, privacidad y cookies (MORALES GLOBAL SL). Revisar con asesoría; faltan los datos del Registro Mercantil.
 - [ ] Dominio luciamorales.es.
 - [ ] Quitar `<meta name="robots" content="noindex, nofollow">` de las páginas cuando la web esté lista para Google.

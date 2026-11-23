@@ -78,6 +78,7 @@ i.cur{font-style:italic}
 .foot__meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px;font-size:14px;color:var(--steel-200)}
 .foot__meta button{padding:10px 0;text-decoration:underline;text-underline-offset:4px}
 .foot__meta button:hover{color:#fff}
+.foot__meta a{padding:10px 0;color:inherit;text-decoration:underline;text-underline-offset:4px}.foot__meta a:hover{color:#fff}
 
 .toast{position:fixed;z-index:90;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));max-width:calc(100% - 32px);padding:13px 22px;border-radius:999px;background:var(--black);color:var(--white);font-size:14px;box-shadow:0 12px 30px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translate(-50%,16px);transition:opacity .35s,transform .5s var(--ease),visibility 0s .5s}
 .toast.is-on{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .35s,transform .5s var(--ease),visibility 0s}

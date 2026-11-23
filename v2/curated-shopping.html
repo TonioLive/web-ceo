@@ -26,6 +26,11 @@ st.setProperty('--lxn','"'+v.f+'"');st.setProperty('--lxa',v.t>v.f?'"\u25B2"':v.
 window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performance.now()};}catch(e){}})();
 </script>
 <style>
+.social{display:flex;flex-direction:column;gap:10px;margin-top:22px;list-style:none;padding:0}
+.social a{display:inline-flex;align-items:baseline;gap:14px;color:inherit;text-decoration:none;font-size:clamp(18px,1.7vw,24px);line-height:1.2}
+.social b{font-weight:600;min-width:5.2em}
+.social span{border-bottom:1px solid currentColor;padding-bottom:2px}
+.social a:hover span,.social a:focus-visible span{border-bottom-width:2px}
 /* Plantas en obras: detrás de las puertas del ascensor, la planta vacía con las cintas amarillas de Melara. */
 .fl{position:relative;min-height:100vh;min-height:calc(var(--vh)*100);overflow:hidden;background:var(--white);display:flex;flex-direction:column;justify-content:space-between}
 .fl__txt{position:relative;z-index:4;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);align-items:end;gap:28px clamp(32px,5vw,90px);padding:calc(108px + env(safe-area-inset-top,0px)) var(--gutter) 0}
@@ -100,9 +105,9 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
       <nav class="foot__nav" aria-label="Pie de página"><a href="index.html">Index</a><a href="gallery.html">Gallery</a><a href="curated-shopping.html">Shop</a><a href="more.html">+More</a></nav>
       <div class="foot__meta">
         <span>© 2026 Lucía Morales</span>
-        <button type="button" data-toast="Aviso legal: pendiente de redactar.">Aviso legal</button>
-        <button type="button" data-toast="Política de privacidad: pendiente de redactar.">Privacidad</button>
-        <button type="button" data-toast="Política de cookies: pendiente de redactar.">Cookies</button>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
   </div>
@@ -122,8 +127,8 @@ window.LM_LIFT={f:v.f,t:v.t,home:home,count:d,reveal:home?d+.3:d+.35,t0:performa
     .from('.fl__floor', { autoAlpha: 0, y: 10, duration: 0.7, ease: 'power3.out' }, 0)
     .from('.fl__title .ln>span', { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: 0.1 }, 0.05)
     .from('.fl__side > *', { autoAlpha: 0, y: 14, duration: 0.8, ease: 'power3.out', stagger: 0.08 }, 0.35)
-    .fromTo('.fl__tape--a', { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.3)
-    .fromTo('.fl__tape--d', { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.55);
+    .fromTo(LM.$$('.fl__tape--a'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.3)
+    .fromTo(LM.$$('.fl__tape--d'), { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.55);
 })();
 </script>
 <a class="v2tag" href="../curated-shopping.html" aria-label="Estás viendo la propuesta v2. Ver la versión actual">Propuesta v2 <u>· ver actual</u></a>
