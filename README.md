@@ -84,3 +84,15 @@ Se genera con el mismo script que las páginas interiores, a partir de la versi�
 - [x] Aviso legal, privacidad y cookies (MORALES GLOBAL SL). Revisar con asesoría; faltan los datos del Registro Mercantil.
 - [ ] Dominio luciamorales.es.
 - [ ] Quitar `<meta name="robots" content="noindex, nofollow">` de las páginas cuando la web esté lista para Google.
+
+## María José Rivas (`/maria-jose/`)
+
+Web de María José Rivas, make-up artist de Melara Glow: https://toniolive.github.io/web-ceo/maria-jose/
+
+| Archivo | Qué es |
+|---|---|
+| `maria-jose/index.html` | Versión 2 (nov 2026), mezcla de cuatro referencias: titular gigante con el retrato en arco superpuesto y notas a mano con flechas que se dibujan, firma «Rivas», insignia giratoria, marquesinas que cambian de sentido con el scroll, Sobre mí con polaroids y contadores, CV numerado, servicios 01/02/03 que filtran los trabajos, trabajos en fondo oscuro con Melara Glow, filtros y visor de fotos, «Cómo trabajo» con textura y sombras de ventana, cita que se ilumina al leer y contacto. Cursor propio y botones magnéticos con ratón; respeta `prefers-reduced-motion` |
+| `maria-jose/v1/` | Primera simulación, para comparar |
+| `maria-jose/melara.html` | Melara Glow en construcción |
+
+Textos entre corchetes, cifras de los contadores y marcos de foto son de ejemplo hasta tener los reales.
